@@ -1,0 +1,271 @@
+#include <iostream>
+#include <conio.h>
+
+#include "Cinema.h"
+#include "Theater.h"
+#include "Movie.h"
+#include "Calendar.h"
+#include "Global.h"
+
+using namespace std;
+
+int main()
+{
+    char Decision, DecisionBuy, DecisionBuyUpgrade;
+    int DecisionBuySeats_TheaterNum, DecisionBuyUpgrades_TheaterNum;
+    int HowManySeatsToBuy;
+
+    // Creation of main game entity.
+    Cinema* TheCinema = new Cinema();
+
+    // Introduces player to the game.
+    introduction();
+    ClearScreen();
+
+    // Main game loop. Only quitting breaks it.
+    do
+    {
+        // Displays the cinema's assets, recent profits and expenses, and time.
+        TheCinema->hud();
+        Divider();
+        // Displays main choices: buy, staff, ticket price, movie, end turn, and quit.
+        choiceTree_Main();
+        // Player's selection is collected and stored.
+        Decision = getSelectionMain();
+
+        cout << endl;
+
+        // Nested switch/do-loop for main choices.
+        switch (Decision)
+        {
+        case '1' :
+            // Player chose to Make Purchase. Loop breaks when 'R' or Go Back is selected.
+            do
+            {
+                ClearScreen();
+                // Displays Make Purchase choices: Buy Seats, Buy Movie License, Buy Snacks, Buy Upgrades,
+                // Buy Promotions, Buy Additional Theater, and Go Back.
+                choiceTree_01();
+                // Player's selection is collected and stored.
+                DecisionBuy = getSelection_01();
+                // Player chose to Buy More Seats. Loop breaks when 'R' or Go Back is selected.
+                //////////////////////////////////
+                if (DecisionBuy == '1')
+                {
+                    // Loop control variable.
+                    bool IllegalPurchase = false;
+
+                    ClearScreen();
+
+                    if (TheCinema->getNumOfTheaters() > 1)
+                    {
+                        // Displays the question of which theater to purchase more seats for.
+                        choiceTree_01_01(TheCinema->getNumOfTheaters());
+                        // Player's selection is collected and stored.
+                        DecisionBuySeats_TheaterNum = getSelection_TheaterNum(TheCinema->getNumOfTheaters());
+                        // Takes into account the p_Theaters[] array has a zero index for the first theater.
+                        DecisionBuySeats_TheaterNum -= 1;
+                    }
+                    // Takes into account the p_Theaters[] array has a zero index for the first theater.
+                    else DecisionBuySeats_TheaterNum = 0;
+
+                    do
+                    {
+                        ClearScreen();
+                        // Displays theater chosen and the amount of seats present.
+                        // Explains price of each seat and asks player how many to buy.
+                        choiceNumOfSeats(DecisionBuySeats_TheaterNum + 1,
+                                         TheCinema->accessTheaters(DecisionBuySeats_TheaterNum)->getNumOfSeats());
+                        // Player's selection is collected and stored.
+                        HowManySeatsToBuy = getSelectionSeatPurchase();
+                        // Checks if player has enough money, or if number exceeds max seats for theater.
+                        IllegalPurchase = checksPurchaseOfSeats(TheCinema->getBank(),
+                                                                TheCinema->accessTheaters(DecisionBuySeats_TheaterNum)->getNumOfSeats(),
+                                                                HowManySeatsToBuy);
+                        // If purchase was successful, update Bank and NumOfSeats for that theater.
+                        if (IllegalPurchase)
+                        {
+                            TheCinema->adjustBank(-(HowManySeatsToBuy*SEAT_PRICE));
+                            TheCinema->accessTheaters(DecisionBuySeats_TheaterNum)->addSeats(HowManySeatsToBuy);
+                        }
+                        // With purchase made, control reverts back to main menu with updates to HUD.
+                    } while (IllegalPurchase == false);
+                        DecisionBuy = 'R';
+                }
+                // Player chose to Buy More Movie Licenses. Loop breaks when 'R' or Go Back is selected.
+                //////////////////////////////////
+                else if (DecisionBuy == '2')
+                {
+
+                }
+                // Player chose to Buy More Snack Options. Loop breaks when 'R' or Go Back is selected.
+                //////////////////////////////////
+                else if (DecisionBuy == '3')
+                {
+                    ClearScreen();
+                    // Displays details about snacks, explains price to upgrade, and asks if upgrade is desired.
+                    choiceTree_01_03(TheCinema->getNumOfSnacks());
+
+                    // If all the snacks are purchased, skip ahead.
+                    if (!(TheCinema->getNumOfSnacks() >= SNACK_MAX))
+                    {
+                        // Player's selection is collected and stored.
+                        char ch = getYesOrNo();
+
+                        if (ch == 'y' || ch == 'Y')
+                        {
+                            // If check comes back true, there's not enough money in the bank.
+                            if (checkPurchaseOfSnacks(TheCinema->getBank(), TheCinema->getNumOfSnacks()))
+                                break;
+                            else
+                            {
+                                TheCinema->adjustBank(-(SNACK_PRICE));
+                                TheCinema->addSnacks();
+                            }
+                        }
+                        else if (ch == 'n' || ch == 'N')
+                        {
+                            cout << endl << endl << "Perhaps another time then..." << endl << endl;
+                            Pause();
+                        }
+                    }
+
+                    DecisionBuy = 'R';
+                }
+                // Player chose to Buy Upgrades. Loop breaks when 'R' or Go Back is selected.
+                //////////////////////////////////
+                else if (DecisionBuy == '4')
+                {
+                    // Loop control variable.
+                    bool IllegalPurchase = false;
+
+                    ClearScreen();
+
+                    if (TheCinema->getNumOfTheaters() > 1)
+                    {
+                        // Displays the question of which theater to purchase more seats for.
+                        choiceTree_01_04(TheCinema->getNumOfTheaters());
+                        // Player's selection is collected and stored.
+                        DecisionBuyUpgrades_TheaterNum = getSelection_TheaterNum(TheCinema->getNumOfTheaters());
+                        // Takes into account the p_Theaters[] array has a zero index for the first theater.
+                        DecisionBuyUpgrades_TheaterNum -= 1;
+                    }
+                    // Takes into account the p_Theaters[] array has a zero index for the first theater.
+                    else DecisionBuyUpgrades_TheaterNum = 0;
+
+                    do
+                    {
+                        ClearScreen();
+                        // Displays theater chosen and the levels for the
+                        // sound system, screen size, and projector quality.
+                        // Asks which area to upgrade.
+                        choiceUpgradeLevels(DecisionBuyUpgrades_TheaterNum + 1,
+                                         TheCinema->accessTheaters(DecisionBuyUpgrades_TheaterNum)->getScreenLevel(),
+                                         TheCinema->accessTheaters(DecisionBuyUpgrades_TheaterNum)->getProjectorLevel(),
+                                         TheCinema->accessTheaters(DecisionBuyUpgrades_TheaterNum)->getSoundLevel());
+                        // Player's selection is collected and stored.
+                        DecisionBuyUpgrade = getSelectionUpgradePurchase();
+                        ClearScreen();
+
+                        // Player chose to upgrade screen size.
+                        if (DecisionBuyUpgrade == '1')
+                        {
+                            // Displays next level of screen size and cost. Asks player yes or no to purchase.
+                            choiceUpgradeScreen(TheCinema->accessTheaters(DecisionBuyUpgrades_TheaterNum)->getScreenLevel());
+                            // Player's selection is collected and stored.
+                            char ch = getYesOrNo();
+                            if (ch == 'y' || ch == 'Y')
+                            {
+
+                            }
+                            else if (ch == 'n' || ch == 'N')
+                            {
+                                cout << endl << endl << "Perhaps another time then..." << endl << endl;
+                                Pause();
+                            }
+
+                        }
+                        // Player chose to upgrade projector quality.
+                        else if (DecisionBuyUpgrade == '2')
+                        {
+
+                        }
+                        // Player chose to upgrade sound intensity.
+                        else if (DecisionBuyUpgrade == '3')
+                        {
+
+                        }
+                        else DecisionBuyUpgrade == 'R';
+                        // Checks if player has enough money, or if number exceeds max seats for theater.
+                        IllegalPurchase = checksPurchaseOfSeats(TheCinema->getBank(),
+                                                                TheCinema->accessTheaters(DecisionBuySeats_TheaterNum)->getNumOfSeats(),
+                                                                HowManySeatsToBuy);
+                        // If purchase was successful, update Bank and NumOfSeats for that theater.
+                        if (IllegalPurchase)
+                        {
+                            TheCinema->adjustBank(-(HowManySeatsToBuy*SEAT_PRICE));
+                            TheCinema->accessTheaters(DecisionBuySeats_TheaterNum)->addSeats(HowManySeatsToBuy);
+                        }
+                        // With purchase made, control reverts back to main menu with updates to HUD.
+                    } while (DecisionBuyUpgrade != 'R');
+
+                        DecisionBuy = 'R';
+                }
+                // Player chose to Buy a Promotional Offer. Loop breaks when 'R' or Go Back is selected.
+                //////////////////////////////////
+                else if (DecisionBuy == '5')
+                {
+
+                }
+                // Player chose to Buy an Additional Theater. Loop breaks when 'R' or Go Back is selected.
+                //////////////////////////////////
+                else if (DecisionBuy == '6')
+                {
+
+                }
+            } while (DecisionBuy != 'R');
+            break;
+        case '2' :
+            cout << endl << "You've selected to Manage your Staff." << endl << endl;
+            break;
+        case '3' :
+            cout << endl << "You've selected to Change the Ticket Price." << endl << endl;
+            cout << "Current Ticket Price is $" << TheCinema->getTicketPrice() << endl << endl;
+            cout << "You can choose any price between $0.00 and $20.00" << endl;
+            cout << "What do you want the new Ticket Price to be: ";
+            float newPrice;
+            do
+            {
+                cin >> newPrice;
+            } while (newPrice <= -0.01 || newPrice >= 20.01);
+
+            TheCinema->changeTicketPrice(newPrice);
+            cout << endl << endl << "You've changed the Ticket Price to $" << TheCinema->getTicketPrice() << endl;
+
+            break;
+        case '4' :
+            cout << endl << "You've selected to Change the Movie in one of your theaters." << endl << endl;
+            break;
+        case '5' :
+            cout << endl << "You've selected to End this Turn." << endl << endl;
+            TheCinema->p_Calendar->nextWeek();
+            break;
+        case 'q' :
+            Decision = getQuitConfirmation();
+            break;
+        case 'Q' :
+            Decision = getQuitConfirmation();
+            break;
+        }
+
+        ClearScreen();
+        Divider();
+    } while(Decision != 'Q');
+
+    TheCinema->p_Calendar->~Calendar();
+    TheCinema->p_Calendar = 0;
+    TheCinema->~Cinema();
+    TheCinema = 0;
+
+    return 0;
+}

@@ -1,0 +1,320 @@
+# 1
+Rating: B
+MonetaryBase: 100
+FactorChoiceA: 2
+FactorChoiceB: 0
+FactorChoiceC: 4
+FactorChoiceD: 1
+Scenario: Your employees feel underappreciated. There has been talk about unionizing. If you don't do something quick they may strike and cut into your profits. 
+OptionA: Fire the malcontents and bring in some new blood.
+OptionB: Give each employee a number of free tickets for their friends and families.
+OptionC: Cut their pay across the board, so that they know what underappreciation really feels like.
+OptionD: Add a fat bonus into everybody's check this month.
+DescriptionResultA: You fired those you believed to be the ringleaders, but it's too late. They're striking. When the dust settles you're out a total of $
+DescriptionResultB: Though giving away tickets technically costs you some profit, your employees seem somewhat mullified. You neither gain, nor lose, netting $
+DescriptionResultC: This heavy handed tactic only fuels the dissatisfaction your employees have been feeling. They go on strike. You've lost $
+DescriptionResultD: It was a costly move, but it's evident you're a good boss. The improved morale and performance does boost your customers' experience and mitigates the expense. You only lose $
+# 2
+Rating: G
+MonetaryBase: 100
+FactorChoiceA: 4
+FactorChoiceB: 1
+FactorChoiceC: 2
+FactorChoiceD: 3
+Scenario: The local newspaper is running a story on your fledgling cinema. The reporter asks you what made you want to own a movie theater. 
+OptionA: Conjur up a story about your youth, where movie theaters served as sanctuary against a harsh upbringing.
+OptionB: Tell them you thought it was a way to get rich quick.
+OptionC: Insist that every town needs a cinema, and that you were merely stepping up to fill your town's need.
+OptionD: Answer with an enigmatic question. Why do penguins prefer the cold?
+DescriptionResultA: People love an underdog. Moved by your tale, they flock in greater numbers. Ticket sales boom for a net gain of $
+DescriptionResultB: Nobody likes the greedy guy, especially when he boasts. The article, however, brings more attention to your theater. There's a net gain of $
+DescriptionResultC: The town comes out en masse to support a staple of their community. As a result, your profits rise by $
+DescriptionResultD: Such an odd response has spawned much gossip. Intrgued by your question, more people gravitate toward your establishment, earning you an extra $
+# 3
+Rating: B
+MonetaryBase: 400
+FactorChoiceA: 3
+FactorChoiceB: 1
+FactorChoiceC: 2
+FactorChoiceD: 4
+Scenario: One of your employees inform you there's a leaky pipe in the men's bathroom. He's waiting for instructions.
+OptionA: Tell him not to waste your time with the minutiae when you have a cinema empire to run.
+OptionB: Have him slide a bucket under the pipe to catch the water. It's one more problem on the list of many you can't get to right now.
+OptionC: Instruct him to call a plumber. It'll be pricey on short notice, but why risk it.
+OptionD: Get the employee to repair the leak on his own. Time to earn your pay, minion!
+DescriptionResultA: Procrastination rarely leads to positive results. The leak soaked through the floor, ruining part of the foundation. Repairs to renovate cost you $
+DescriptionResultB: Sometimes the simple solutions are best. The employee peridocially dumps the water out of the bucket. Next day, at regular rates, the plumber fixes your pipe. You only spend $
+DescriptionResultC: An emergency plumber is pricey. Peace of mind is priceless. The bill sets you back $
+DescriptionResultD: Not the brightest bulb in the obx, your employee lacked the necessary know-how and finesse to fix the pipe. Instead, he turned the leak into a rupture, flooding the cinema. You lost $
+# 4
+Rating: G
+MonetaryBase: 400
+FactorChoiceA: 1
+FactorChoiceB: 1
+FactorChoiceC: 4
+FactorChoiceD: 0
+Scenario: Closing up late one night, you discover a a wallet under one of the theater seats with $400 cash inside.
+OptionA: Pocket the cash and toss the wallet into the lost 'n found box.
+OptionB: Try to contact the owner to return the wallet, but pocket the cash.
+OptionC: Try to contact the owner to return the wallet, cash and all.
+OptionD: Divide the cash among your employees as a surprise bonus.
+DescriptionResultA: Your pockets are now heavy...like your conscience. You've gained $
+DescriptionResultB: You appease your noisy conscience with the notion that the stranger's license and credit cards found there way home. You've gained $
+DescriptionResultC: Holy smokes! Turns out the owner of the wallet owns the local radio station. Impressed with your honesty, he becomes your cinema's voice over the airwaves. Ticket sales skyrocket, for a gain of $
+DescriptionResultD: Rumors spread amongst your patrons to keep one hand on their wallets at all times. Meanwhile, your employees love you. The net difference is $
+# 5
+Rating: B
+MonetaryBase: 200
+FactorChoiceA: 2
+FactorChoiceB: 4
+FactorChoiceC: 1
+FactorChoiceD: 3
+Scenario: Scandalous! One of your employees was arrested for selling drugs from behind YOUR snack counter in the cinema lobby. Damage control time. 
+OptionA: Play it off as though you were helping the police all along in catching this dastardly fiend.
+OptionB: Lawyer up!
+OptionC: Hire someone twice as charming as your former employee. Maybe they'll forget the blackheart.
+OptionD: Claim in was a frame job. Your employee could never have done anything of the sort. You stand behind them a hundred and ten percent.
+DescriptionResultA: Your patrons buy your act, but so do you employees. You notice a distinct drop in efficiency as your hirelings have lost their trust in you. There's a net loss of $
+DescriptionResultB: Gag orders descend on anyone who knows anything about anything. The story dies fast, but the lawyers' bill blooms. You pay $
+DescriptionResultC: Not bad. Your patrons like the new kid better than their shifty-eyed predecessor. It takes less time for you patrons to come back. The net loss is only $
+DescriptionResultD: Though your employees appreciate that you've got their back, your customers think maybe those drugs were merely another item on YOUR menu. It takes a while to regain their trust. It costs you a net $
+# 6
+Rating: G
+MonetaryBase: 300
+FactorChoiceA: 0
+FactorChoiceB: 3
+FactorChoiceC: 0
+FactorChoiceD: 0
+Scenario: Someone entered you into a national Movie Expert contest. You make it to the final round, where you're given the title of a movie, "Snow Fortress." Which one of these are not in the movie:
+OptionA: Keeanu Forrester
+OptionB: Hyperthermia
+OptionC: Global Warming
+OptionD: Snow Fortress
+DescriptionResultA: Ehhh! Wrong! Keeanu Forrester was the lead actor in the film. Your winnings were $
+DescriptionResultB: Nice catch! Hyperthermia is a condition involving an EXCESS of body temperature. Hypothermia was present in the movie. You won the grand prize of $
+DescriptionResultC: Ehhh! Wrong! Global Warming was the catalyst for humanities flight through the frozen wasteland. Your winnings were $
+DescriptionResultD: Ehhh! Wrong! It's the title of the movie. Of course there was a snow fortress. The CGI was mind-blowing. Your winnings were $
+# 7
+Rating: B
+MonetaryBase: 300
+FactorChoiceA: 2
+FactorChoiceB: 0
+FactorChoiceC: 1
+FactorChoiceD: 4
+Scenario: The projector went on the fritz mid-movie. People are upset.
+OptionA: Have them wait an hour in their seats until a technician can fix the projector.
+OptionB: Apologize, and give them a refund for their purchased tickets.
+OptionC: Offer one free item from the snack bar, and run a small trivia contest to see who knows their movie facts...until the projector is fixed.
+OptionD: Tell people tough luck, and hit the road.
+DescriptionResultA: People don't like to wait around, especially in a dark room surrounded by strangers. This experience decreases tickets sales for a net loss of $
+DescriptionResultB: Still inconvenienced, your customers at least don't feel cheated out of their money. The net loss is $
+DescriptionResultC: Bellies full, people barely noticed time pass. With the exception of the prizes you handed out, little was lost. Out of pocket expense was $
+DescriptionResultD: Jaded. Angry. Cheated. It will be awhile before those folks come back. Your decreased ticket sales end up costing you $
+# 8
+Rating: G
+MonetaryBase: 500
+FactorChoiceA: 0
+FactorChoiceB: 3
+FactorChoiceC: 2
+FactorChoiceD: 1
+Scenario: The nearby football stadium was rained out on Sunday night. All those people need a dry place to go for entertainment.
+OptionA: Slam your doors shut! Those folks are soaking wet, they'll ruin your cinema with their muddy feet.
+OptionB: Slip the stadium announcer a few bucks to direct people your way.
+OptionC: Drive around telling people that going to a movie on a rainy day is great.
+OptionD: Turn the cinema lights on bright. If they can see it, they will come.
+DescriptionResultA: Whew! Saved yourself a lot of extra cleanup time. Of course, you didn't sell any extra tickets, earning you $
+DescriptionResultB: You had to turn people away they were wanted in so bad. You earned an extra $
+DescriptionResultC: Not the best method to getting the word out there, but you did increase ticket sales a little for a total of $
+DescriptionResultD: Unfortunately, the heavy rain made your lights hard to see. Only those who thought of it on their own swung by, earning you an extra $
+# 9
+Rating: B
+MonetaryBase: 500
+FactorChoiceA: 3
+FactorChoiceB: 1
+FactorChoiceC: 2
+FactorChoiceD: 0
+Scenario: A little old lady slipped on a wet spot in your front lobby, breaking a hip.
+OptionA: Go on the defensive with a smear compaign, telling people she's one of those ambulance chasers looking for a free-ride.
+OptionB: Visit her in the hospital, and offer her a lifetime of free tickets and popcorn.
+OptionC: Have your lawyer talk to her lawyer, and offer up a settlement to keep her from suing you.
+OptionD: Tell her you're hosting a movie night in her name. You'll be naming the theater of her choice after her.
+DescriptionResultA: You've made it go from bad to worse. She had no intention of suing...until now. Legal fees cost you $
+DescriptionResultB: Touched by your concern, she won't be suing you. Your customers, however, question the safety of your theaters. Ticket sales take a hit for $
+DescriptionResultC: Settlement accepted! Sadly, the insurance didn't cover it. You paid out of pocket at total of $
+DescriptionResultD: Unfortunate circumstances have transformed into a real event. People's concerns for your theaters safety are negated buy the festivities. You lose $
+# 10
+Rating: G
+MonetaryBase: 100
+FactorChoiceA: 0
+FactorChoiceB: 2
+FactorChoiceC: 4
+FactorChoiceD: 3
+Scenario: A local church sent representatives to ask your business for donations to use as prizes for their BBQ raffle.
+OptionA: Tell them to shove off. You're here to make money.
+OptionB: Supply them with a few dozen free tickets.
+OptionC: Give them coupons to the snack counter for a percentage off purchases.
+OptionD: Have T-Shirts made with your cinema's name and logo on it.
+DescriptionResultA: Forgetting that the local church is a place of worship for many of your usual patrons, you lose out on a valuable opportunity. Neither win, nor lose, you get $
+DescriptionResultB: They were a hit with the crowd. Calculating the lose of the tickets themselves, you gained an extra $
+DescriptionResultC: You sneaky devil. Not only did you get them to buy more tickets, they still had to partially pay for the snacks. You gained $
+DescriptionResultD: The church's representatives weren't exactly impressed with you donation, but they accepted it. After taking into account the cost of ths shirts, you gained $
+# 11
+Rating: B
+MonetaryBase: 100
+FactorChoiceA: 2
+FactorChoiceB: 4
+FactorChoiceC: 3
+FactorChoiceD: 0
+Scenario: The local newspaper ran a story on how the teenagers in your community use the cinema as a place to get frisky. Great for selling tickets to teenagers. Not so much to adults.
+OptionA: Lower the lighting yet further, catering to your new crowd.
+OptionB: Increase the presence of ushers, checking the back rows with flashlights to halt any hanky panky before it starts.
+OptionC: Sue the newspaper for slander.
+OptionD: Adjust the seat arrangements to make the back rows more visibile, discouraging any sordid behavior.
+DescriptionResultA: You manage to the numbers of your younger audience, while ostrasizing some of the older folks. The net in ticket sales costs you $
+DescriptionResultB: There's less wandering hands now, but people are annoyed by the constant interruption by your employees. Ticket sales take a hit for $
+DescriptionResultC: Story redacted. The reputation of your establishment is again along the straight and narrow. Attorney fees cost you $
+DescriptionResultD: Well played. Unable to get away with the really kinky stuff, those pesky teenagers will have to settle for making out.
+# 12
+Rating: G
+MonetaryBase: 200
+FactorChoiceA: 1
+FactorChoiceB: 3
+FactorChoiceC: 4
+FactorChoiceD: 2
+Scenario: A supporting actor from one of the flicks you're playing swings by, incognito, with a date, to see a movie.
+OptionA: Play it cool. Actors are people, too. They deserve to have a night out without being pestered.
+OptionB: Make a big spectacle out of their presence. Make sure people know just who it is that thinks so highly of your establishment.
+OptionC: Secretly take pictures, and post them online. Let people know celebrities choose your business, without letting the actor know you papparazzied them.
+OptionD: Have your employees cater to this actor every step of the way. Give them the VIP treatment, but don't blabber to anyone about who they are.
+DescriptionResultA: You don't get a crowd of people trying to catch famous people at the movies, but the actor did slip you a sizeable tip for your discretion. You got $
+DescriptionResultB: Ticket sales that night went through the roof. You gained an extra $
+DescriptionResultC: Subtlety is often the best method. You didn't burn any bridges, and yet people swarm to your cinema frequently, hoping to catch a glimpse of famous people. Ticket sale climb high for an extra $
+DescriptionResultD: Ticket sales don't explode, but the actor spreads the words to friends and family that you run a tight ship. That increased revenue comes to $
+# 13
+Rating: B
+MonetaryBase: 200
+FactorChoiceA: 1
+FactorChoiceB: 2
+FactorChoiceC: 3
+FactorChoiceD: 4
+Scenario: Bad news! There was a major blackout. Power is out for the entire block.
+OptionA: Refund everyone's money. Surely they can see that matters were out of your control.
+OptionB: Assure everyone the power will come back shortly. Offer free snacks to those who wait.
+OptionC: Send an employee to the local hardware store to purchase portable generators.
+OptionD: Bride a city official to get your power restored first.
+DescriptionResultA: Good thinking. The power didn't return till the next morning. You lost only $
+DescriptionResultB: Your assurances were hollow. No power, and now you've lost the snacks and the ticket revenue. Not loss was $
+DescriptionResultC: Someone made a pretty penny, but it wasn't you. You've restored power, but the generators were expensive. You paid $
+DescriptionResultD: Who knew bribes were so expensive. Though you were the first building to get power restored, your bribe cost $
+# 14
+Rating: G
+MonetaryBase: 300
+FactorChoiceA: 3
+FactorChoiceB: 0
+FactorChoiceC: 1
+FactorChoiceD: 2
+Scenario: One of your employees, a high school student, asked for your help. They need to raise money to save the music department at school.
+OptionA: Convince him to sell cinema tickets door-to-door and give him half the proceeds toward the fundraising.
+OptionB: Tell him he shouldn't be bringing his problems to work, and leave you out of it.
+OptionC: Host a private event in one of your theaters, where the school's orchestra can play for an audience. All proceeds go to the fundraiser.
+OptionD: Let your employee have bake sell in your cinema, selling their baked goods instead of your usual snacks. What they sell, they keep.
+DescriptionResultA: Your idea did wonders. The employee sold tons of tickets. Ticket sales jumped for an additional $
+DescriptionResultB: The employee wandered off looking defeated. You're left feeling as though an opportunity has passed you by. You make $
+DescriptionResultC: On a night where ticket sales are usually pitiful, you've managed to fill some seats. The increase in snack sales netted you $
+DescriptionResultD: Seeing people with delicious cakes, cookies, and other confectionaries, has brought new folks into the theater. More ticket sales equals an extra $
+# 15
+Rating: B
+MonetaryBase: 300
+FactorChoiceA: 1
+FactorChoiceB: 3
+FactorChoiceC: 0
+FactorChoiceD: 2
+Scenario: It's a publicity nightmare! The main actor in one of the films you're playing has been found guilty of unspeakable crimes.
+OptionA: Stop playing the film at once as boycott.
+OptionB: Keep playing it. It's not like the movie has anything to do with the actor's questionable behavior.
+OptionC: Tell your employees to warn those about to buy tickets to that movie. Divorce yourself from any connection to the actor.
+OptionD: Get into a freedom of speech argument with anybody who complains. Movies are representations of that speech and should not be censored.
+DescriptionResultA: Your losses were minimal. With fewer movies available, fewer tickets were sold. You only lost $
+DescriptionResultB: They're boycotting your entire cinema. There's even a picket line driving off potential customers. Your revenue loss is $
+DescriptionResultC: Having neither condemned nor promoted the actor, you neither gained or lost additional revenue. The total comes to $
+DescriptionResultD: It could have been worse. Though people are boycotting your cinema, you've reduced the number of protestors on the picket line. Ticket sales only suffer a little. You lost $
+# 16
+Rating: G
+MonetaryBase: 400
+FactorChoiceA: 1
+FactorChoiceB: 0
+FactorChoiceC: 2
+FactorChoiceD: 4
+Scenario: You've received a windfall. A distant relative whom you've never met, died recently. They left you a sizeable sum of cash.
+OptionA: Put it straight into the bank. A penny saved is a penny earned.
+OptionB: Invest it in a risky new technology--a sound system built into each chair.
+OptionC: Use it to hire a professional cleaning service for the cinema.
+OptionD: Buy a whole bunch of lottery tickets. If you were lucky enough to get the inheritance, surely it will carry over.
+DescriptionResultA: You feel confident that its better to make a little rather than lose a lot. You gained $
+DescriptionResultB: The company heading up the research declared bankruptcy. Your money is gone. The net total comes to $
+DescriptionResultC: Sparkle and shine, the cinema has never looked so clean. People choose your business over the competitor for ticket sales boost of $
+DescriptionResultD: Unbelievable! You actually won a bunch of cash. Your money was quadrupled, for a total of $
+# 17
+Rating: B
+MonetaryBase: 400
+FactorChoiceA: 2
+FactorChoiceB: 0
+FactorChoiceC: 4
+FactorChoiceD: 1
+Scenario: You've received a health code violation warning. Quick action is required, or the government will shut down your cinema.
+OptionA: Hire a cleaning crew and a renovation contractor to work the place over.
+OptionB: Fight those greedy hogs in court!
+OptionC: What business doesn't get a warning or two every now and then? Surely it will just pass over.
+OptionD: Clearly the inspector was looking for a bribe. Slip him a few, big bills.
+DescriptionResultA: It wasn't cheap, but the health inspector--try as he might--can't find anything to complain about. You spent $
+DescriptionResultB: Amazing! You won! The inspector is under investigation for taking bribes. You lost $
+DescriptionResultC: The inspector didn't agree with your relaxed response. He shut you down for a week, and dropped a fine in your lap. You lost $
+DescriptionResultD: His smole reveals crooked teeth as a few slips of green paper find their way into the man's pocket. You spent $
+# 18
+Rating: G
+MonetaryBase: 500
+FactorChoiceA: 1
+FactorChoiceB: 1
+FactorChoiceC: 1
+FactorChoiceD: 1
+Scenario: You've won an award for being the best entertaining activities source tonight. The BEAST's coordinator asks you what makes your theaters so much fun.
+OptionA: Claim it's due to your genius as a business man.
+OptionB: Say it's the hardworking employees with their quick smiles and eager attitudes that make the place attractive.
+OptionC: Point out that everyone loves the movies. Who doesn't want to go on an adventure for two hours to far away places and meet interesting characters?
+OptionD: give credit to the state of the art equipment your establishment uses.
+DescriptionResultA: The answer doesn't resonate with those who follow the BEAST, but the award comes with a cash price of $
+DescriptionResultB: The answer makes your employees happy, and the award comes with a cash price of $
+DescriptionResultC: The answer makes people want to keep coming to the movies, and the award comes with a cash price of $
+DescriptionResultD: The answer later gets reprinted in a electronics magazine, keeping your notoriety alive. Oh, and the award comes with a cash price of $
+# 19
+Rating: B
+MonetaryBase: 500
+FactorChoiceA: 1
+FactorChoiceB: 1
+FactorChoiceC: 1
+FactorChoiceD: 1
+Scenario: It's not your day. The screen in one of your theaters fell, the sound system is bugging out, and a projector won't play anything slower than mach speed.
+OptionA: Have the screen fixed, and quickly patch the rest.
+OptionB: Repair the sound system, and slap some duct tape on the others.
+OptionC: Breath life back into the projector, and improvise the other two.
+OptionD: Spread your resources around equally amongst the three.
+DescriptionResultA: It isn't perfect, but it will get you through the day. Repair cost $
+DescriptionResultB: It isn't perfect, but it will get you through the day. Repair cost $
+DescriptionResultC: It isn't perfect, but it will get you through the day. Repair cost $
+DescriptionResultD: It isn't perfect, but it will get you through the day. Repair cost $
+# 20
+Rating: G
+MonetaryBase: 200
+FactorChoiceA: 1
+FactorChoiceB: 3
+FactorChoiceC: 2
+FactorChoiceD: 4
+Scenario: It's time to give your cinema a new paint job. The color might very well lure more potential customers through the doors, or scare them off.
+OptionA: Paint it green.
+OptionB: Paint it blue.
+OptionC: Paint it white.
+OptionD: Paint it red.
+DescriptionResultA: Though green is the color of money, it doesn't make people want to watch more movies. A new paint job does make the place look better, though. You got a small boost to ticket sales, netting $
+DescriptionResultB: Blue is regal and it really pops in the daytime. With sales increasing as a result you made an extra $
+DescriptionResultC: White can't go wrong...until it gets dirty. But, that's a problem for another day. For now, you sales increased moderately for an additional $
+DescriptionResultD: That red really sets your building apart from any of the others. People see it at once, and want to come it. You earned an whopping $

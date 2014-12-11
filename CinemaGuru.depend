@@ -1,0 +1,141 @@
+# depslib dependency file v1.0
+1418105692 source:c:\users\william\skydrive\documents\work\programming\c++\myproject\cinemaguru\main.cpp
+	<iostream>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	"Cinema.h"
+	"Theater.h"
+	"Movie.h"
+	"Calendar.h"
+	"DecisionMaker.h"
+	"RandomEvent.h"
+	"Global.h"
+
+1418089230 c:\users\william\skydrive\documents\work\programming\c++\myproject\cinemaguru\include\cinema.h
+	<iostream>
+	"Theater.h"
+	"Movie.h"
+	"Calendar.h"
+	"Global.h"
+
+1417660318 c:\users\william\skydrive\documents\work\programming\c++\myproject\cinemaguru\include\theater.h
+	<iostream>
+	"Cinema.h"
+	"Movie.h"
+	"Calendar.h"
+	"Global.h"
+
+1417897290 c:\users\william\skydrive\documents\work\programming\c++\myproject\cinemaguru\include\movie.h
+	<iostream>
+	"Cinema.h"
+	"Theater.h"
+	"Calendar.h"
+	"Global.h"
+
+1417670477 c:\users\william\skydrive\documents\work\programming\c++\myproject\cinemaguru\include\calendar.h
+	<iostream>
+	"Cinema.h"
+	"Theater.h"
+	"Movie.h"
+	"Global.h"
+
+1417934924 c:\users\william\skydrive\documents\work\programming\c++\myproject\cinemaguru\include\global.h
+	<iostream>
+
+1418093717 source:c:\users\william\skydrive\documents\work\programming\c++\myproject\cinemaguru\src\calendar.cpp
+	<iostream>
+	"Cinema.h"
+	"Theater.h"
+	"Movie.h"
+	"Calendar.h"
+	"Global.h"
+
+1418106126 source:c:\users\william\skydrive\documents\work\programming\c++\myproject\cinemaguru\src\cinema.cpp
+	<iostream>
+	<fstream>
+	<sstream>
+	<stdlib.h>
+	<math.h>
+	"Cinema.h"
+	"Theater.h"
+	"Movie.h"
+	"Calendar.h"
+	"Global.h"
+
+1417899764 source:c:\users\william\skydrive\documents\work\programming\c++\myproject\cinemaguru\src\movie.cpp
+	<iostream>
+	"Cinema.h"
+	"Theater.h"
+	"Movie.h"
+	"Calendar.h"
+	"Global.h"
+
+1418092674 source:c:\users\william\skydrive\documents\work\programming\c++\myproject\cinemaguru\src\theater.cpp
+	<iostream>
+	"Cinema.h"
+	"Theater.h"
+	"Movie.h"
+	"Calendar.h"
+	"Global.h"
+
+1418087679 source:c:\users\william\skydrive\documents\work\programming\c++\myproject\cinemaguru\src\global.cpp
+	<iostream>
+	<conio.h>
+	<stdlib.h>
+	<sstream>
+	"Global.h"
+
+1417898058 c:\users\william\skydrive\documents\work\programming\c++\myproject\cinemaguru\include\decisionmaker.h
+	<iostream>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	"Cinema.h"
+	"Theater.h"
+	"Movie.h"
+	"Calendar.h"
+	"RandomEvent.h"
+	"RandomEventHandler.h"
+	"Global.h"
+
+1418089422 source:c:\users\william\skydrive\documents\work\programming\c++\myproject\cinemaguru\src\decisionmaker.cpp
+	<iostream>
+	<stdlib.h>
+	<conio.h>
+	<sstream>
+	<time.h>
+	"Cinema.h"
+	"Theater.h"
+	"Movie.h"
+	"Calendar.h"
+	"DecisionMaker.h"
+	"RandomEvent.h"
+	"RandomEventHandler.h"
+	"Global.h"
+
+1417817204 c:\users\william\skydrive\documents\work\programming\c++\myproject\cinemaguru\include\randomevent.h
+	<iostream>
+	"Global.h"
+
+1417847456 source:c:\users\william\skydrive\documents\work\programming\c++\myproject\cinemaguru\src\randomevent.cpp
+	<iostream>
+	<sstream>
+	<locale>
+	"RandomEvent.h"
+	"Global.h"
+
+1417674453 source:c:\users\william\skydrive\documents\work\programming\c++\myproject\cinemaguru\src\randomeventhandler.cpp
+	<iostream>
+	<fstream>
+	<sstream>
+	<stdlib.h>
+	"RandomEventHandler.h"
+	"RandomEvent.h"
+	"Global.h"
+
+1417674456 c:\users\william\skydrive\documents\work\programming\c++\myproject\cinemaguru\include\randomeventhandler.h
+	<iostream>
+	"RandomEvent.h"
+	"Global.h"
+
