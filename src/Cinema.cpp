@@ -565,11 +565,7 @@ void Cinema::changeDisplayedMovieLicense(int DisplayedLicense, int NewLicense)
 
 void Cinema::setStaffPerformance(string Performance)
 {
-    cout << "Utilyzing Cinema::setStaffPerformance(string Performance)" << endl;
-    cout << "The Staff's Performance before was " << StaffPerformance << "." << endl;
     StaffPerformance = Performance;
-    cout << "The Staff's Performance now is " << StaffPerformance << "." << endl;
-    cout << "Leaving Cinema::setStaffPerformance(string Performance)" << endl;
 }
 
 void Cinema::setPromotionInUse(string Promotion)
