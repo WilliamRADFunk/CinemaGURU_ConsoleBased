@@ -62,7 +62,7 @@ public:
     char getQuitConfirmation();
     char getSelectionMain();
     char getSelection_01();
-    int getSelection_01_02(int);
+    int getSelection_01_02();
     char getSelection_01_05(int);
     bool getSelection_01_06(int, int);
     char getSelection_02();

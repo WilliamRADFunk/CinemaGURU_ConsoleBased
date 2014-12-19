@@ -33,7 +33,7 @@ private:
     Theater* p_Theaters[THEATERS_MAX];
     Movie* p_Movies[MOVIES_MAX];
     Movie* p_MovieLicenses[MOVIES_MAX];
-    Movie* p_MovieLicensesOffered[3];
+    Movie* p_MovieLicensesOffered[OFFERED_LICENSES_MAX];
 
 public:
     Cinema();

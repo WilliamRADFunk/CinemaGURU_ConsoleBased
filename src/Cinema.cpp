@@ -520,14 +520,15 @@ void Cinema::changeNumOfEmployees(int NewStaffNumber)
 void Cinema::changeDisplayedMovieLicense(int DisplayedLicense, int NewLicense)
 {
     cout << "Utilyzing Cinema::changeDisplayedMovieLicense(int)" << endl;
-    cout << "The list of Displayed Licenses before was " << 0 << ", ";
-    for (int i = 1; i < OFFERED_LICENSES_MAX; i++)
+    cout << "NewLicense is " << NewLicense << ". DisplayedLicense is " << DisplayedLicense << "." << endl;
+    cout << "The list of Displayed Licenses before was ";
+    for (int i = 0; i < OFFERED_LICENSES_MAX; i++)
     {
         if (DisplayedMovieLicenses[i] != 0)
         {
             cout << DisplayedMovieLicenses[i];
         }
-        if (DisplayedMovieLicenses[i] != (OFFERED_LICENSES_MAX -1 ))
+        if (DisplayedMovieLicenses[i] != (OFFERED_LICENSES_MAX - 1))
         {
             cout << ", ";
         }
@@ -535,17 +536,18 @@ void Cinema::changeDisplayedMovieLicense(int DisplayedLicense, int NewLicense)
 
     }
 
-    for (int i = 1; i < OFFERED_LICENSES_MAX; i++)
+    for (int i = 0; i < OFFERED_LICENSES_MAX; i++)
     {
-        if (DisplayedMovieLicenses[i] == DisplayedLicense)
+        if (i == DisplayedLicense)
         {
             DisplayedMovieLicenses[i] = NewLicense;
+            p_MovieLicensesOffered[i] = p_Movies[NewLicense];
             break;
         }
     }
 
-    cout << "The list of Displayed Licenses after is " << 0 << ", ";
-    for (int i = 1; i < OFFERED_LICENSES_MAX; i++)
+    cout << "The list of Displayed Licenses after is ";
+    for (int i = 0; i < OFFERED_LICENSES_MAX; i++)
     {
         if (DisplayedMovieLicenses[i] != 0)
         {

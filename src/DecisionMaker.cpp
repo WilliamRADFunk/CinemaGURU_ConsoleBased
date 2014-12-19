@@ -380,7 +380,7 @@ char DecisionMaker::getSelection_01()
     return c;
 }
 
-int DecisionMaker::getSelection_01_02(int LicensesLeft)
+int DecisionMaker::getSelection_01_02()
 {
     cout << "Entering license selection collection" << endl;
     int Input = 1;
@@ -401,7 +401,7 @@ int DecisionMaker::getSelection_01_02(int LicensesLeft)
             string garbage;
             getline(cin, garbage);
         }
-    } while ( !(Input >= 0 && Input <= (LicensesLeft + 1)) );
+    } while ( !(Input > 0 && Input <= (OFFERED_LICENSES_MAX + 1)) );
     cout << "Leaving license selection collection" << endl;
 
     return Input;
@@ -1079,7 +1079,7 @@ bool DecisionMaker::activateDecisionTree()
                         cout << Counter + 1<< ". None of these" << endl;
                         cout << endl << endl << "Which of these do you choose?";
                         // Player's selection is collected and stored.
-                        DesiredLicense = getSelection_01_02(OFFERED_LICENSES_MAX);
+                        DesiredLicense = getSelection_01_02();
 
                         ClearScreen();
 
@@ -1134,7 +1134,7 @@ bool DecisionMaker::activateDecisionTree()
 
                                     Pause();
 
-                                    TheCinema->changeDisplayedMovieLicense(DesiredLicense, NewLicenseOffered);
+                                    TheCinema->changeDisplayedMovieLicense((DesiredLicense - 1), NewLicenseOffered);
 
                                     Pause();
                                 }
@@ -1439,8 +1439,11 @@ bool DecisionMaker::activateDecisionTree()
                     // Displays all the movie licenses purchased by Player.
                     for (int i = 0; i <= CurrentNumOfLicensesOwned; i += 2)
                     {
-                        cout << (i + 1) << ". " << TheCinema->accessMovieLicense(i)->getTitle();
-                        cout << "\t\t\t";
+                        if (TheCinema->accessMovieLicense(i)->getTitle() != "Untitled")
+                        {
+                            cout << (i + 1) << ". " << TheCinema->accessMovieLicense(i)->getTitle();
+                            cout << "\t\t\t";
+                        }
                         if (CurrentNumOfLicensesOwned > (i + 1))
                         {
                             cout << (i + 2) << ". " << TheCinema->accessMovieLicense(i + 1)->getTitle();
