@@ -23,9 +23,7 @@ DecisionMaker::DecisionMaker(Cinema* MainCinema)
 
 DecisionMaker::~DecisionMaker()
 {
-    cout << "Destroying DecisionMaker" << endl;
     TheREHandler->~RandomEventHandler();
-    Divider();
 }
 
 void DecisionMaker::choiceTree_Main()
@@ -215,16 +213,13 @@ void DecisionMaker::choiceUpgradeChosenEquipment(float Level, Equipment Equipmen
 
 string DecisionMaker::calculateStaffLevel(int Employees, int Theaters)
 {
-    cout << "Utilyzing calculateStaffLevel(int Employees, int Theaters)" << endl;
     int MaxEmployees = Theaters * 5;
     int StaffLevelEquation = (int)(5 * ((float)Employees / ((float)MaxEmployees))) - 1;
-    cout << "StaffLevelEquation is now " << StaffLevelEquation << endl;
     return StaffPerformance[StaffLevelEquation];
 }
 
 string DecisionMaker::calculatePromotionLevel(int PromotionInUseIndex)
 {
-    cout << "Utilyzing calculatePromotionLevel(int PromotionInUse)" << endl;
     string PromotionType = Promotions[PromotionInUseIndex];
     int CostWeekly = PROMOTION_MULTIPLY_COST * PromotionInUseIndex;
     stringstream ss;
@@ -382,7 +377,6 @@ char DecisionMaker::getSelection_01()
 
 int DecisionMaker::getSelection_01_02()
 {
-    cout << "Entering license selection collection" << endl;
     int Input = 1;
 
     // Should never happen, but in case
@@ -402,7 +396,6 @@ int DecisionMaker::getSelection_01_02()
             getline(cin, garbage);
         }
     } while ( !(Input > 0 && Input <= (OFFERED_LICENSES_MAX + 1)) );
-    cout << "Leaving license selection collection" << endl;
 
     return Input;
 }
@@ -513,7 +506,6 @@ int DecisionMaker::getSelection_TheaterNum(int Theaters)
 
     do
     {
-        cout << "Entering Theater Number collection." << endl;
         if ( !(cin >> TheaterSelection) )
         {
             cout << "Incorrect choice made." << endl;
@@ -522,7 +514,6 @@ int DecisionMaker::getSelection_TheaterNum(int Theaters)
             getline(cin, garbage);
         }
     } while ( !(TheaterSelection >= 1 && TheaterSelection <= Theaters) );
-    cout << "Leaving Theater Number Collection." << endl;
 
     return TheaterSelection;
 }
@@ -533,7 +524,6 @@ int DecisionMaker::getSelectionSeatPurchase()
 
     do
     {
-        cout << "Entering Seat Purchase Number collection" << endl;
         if ( !(cin >> SeatQuantity) )
         {
             cout << "Incorrect choice made." << endl;
@@ -542,14 +532,12 @@ int DecisionMaker::getSelectionSeatPurchase()
             getline(cin, garbage);
         }
     } while ( !(SeatQuantity >= 0 && SeatQuantity <= 90) );
-    cout << "Leaving Seat Purchase Number collection" << endl;
 
     return SeatQuantity;
 }
 
 char DecisionMaker::getSelectionUpgradePurchase()
 {
-    cout << "Entering Upgrade Purchase Number collection" << endl;
     char c;
 
     do
@@ -561,7 +549,6 @@ char DecisionMaker::getSelectionUpgradePurchase()
         c = 'R';
 
     return c;
-    cout << "Leaving Seat Purchase Number collection" << endl;
 }
 
 int DecisionMaker::getNumOfEmployeesToHire(int Employees, int Theaters)
@@ -570,7 +557,6 @@ int DecisionMaker::getNumOfEmployeesToHire(int Employees, int Theaters)
 
     do
     {
-        cout << "Entering Employee Hire collection" << endl;
         if ( !(cin >> HireQuantity) )
         {
             cout << "Incorrect choice made." << endl;
@@ -579,7 +565,6 @@ int DecisionMaker::getNumOfEmployeesToHire(int Employees, int Theaters)
             getline(cin, garbage);
         }
     } while ( !(HireQuantity >= 0 && HireQuantity <= ((Theaters * 5) - Employees)) );
-    cout << "Leaving Employee Hire collection" << endl;
 
     TheCinema->setStaffPerformance(calculateStaffLevel(Employees + HireQuantity, Theaters));
 
@@ -602,7 +587,6 @@ int DecisionMaker::getNumOfEmployeesToFire(int Employees, int Theaters)
 
     do
     {
-        cout << "Entering Employee Fire collection" << endl;
         if ( !(cin >> FireQuantity) )
         {
             cout << "Incorrect choice made." << endl;
@@ -611,7 +595,6 @@ int DecisionMaker::getNumOfEmployeesToFire(int Employees, int Theaters)
             getline(cin, garbage);
         }
     } while ( !(FireQuantity >= 0 && FireQuantity < (Employees)) );
-    cout << "Leaving Employee Fire collection" << endl;
 
     TheCinema->setStaffPerformance(calculateStaffLevel(Employees - FireQuantity, Theaters));
 
@@ -634,7 +617,6 @@ float DecisionMaker::getNewTicketPrice()
 
     do
     {
-        cout << "Entering Seat Purchase Number collection" << endl;
         if (NewPrice != -(9456))
         {
             if (NewPrice > 0)
@@ -667,14 +649,12 @@ float DecisionMaker::getNewTicketPrice()
     }
     // Round to the nearest hundredths.
     NewPrice = float(int(NewPrice * 100 + 0.5)) / 100;
-    cout << "Leaving Seat Purchase Number collection" << endl;
 
     return NewPrice;
 }
 
 int DecisionMaker::getSelectedLicense()
 {
-    cout << "Entering Owned License Selection collection" << endl;
     int NewMovie = -(9768);
 
     do
@@ -706,7 +686,6 @@ int DecisionMaker::getSelectedLicense()
 
     // Takes into account the [0] index.
     return (NewMovie - 1);
-    cout << "Leaving Owned License Selection collection" << endl;
 }
 
 char DecisionMaker::getRandomEventChoice()
@@ -724,7 +703,6 @@ char DecisionMaker::getRandomEventChoice()
 float DecisionMaker::getTPriceFactor(float TicketPrice)
 {
     float TPriceFactor;
-    cout << "Determining TPriceFactor" << endl;
     if (TicketPrice > -0.01 && TicketPrice < 0.01)
     {
         TPriceFactor = 2.0;
@@ -765,40 +743,30 @@ float DecisionMaker::getTPriceFactor(float TicketPrice)
     {
         TPriceFactor = 0.25;
     }
-    cout << "The TPriceFactor is " << TPriceFactor << endl << endl;
     return TPriceFactor;
 }
 
 float DecisionMaker::getSeasonFactor(Season CurrentSeason, Season BestSeason, Season WorstSeason)
 {
     float SeasonFactor;
-    cout << "Determing SeasonFactor" << endl;
-    cout << "The best season for this movie is " << BestSeason << "." << endl;
-    cout << "The current season is " << CurrentSeason << "." << endl;
     if (BestSeason == CurrentSeason)
     {
-        cout << "The movie is in the best season!" << endl;
         SeasonFactor = 1.25;
     }
     else if (WorstSeason == CurrentSeason)
     {
-        cout << "The movie is in the worst season!" << endl;
         SeasonFactor = 0.75;
     }
     else
     {
-        cout << "The movie is in neither the best, nor the worst season." << endl;
         SeasonFactor = 1;
     }
-    cout << "The Season Factor is " << SeasonFactor << endl << endl;
     return SeasonFactor;
 }
 
 float DecisionMaker::getPromoFactor(int Promotion)
 {
     float PromoFactor;
-    cout << "Determining PromoFactor" << endl;
-    cout << "The current promotion in use is: " << Promotion << endl;
     if (Promotion == 0)
     {
         PromoFactor = 1;
@@ -807,7 +775,6 @@ float DecisionMaker::getPromoFactor(int Promotion)
     {
         PromoFactor = 1 + (Promotion / 10);
     }
-    cout << "The PromoFactor is " << PromoFactor << endl << endl;
     return PromoFactor;
 }
 
@@ -837,7 +804,6 @@ float DecisionMaker::getStaffFactor(int Employees, int Theaters)
     {
         StaffFactor = 0.8;
     }
-    cout << "The StaffFactor is " << StaffFactor << endl << endl;
     return StaffFactor;
 }
 

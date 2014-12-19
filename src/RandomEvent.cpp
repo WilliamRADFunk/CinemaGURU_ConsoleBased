@@ -9,49 +9,41 @@ using namespace std;
 
 RandomEvent::RandomEvent()
 {
-    cout << "Entering random event creation." << endl;
-    cout << "Leaving random event creation." << endl;
+
 }
 
 RandomEvent::~RandomEvent()
 {
-    cout << "deleting random event" << endl;
-    Divider();
+
 }
 
 char RandomEvent::getRating()
 {
-    cout << "Utilyzing RandomEvent::getRating()" << endl;
     return Rating;
 }
 
 float RandomEvent::getMonetaryBase()
 {
-    cout << "Utilyzing RandomEvent::getMonetaryBase()" << endl;
     return MonetaryBase;
 }
 
 int RandomEvent::getFactorChoiceA()
 {
-    cout << "Utilyzing RandomEvent::getFactorChoiceA()" << endl;
     return FactorChoiceA;
 }
 
 int RandomEvent::getFactorChoiceB()
 {
-    cout << "Utilyzing RandomEvent::getFactorChoiceB()" << endl;
     return FactorChoiceB;
 }
 
 int RandomEvent::getFactorChoiceC()
 {
-    cout << "Utilyzing RandomEvent::getFactorChoiceC()" << endl;
     return FactorChoiceC;
 }
 
 int RandomEvent::getFactorChoiceD()
 {
-    cout << "Utilyzing RandomEvent::getFactorChoiceD()" << endl;
     return FactorChoiceD;
 }
 
@@ -1780,107 +1772,61 @@ float RandomEvent::presentOutcome(char Choice)
 
 void RandomEvent::setRating(char R)
 {
-    cout << "Entering RandomEvent::printDescriptionResultD()" << endl;
-    cout << "Rating before was " << Rating << endl;
     Rating = R;
-    cout << "Rating now is " << Rating << endl;
-    cout << "Leaving RandomEvent::printDescriptionResultD()" << endl;
 }
 
 void RandomEvent::setMonetaryBase(float Base)
 {
-    cout << "Entering RandomEvent::setMonetaryBase(float Base)" << endl;
-    cout << "MonetaryBase before was " << MonetaryBase << endl;
     MonetaryBase = Base;
-    cout << "MonetaryBase now is " << MonetaryBase << endl;
-    cout << "Leaving RandomEvent::setMonetaryBase(float Base)" << endl;
 }
 
 void RandomEvent::setFactorChoiceA(int Choice)
 {
-    cout << "Entering RandomEvent::setFactorChoiceA(int Choice)" << endl;
-    cout << "FactorChoiceA before was " << FactorChoiceA << endl;
     FactorChoiceA = Choice;
-    cout << "FactorChoiceA now is " << FactorChoiceA << endl;
-    cout << "Leaving RandomEvent::setFactorChoiceA(int Choice)" << endl;
 }
 
 void RandomEvent::setFactorChoiceB(int Choice)
 {
-    cout << "Entering RandomEvent::setFactorChoiceB(int Choice)" << endl;
-    cout << "FactorChoiceB before was " << FactorChoiceB << endl;
     FactorChoiceB = Choice;
-    cout << "FactorChoiceB now is " << FactorChoiceB << endl;
-    cout << "Leaving RandomEvent::setFactorChoiceB(int Choice)" << endl;
 }
 
 void RandomEvent::setFactorChoiceC(int Choice)
 {
-    cout << "Entering RandomEvent::setFactorChoiceC(int Choice)" << endl;
-    cout << "FactorChoiceC before was " << FactorChoiceC << endl;
     FactorChoiceC = Choice;
-    cout << "FactorChoiceC now is " << FactorChoiceC << endl;
-    cout << "Leaving RandomEvent::setFactorChoiceC(int Choice)" << endl;
 }
 
 void RandomEvent::setFactorChoiceD(int Choice)
 {
-    cout << "Entering RandomEvent::setFactorChoiceD(int Choice)" << endl;
-    cout << "FactorChoiceD before was " << FactorChoiceD << endl;
     FactorChoiceD = Choice;
-    cout << "FactorChoiceD now is " << FactorChoiceD << endl;
-    cout << "Leaving RandomEvent::setFactorChoiceD(int Choice)" << endl;
 }
 
 void RandomEvent::setScenario(string Scene)
 {
-    cout << "Entering RandomEvent::setScenario(string Scene)" << endl;
-    cout << "Scenario before was " << Scenario << endl;
     Scenario = Scene;
-    cout << "Scenario now is " << Scenario << endl;
-    cout << "Leaving RandomEvent::setScenario(string Scene)" << endl;
 }
 
 void RandomEvent::setOptionA(string Option)
 {
-    cout << "Entering RandomEvent::setOptionA(string Option)" << endl;
-    cout << "OptionA before was " << OptionA << endl;
     OptionA = Option;
-    cout << "OptionA now is " << OptionA << endl;
-    cout << "Leaving RandomEvent::setOptionA(string Option)" << endl;
 }
 
 void RandomEvent::setOptionB(string Option)
 {
-    cout << "Entering RandomEvent::setOptionB(string Option)" << endl;
-    cout << "OptionB before was " << OptionB << endl;
     OptionB = Option;
-    cout << "OptionB now is " << OptionB << endl;
-    cout << "Leaving RandomEvent::setOptionB(string Option)" << endl;
 }
 
 void RandomEvent::setOptionC(string Option)
 {
-    cout << "Entering RandomEvent::setOptionC(string Option)" << endl;
-    cout << "OptionC before was " << OptionC << endl;
     OptionC = Option;
-    cout << "OptionC now is " << OptionC << endl;
-    cout << "Leaving RandomEvent::setOptionC(string Option)" << endl;
 }
 
 void RandomEvent::setOptionD(string Option)
 {
-    cout << "Entering RandomEvent::setOptionD(string Option)" << endl;
-    cout << "OptionD before was " << OptionD << endl;
     OptionD = Option;
-    cout << "OptionD now is " << OptionD << endl;
-    cout << "Leaving RandomEvent::setOptionD(string Option)" << endl;
 }
 
 void RandomEvent::setDescriptionResultA(string Result)
 {
-    cout << "Entering RandomEvent::setDescriptionResultA(string Result)" << endl;
-    cout << "DescriptionResultA before was " << DescriptionResultA << endl;
     // Calculates how much money is gained or lost by player's decision.
     int NetCash;
     NetCash = (MonetaryBase * FactorChoiceA);
@@ -1889,14 +1835,10 @@ void RandomEvent::setDescriptionResultA(string Result)
     SS << NetCash;
     DescriptionResultA = Result;
     DescriptionResultA += SS.str();
-    cout << "DescriptionResultA now is " << DescriptionResultA << endl;
-    cout << "Leaving RandomEvent::setDescriptionResultA(string Result)" << endl;
 }
 
 void RandomEvent::setDescriptionResultB(string Result)
 {
-    cout << "Entering RandomEvent::setDescriptionResultB(string Result)" << endl;
-    cout << "DescriptionResultB before was " << DescriptionResultB << endl;
     // Calculates how much money is gained or lost by player's decision.
     int NetCash;
     NetCash = (MonetaryBase * FactorChoiceB);
@@ -1905,14 +1847,10 @@ void RandomEvent::setDescriptionResultB(string Result)
     SS << NetCash;
     DescriptionResultB = Result;
     DescriptionResultB += SS.str();
-    cout << "DescriptionResultB now is " << DescriptionResultB << endl;
-    cout << "Leaving RandomEvent::setDescriptionResultB(string Result)" << endl;
 }
 
 void RandomEvent::setDescriptionResultC(string Result)
 {
-    cout << "Entering RandomEvent::setDescriptionResultC(string Result)" << endl;
-    cout << "DescriptionResultC before was " << DescriptionResultC << endl;
     // Calculates how much money is gained or lost by player's decision.
     int NetCash;
     NetCash = (MonetaryBase * FactorChoiceC);
@@ -1921,14 +1859,10 @@ void RandomEvent::setDescriptionResultC(string Result)
     SS << NetCash;
     DescriptionResultC = Result;
     DescriptionResultC += SS.str();
-    cout << "DescriptionResultC now is " << DescriptionResultC << endl;
-    cout << "Leaving RandomEvent::setDescriptionResultC(string Result)" << endl;
 }
 
 void RandomEvent::setDescriptionResultD(string Result)
 {
-    cout << "Entering RandomEvent::setDescriptionResultD(string Result)" << endl;
-    cout << "DescriptionResultD before was " << DescriptionResultD << endl;
     // Calculates how much money is gained or lost by player's decision.
     int NetCash;
     NetCash = (MonetaryBase * FactorChoiceD);
@@ -1937,6 +1871,4 @@ void RandomEvent::setDescriptionResultD(string Result)
     SS << NetCash;
     DescriptionResultD = Result;
     DescriptionResultD += SS.str();
-    cout << "DescriptionResultD now is " << DescriptionResultD << endl;
-    cout << "Leaving RandomEvent::setDescriptionResultD(string Result)" << endl;
 }
