@@ -183,7 +183,7 @@
 1417934924 c:\users\william\skydrive\documents\work\programming\githubprograms\cinemaguru\trunk\include\global.h
 	<iostream>
 
-1418963130 c:\users\william\skydrive\documents\work\programming\githubprograms\cinemaguru\trunk\include\decisionmaker.h
+1419034661 c:\users\william\skydrive\documents\work\programming\githubprograms\cinemaguru\trunk\include\decisionmaker.h
 	<iostream>
 	<stdlib.h>
 	<conio.h>
@@ -213,7 +213,7 @@
 	"Calendar.h"
 	"Global.h"
 
-1419002392 source:c:\users\william\skydrive\documents\work\programming\githubprograms\cinemaguru\trunk\src\cinema.cpp
+1419036438 source:c:\users\william\skydrive\documents\work\programming\githubprograms\cinemaguru\trunk\src\cinema.cpp
 	<iostream>
 	<fstream>
 	<sstream>
@@ -225,12 +225,13 @@
 	"Calendar.h"
 	"Global.h"
 
-1419002851 source:c:\users\william\skydrive\documents\work\programming\githubprograms\cinemaguru\trunk\src\decisionmaker.cpp
+1419036197 source:c:\users\william\skydrive\documents\work\programming\githubprograms\cinemaguru\trunk\src\decisionmaker.cpp
 	<iostream>
 	<stdlib.h>
 	<conio.h>
 	<sstream>
 	<time.h>
+	<math.h>
 	"Cinema.h"
 	"Theater.h"
 	"Movie.h"
@@ -262,7 +263,7 @@
 	"RandomEvent.h"
 	"Global.h"
 
-1419026109 source:c:\users\william\skydrive\documents\work\programming\githubprograms\cinemaguru\trunk\src\randomeventhandler.cpp
+1419026594 source:c:\users\william\skydrive\documents\work\programming\githubprograms\cinemaguru\trunk\src\randomeventhandler.cpp
 	<iostream>
 	<fstream>
 	<sstream>

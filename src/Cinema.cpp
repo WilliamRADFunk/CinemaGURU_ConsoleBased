@@ -14,7 +14,7 @@ using namespace std;
 
 Cinema::Cinema()
 {
-    Bank = 200200.00;
+    Bank = 10000.00;
     TPrice = 10.00;
     NumOfTheaters = 1;
     NumOfEmployees = 1;

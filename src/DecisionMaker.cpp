@@ -3,6 +3,7 @@
 #include <conio.h>
 #include <sstream>
 #include <time.h>
+#include <math.h>
 
 #include "Cinema.h"
 #include "Theater.h"
@@ -934,7 +935,7 @@ bool DecisionMaker::checkPurchaseOfUpgrade(int Bank, float Level, Equipment Equi
     }
 }
 
-bool DecisionMaker::activateDecisionTree()
+void DecisionMaker::activateDecisionTree()
 {
     do
     {
@@ -947,6 +948,31 @@ bool DecisionMaker::activateDecisionTree()
         int CurrentTicketPrice = TheCinema->getTicketPrice();
         Season CurrentSeasonInt = TheCinema->p_Calendar->getCurrentSeasonInt();
 
+        // The only way for a player to lose, is to incur -5000 in debt.
+        // The player is warned when they are in debt, but above the losing threshold.
+        // When -5000 is reached, a goodbye message is delivered, and main loop is broken.
+        if (TheCinema->getBank() <= 0 && TheCinema->getBank() > -(5000))
+        {
+            cout << "WARNING: You are in debt to the bank for a total of -$";
+            cout << fabs(TheCinema->getBank()) << "." << endl << endl;
+            cout << "If your debt reaches -$5000, they will foreclose on your cinema." << endl;
+            Divider();
+            Pause();
+            ClearScreen();
+        }
+        if (TheCinema->getBank() <= -(5000))
+        {
+            cout << "Your debt has reached -$" << fabs(TheCinema->getBank());
+            cout << ", which is more than the allowable -$5000." << endl << endl;
+            cout << "The bank has decided you are too high a risk," << endl;
+            cout << "and have foreclosed on your cinema. You've lost." << endl << endl;
+            cout << "Try again some time." << endl;
+            Divider();
+            Pause();
+            ClearScreen();
+            break;
+        }
+
         // Displays the cinema's assets, recent profits and expenses, and time.
         TheCinema->hud();
         Divider();
@@ -955,8 +981,7 @@ bool DecisionMaker::activateDecisionTree()
         choiceTree_Main();
         // Player's selection is collected and stored.
         Decision = getSelectionMain();
-
-        cout << endl;
+        ClearScreen();
 
 //START OF MAIN SWITCH@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         // Nested switch/do-loop for main choices.
@@ -1553,7 +1578,6 @@ bool DecisionMaker::activateDecisionTree()
             {
                 ClearScreen();
                 RandomEventIndex = rand() % RANDOM_EVENTS_MAX;
-                cout << RandomEventIndex << endl;
                 TheREHandler->getRandomEvent(RandomEventIndex)->presentEvent();
                 DecisionRandomEvent = getRandomEventChoice();
                 ClearScreen();
@@ -1562,7 +1586,7 @@ bool DecisionMaker::activateDecisionTree()
             }
             else
             {
-                cout << "Nothing noteworthy happens this week." << endl << endl;
+                cout << "Nothing out of the ordinary happens this week." << endl << endl;
                 Pause();
                 ClearScreen();
             }
@@ -1626,8 +1650,5 @@ bool DecisionMaker::activateDecisionTree()
 //END OF MAIN SWITCH@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
         ClearScreen();
-        Divider();
     } while(Decision != 'Q');
-
-    return Decision;
 }

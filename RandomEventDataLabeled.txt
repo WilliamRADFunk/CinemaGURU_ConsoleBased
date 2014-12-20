@@ -141,7 +141,7 @@ OptionD: Tell her you're hosting a movie night in her name. You'll be naming the
 DescriptionResultA: You've made it go from bad to worse. She had no intention of suing...until now. Legal fees cost you $
 DescriptionResultB: Touched by your concern, she won't be suing you. Your customers, however, question the safety of your theaters. Ticket sales take a hit for $
 DescriptionResultC: Settlement accepted! Sadly, the insurance didn't cover it. You paid out of pocket at total of $
-DescriptionResultD: Unfortunate circumstances have transformed into a real event. People's concerns for your theaters safety are negated buy the festivities. You lose $
+DescriptionResultD: Unfortunate circumstances have transformed into an enjoyable event. People's concerns for your theaters safety are negated by the festivities. You lose $
 # 10
 Rating: G
 MonetaryBase: 100

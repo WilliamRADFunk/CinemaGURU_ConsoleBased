@@ -38,5 +38,7 @@ int main()
     TheCinema->~Cinema();
     TheCinema = 0;
 
+    cout << "See you later, alligator!" << endl << endl << endl;
+
     return 0;
 }

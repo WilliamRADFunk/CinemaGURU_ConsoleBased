@@ -83,7 +83,8 @@ public:
     bool checkPurchaseOfMovieLicense(int, int);
     bool checkPurchaseOfSnacks(int, int);
     bool checkPurchaseOfUpgrade(int, float, Equipment);
-    bool activateDecisionTree();
+
+    void activateDecisionTree();
 };
 
 #endif // DECISIONMAKER_H_INCLUDED
