@@ -30,5 +30,6 @@ void BorderX();
 void ClearScreen();
 void Pause();
 void introduction();
+void runInstructions();
 
 #endif // GLOBALVARIABLES_H_INCLUDED

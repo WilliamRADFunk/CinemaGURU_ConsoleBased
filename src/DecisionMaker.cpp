@@ -34,6 +34,7 @@ void DecisionMaker::choiceTree_Main()
     cout << "3. Change Ticket Price" << endl;
     cout << "4. Change Movies" << endl;
     cout << "5. End Turn" << endl << endl;
+    cout << "H. Instructions & Game Info" << endl;
     cout << "Q. Quit the Game" << endl << endl;
     cout << "Enter the number corresponding to your choice:";
 }
@@ -324,9 +325,17 @@ char DecisionMaker::getYesOrNo()
     return ch;
 }
 
-char DecisionMaker::getQuitConfirmation()
+char DecisionMaker::getConfirmation(char input)
 {
-    cout << endl << "You've chosen to quit. Are you sure? (Y or N)";
+    // This function can be used in either the get help, or quit, selections.
+    if (input == 'Q' || input == 'q')
+    {
+        cout << endl << "You've chosen to quit. Are you sure? (Y or N)";
+    }
+    if (input == 'h' || input == 'H')
+    {
+        cout << endl << "You've chosen to read the instructions and game info. Are you sure? (Y or N)";
+    }
 
     char ch;
 
@@ -338,13 +347,27 @@ char DecisionMaker::getQuitConfirmation()
     }
     else if (ch == 'y' || ch == 'Y')
     {
-        return 'Q';
+        if (input == 'Q' || input == 'q')
+        {
+            return 'Q';
+        }
+        if (input == 'h' || input == 'H')
+        {
+            return 'H';
+        }
     }
     else
     {
-        cout << "Error in quitting input" << endl;
+        cout << "Error in quitting/get help input" << endl;
         return 'Q';
     }
+
+    //else statement above should have accounted for all other possibilities.
+    //If program has reached this point, there is a serious flaw.
+    cout << "ERROR:The DecisionMaker::getConfirmation(char input) has";
+    cout << "reached a point it shouldn't." << endl;
+    Pause();
+    return '0';
 }
 
 char DecisionMaker::getSelectionMain()
@@ -355,7 +378,7 @@ char DecisionMaker::getSelectionMain()
     {
         c = getch();
     } while (c != '1' && c != '2' && c != '3' && c != '4'
-             && c != '5' && c != 'q' && c != 'Q');
+             && c != '5' && c != 'h' && c != 'H' && c != 'q' && c != 'Q');
 
     return c;
 }
@@ -1637,12 +1660,29 @@ void DecisionMaker::activateDecisionTree()
                 }
             }
             break;
+//MAIN SWITCH - HELP#################################################################################################
+        case 'h' :
+            Decision = getConfirmation('H');
+            ClearScreen();
+            if (Decision == 'H')
+            {
+                runInstructions();
+            }
+            break;
+        case 'H' :
+            Decision = getConfirmation('H');
+            ClearScreen();
+            if (Decision == 'H')
+            {
+                runInstructions();
+            }
+            break;
 //MAIN SWITCH - QUIT#################################################################################################
         case 'q' :
-            Decision = getQuitConfirmation();
+            Decision = getConfirmation(Decision);
             break;
         case 'Q' :
-            Decision = getQuitConfirmation();
+            Decision = getConfirmation(Decision);
             break;
         default:
             cout << "Case statement reached default. This should not happen." << endl;

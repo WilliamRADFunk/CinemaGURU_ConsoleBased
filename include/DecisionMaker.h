@@ -59,7 +59,7 @@ public:
     void currentMovie(int, std::string);
 
     char getYesOrNo();
-    char getQuitConfirmation();
+    char getConfirmation(char);
     char getSelectionMain();
     char getSelection_01();
     int getSelection_01_02();

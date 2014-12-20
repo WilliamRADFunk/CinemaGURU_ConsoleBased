@@ -8,12 +8,12 @@ To demonstrate use of C++ language, and basic understanding of both game design 
   
 Game Synopsis:  
   
-Take control of a text-based environment to run a cinema. Grow the business by building additional theaters, purchasing more seats, acquiring more snack types, upgrading the movie watching experience, and license new movies as they become avilable.  
+Take control of a text-based environment to run a cinema. Grow the business by building additional theaters, purchasing more seats, acquiring more snack types, upgrading the movie watching experience, and license new movies as they become available.  
   
   
 Game Elements: 
   
-Theaters = a theater is a room with a projector, a screen, a sound system, and a number of chairs. They cost one time sum to purchase and a once-a-turn expense in the form of mortgage/rent. Each theater can accomodate a finite number of seats. More theaters equals more potential seats.  
+Theaters = a theater is a room with a projector, a screen, a sound system, and a number of chairs. They cost a one time sum to purchase and a once-a-turn expense in the form of mortgage/rent. Each theater can accommodate a finite number of seats. More theaters equals more potential seats.  
   
 Seats = a seat equals the potential for one purchased ticket. While other factors improve or diminish the probability of a ticket purchase, the total number seats determines the total number of tickets a player can sell per turn.  
   
