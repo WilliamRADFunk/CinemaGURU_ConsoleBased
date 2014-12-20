@@ -1,0 +1,35 @@
+https://github.com/WilliamRADFunk/CinemaGURU_ConsoleBased
+
+
+Purpose of CinemaGURU: 
+  
+To demonstrate use of C++ language, and basic understanding of both game design and programming logic.  
+  
+  
+Game Synopsis:  
+  
+Take control of a text-based environment to run a cinema. Grow the business by building additional theaters, purchasing more seats, acquiring more snack types, upgrading the movie watching experience, and license new movies as they become avilable.  
+  
+  
+Game Elements: 
+  
+Theaters = a theater is a room with a projector, a screen, a sound system, and a number of chairs. They cost one time sum to purchase and a once-a-turn expense in the form of mortgage/rent. Each theater can accomodate a finite number of seats. More theaters equals more potential seats.  
+  
+Seats = a seat equals the potential for one purchased ticket. While other factors improve or diminish the probability of a ticket purchase, the total number seats determines the total number of tickets a player can sell per turn.  
+  
+Snacks = a cinema lobby can provide a certain number of snack type for purchase. For a one time payment, a player can increase their offered snack types by one. The number of tickets sold in a turn is used to calculate how many snack can be sold. The larger variety of snack, however, increases that number.  
+  
+Upgrades = In each theater, there is a projector, a sound system, and a screen. For a one time payment per upgrade, a player can gradually increase the performance of one of these in a given theater. The quality of these systems directly impacts (improves with each upgrade) how many of that theater's seats sold tickets.  
+  
+Employees = employees play a crucial part in how many seats sell tickets. As each theater owned can be staffed by a total of five employees, the proportion of employees to theaters affects the cinema's efficiency and performance. However, each employee incurs an expense each turn. The player must balance how many employees their budget can manage without understaffing the cinema and decreasing ticket sales.  
+  
+Movie License = movies are diverse in and of themselves. Each has a finite number of turns before they expire. Each has a one time cost to purchase. Each has their own good season, and bad season. Playing a movie in a given theater during a bad season, decreases ticket sales. Inversely, during a good season it can increase ticket sales. In the remaining two season the factor has no effect on sales. Movies also have an estimated and an actual popularity associated with them. Those with a higher expected popularity cost more, and have shorter license durations. In some cases, the actual popularity can be higher or lower than the expected (this is rare, and helps add a flare of unpredictability for the player, simulating an fickle consumer base). Available movies and their details are on a text file. This allows the player the ability to create their own movie titles, synopsis, etc. -- Added flavor.  
+  
+Turns/Weeks/Years/Seasons = the game is turned-based. Each turn used passes a week of time. Each year is comprised of four seasons (Winter, Spring, Summer, and Fall) that affect a movie's playability. The season changes every 13 weeks, or 13 turns.  
+
+Random Events = To avoid letting the game feel reptitive from one turn to the next, there is a random chance of 33.33% that a random event will occur at the end of every turn. This random event can either be positive (each response increases revenue) or negative (each response decreases revenue) and presents a scenario with four possible choices for the player. After the player chooses, the reaction to that choice is displayed and the amount of money to be gained or lost is shown. Thes events are also stored on a text file to allow the player the option of customizing their experience.  
+  
+  
+Game's End:  
+  
+Technically, there is no end to the game until the player either goes into a certain amount of debt, or chooses to quit. There are a finite number of theaters, seats, upgrades, movie licenses, and employees a player can attain, however, and anything beyond this point would result in pure profit without end. A hard ending was not chosen in this version of the game. Future (more graphics-based) versions may incorporate a deeper story line, and more challenging obstacles, as the visuals accompanying them could better enrich the experience.
