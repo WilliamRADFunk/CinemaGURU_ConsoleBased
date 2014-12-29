@@ -28,7 +28,7 @@ Cinema::Cinema()
     TicketSales = 0.0;
     SnackSales = 0.0;
     StaffPerformance = "Dismal";
-    PromotionInUse = "None";
+    PromotionInUse = "No Promotion";
 
     Calendar* TheCalendar = new Calendar();
     p_Calendar = TheCalendar;
@@ -275,6 +275,7 @@ void Cinema::hud()
     int CurrentYear = p_Calendar->getYear();
     int CurrentNumOfSeats = getTotalNumOfSeats();
     int MostEmployeesPossible = (NumOfTheaters * 5);
+    int MostSeatsPossible = (NumOfTheaters * SEATS_MAX);
 
     BorderX();
     XBorderedBlankSpace();
@@ -378,17 +379,32 @@ void Cinema::hud()
     cout << "X" << endl << "X";
     BlankSpaces(2);
     cout << "Theaters: " << NumOfTheaters << "/" << THEATERS_MAX;
-    if (NumOfTheaters < 10)
+    if (NumOfTheaters < 10 && THEATERS_MAX < 10)
+    {
+        BlankSpaces(18);
+    }
+    else if ((NumOfTheaters < 10 && THEATERS_MAX >= 10 && THEATERS_MAX < 100))
     {
         BlankSpaces(17);
     }
-    else if (NumOfTheaters >= 10 && NumOfTheaters < 100)
+    else if ((NumOfTheaters < 10 && THEATERS_MAX >= 100 && THEATERS_MAX < 1000) ||
+             (NumOfTheaters >= 10 && NumOfTheaters < 100 && THEATERS_MAX >= 10 && THEATERS_MAX < 100))
     {
         BlankSpaces(16);
     }
-    else
+    else if ((NumOfTheaters < 10 && THEATERS_MAX >= 1000 && THEATERS_MAX < 10000) ||
+             (NumOfTheaters >= 10 && NumOfTheaters < 100 && THEATERS_MAX >= 100 && THEATERS_MAX < 1000))
     {
         BlankSpaces(15);
+    }
+    else if ((NumOfTheaters >= 10 && NumOfTheaters < 100 && THEATERS_MAX >= 1000 && THEATERS_MAX < 10000) ||
+             (NumOfTheaters >= 100 && NumOfTheaters < 1000 && THEATERS_MAX >= 100 && THEATERS_MAX < 1000))
+    {
+        BlankSpaces(14);
+    }
+    else
+    {
+        BlankSpaces(13);
     }
     cout << "Total $ From Food Sales Last Week: $" << (int)SnackSales;
     if ((int)SnackSales < 10)
@@ -413,35 +429,51 @@ void Cinema::hud()
     }
     cout << "X" << endl << "X";
     BlankSpaces(2);
-    cout << "Total Seats: " << CurrentNumOfSeats << "/" << (NumOfTheaters * 100);
-    if (NumOfTheaters < 10 && CurrentNumOfSeats < 10)
+    cout << "Total Seats: " << CurrentNumOfSeats << "/" << MostSeatsPossible;
+    if (MostSeatsPossible < 10 && CurrentNumOfSeats < 10)
+    {
+        BlankSpaces(15);
+    }
+    else if (MostSeatsPossible >= 10 && MostSeatsPossible < 100 && CurrentNumOfSeats < 10)
+    {
+        BlankSpaces(14);
+    }
+    else if ((MostSeatsPossible >= 10 && MostSeatsPossible < 100 && CurrentNumOfSeats >= 10 && CurrentNumOfSeats < 100) ||
+             (MostSeatsPossible >= 100 && MostSeatsPossible < 1000 && CurrentNumOfSeats < 10))
     {
         BlankSpaces(13);
     }
-    else if ((NumOfTheaters < 10 && CurrentNumOfSeats >= 10 && CurrentNumOfSeats < 100) ||
-             (NumOfTheaters >= 10 && NumOfTheaters < 100 && CurrentNumOfSeats < 10))
+    else if ((MostSeatsPossible >= 100 && MostSeatsPossible < 1000 && CurrentNumOfSeats >= 10 && CurrentNumOfSeats < 100) ||
+             (MostSeatsPossible >= 1000 && MostSeatsPossible < 10000 && CurrentNumOfSeats < 10))
     {
         BlankSpaces(12);
     }
-    else if ((NumOfTheaters < 10 && CurrentNumOfSeats >= 100 && CurrentNumOfSeats < 1000) ||
-             (NumOfTheaters >= 10 && NumOfTheaters < 100 && CurrentNumOfSeats >= 10 && CurrentNumOfSeats < 100) ||
-             (NumOfTheaters >= 100 && NumOfTheaters < 1000 && CurrentNumOfSeats < 10))
+    else if ((MostSeatsPossible >= 100 && MostSeatsPossible < 1000 && CurrentNumOfSeats >= 100 && CurrentNumOfSeats < 1000) ||
+             (MostSeatsPossible >= 1000 && MostSeatsPossible < 10000 && CurrentNumOfSeats >= 10 && CurrentNumOfSeats < 100))
     {
         BlankSpaces(11);
     }
-    else if ((NumOfTheaters < 10 && CurrentNumOfSeats >= 1000 && CurrentNumOfSeats < 10000) ||
-             (NumOfTheaters >= 10 && NumOfTheaters < 100 && CurrentNumOfSeats >= 100 && CurrentNumOfSeats < 1000))
+    else if ((MostSeatsPossible >= 1000 && MostSeatsPossible < 10000 && CurrentNumOfSeats >= 100 && CurrentNumOfSeats < 1000) ||
+             (MostSeatsPossible >= 10000 && MostSeatsPossible < 100000 && CurrentNumOfSeats >= 10 && CurrentNumOfSeats < 100))
     {
         BlankSpaces(10);
     }
-    else if ((NumOfTheaters < 10 && CurrentNumOfSeats >= 10000 && CurrentNumOfSeats < 100000) ||
-             (NumOfTheaters >= 10 && NumOfTheaters < 100 && CurrentNumOfSeats >= 1000 && CurrentNumOfSeats < 10000))
+    else if ((MostSeatsPossible >= 1000 && MostSeatsPossible < 10000 && CurrentNumOfSeats >= 1000 && CurrentNumOfSeats < 10000) ||
+             (MostSeatsPossible >= 10000 && MostSeatsPossible < 100000 && CurrentNumOfSeats >= 100 && CurrentNumOfSeats < 1000))
     {
         BlankSpaces(9);
     }
-    else
+    else if (MostSeatsPossible >= 10000 && MostSeatsPossible < 100000 && CurrentNumOfSeats >= 1000 && CurrentNumOfSeats < 10000)
     {
         BlankSpaces(8);
+    }
+    else if (MostSeatsPossible >= 10000 && MostSeatsPossible < 100000 && CurrentNumOfSeats >= 10000 && CurrentNumOfSeats < 100000)
+    {
+        BlankSpaces(7);
+    }
+    else
+    {
+        BlankSpaces(6);
     }
     cout << "Total $ For Expenses Last Week: $" << (int)Expenses;
     if ((int)Expenses < 10)
@@ -543,21 +575,26 @@ void Cinema::hud()
         BlankSpaces(7);
     }
     cout << "Total Employees: " << NumOfEmployees << "/" << MostEmployeesPossible << " (" << StaffPerformance << ")";
-    // 2 digits
     if (MostEmployeesPossible < 10 && NumOfEmployees < 10)
     {
         BlankSpaces(15);
     }
-    // 3 digits
-    else if ((MostEmployeesPossible < 10 && NumOfEmployees >= 10 && NumOfEmployees < 100) ||
-             (MostEmployeesPossible >= 10 && MostEmployeesPossible < 100 && NumOfEmployees < 10))
+    else if (MostEmployeesPossible >= 10 && MostEmployeesPossible < 100 && NumOfEmployees < 10)
     {
         BlankSpaces(14);
     }
-    // 4 digits
-    else if (MostEmployeesPossible >= 10 && MostEmployeesPossible < 100 && NumOfEmployees >= 10 && NumOfEmployees < 100)
+    else if ((MostEmployeesPossible >= 10 && MostEmployeesPossible < 100 && NumOfEmployees >= 10 && NumOfEmployees < 100) ||
+             (MostEmployeesPossible >= 100 && MostEmployeesPossible < 1000 && NumOfEmployees < 10))
     {
         BlankSpaces(13);
+    }
+    else if (MostEmployeesPossible >= 100 && MostEmployeesPossible < 1000 && NumOfEmployees >= 10 && NumOfEmployees < 100)
+    {
+        BlankSpaces(12);
+    }
+    else
+    {
+        BlankSpaces(11);
     }
     cout << "X" << endl << "X";
     BlankSpaces(2);
@@ -565,7 +602,7 @@ void Cinema::hud()
     cout << "Current Ticket Price: $" << TPrice;
     BlankSpaces(3);
     cout << "Current Promotion in use: " << PromotionInUse;
-    BlankSpaces(14);
+    BlankSpaces(6);
     cout << "X" << endl;
     XBorderedBlankSpace();
     BorderX();

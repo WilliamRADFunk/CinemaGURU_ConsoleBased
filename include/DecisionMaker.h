@@ -23,7 +23,7 @@ private:
 
     const std::string Snacks[6] =            {"Popcorn", "Soda", "HotDogs", "Cappuccinos", "Pretzels", "Nachos"};
     const std::string StaffPerformance[5] =  {"Dismal", "Below Average", "Mediocre", "Above Average", "Flawless"};
-    const std::string Promotions[6] =        {"None", "Tickets Half-Off on Tuesdays", "Free Snack w/ Ticket",
+    const std::string Promotions[6] =        {"No Promotion", "Tickets Half-Off on Tuesdays", "Free Snack w/ Ticket",
                                               "Flood Local Papers w/ Advertisements", "Mass-Mailed Coupon Booklets", "TV Commercial"};
 
     char Decision, DecisionBuy, DecisionBuyUpgrade, DecisionStaff,
