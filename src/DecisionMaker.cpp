@@ -330,11 +330,45 @@ char DecisionMaker::getConfirmation(char input)
     // This function can be used in either the get help, or quit, selections.
     if (input == 'Q' || input == 'q')
     {
-        cout << endl << "You've chosen to quit. Are you sure? (Y or N)";
+        BorderX();
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(25);
+        cout << "You've chosen to quit.";
+        BlankSpaces(30);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(25);
+        cout << "Are you sure? (Y or N)";
+        BlankSpaces(30);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        BorderX();
+        BlankLines(7);
     }
     if (input == 'h' || input == 'H')
     {
-        cout << endl << "You've chosen to read the instructions and game info. Are you sure? (Y or N)";
+        BorderX();
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(12);
+        cout << "You've chosen to read the instructions and game info.";
+        BlankSpaces(12);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(25);
+        cout << "Are you sure? (Y or N)";
+        BlankSpaces(30);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        BorderX();
+        BlankLines(7);
     }
 
     char ch;
@@ -974,19 +1008,19 @@ void DecisionMaker::activateDecisionTree()
         // The only way for a player to lose, is to incur -5000 in debt.
         // The player is warned when they are in debt, but above the losing threshold.
         // When -5000 is reached, a goodbye message is delivered, and main loop is broken.
-        if (TheCinema->getBank() <= 0 && TheCinema->getBank() > -(5000))
+        if (TheCinema->getBank() <= 0 && TheCinema->getBank() > -(DEBT_MAX))
         {
             cout << "WARNING: You are in debt to the bank for a total of -$";
             cout << fabs(TheCinema->getBank()) << "." << endl << endl;
-            cout << "If your debt reaches -$5000, they will foreclose on your cinema." << endl;
+            cout << "If your debt reaches -$" << DEBT_MAX << ", they will foreclose on your cinema." << endl;
             Divider();
             Pause();
             ClearScreen();
         }
-        if (TheCinema->getBank() <= -(5000))
+        if (TheCinema->getBank() <= -(DEBT_MAX))
         {
             cout << "Your debt has reached -$" << fabs(TheCinema->getBank());
-            cout << ", which is more than the allowable -$5000." << endl << endl;
+            cout << ", which is more than the allowable -$" << DEBT_MAX << "." << endl << endl;
             cout << "The bank has decided you are too high a risk," << endl;
             cout << "and have foreclosed on your cinema. You've lost." << endl << endl;
             cout << "Try again some time." << endl;
@@ -995,10 +1029,19 @@ void DecisionMaker::activateDecisionTree()
             ClearScreen();
             break;
         }
+        if (TheCinema->getBank() >= PROFIT_MAX)
+        {
+            cout << " You've earned more than $" << TheCinema->getBank() << "!" << endl << endl;
+            cout << "You have won CinemaGURU. Congratulations!" << endl << endl;
+            cout << "Play again some time." << endl;
+            Divider();
+            Pause();
+            ClearScreen();
+            break;
+        }
 
         // Displays the cinema's assets, recent profits and expenses, and time.
         TheCinema->hud();
-        Divider();
 
         // Displays main choices: buy, staff, ticket price, movie, end turn, and quit.
         choiceTree_Main();

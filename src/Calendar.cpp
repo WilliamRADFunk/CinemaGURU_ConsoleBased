@@ -44,7 +44,7 @@ Season Calendar::getCurrentSeasonInt()
     }
     else if (Week >=41 && Week <= 52)
     {
-        return Fall;
+        return Autumn;
     }
     else
         {
@@ -69,7 +69,7 @@ string Calendar::getCurrentSeasonString()
     }
     else if (Week >=41 && Week <= 52)
     {
-        return "Fall";
+        return "Autumn";
     }
     else
         {

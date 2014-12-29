@@ -20,16 +20,22 @@
 #define EMPLOYEE_WAGE 100
 #define PROMOTION_MULTIPLY_COST 100
 #define RANDOM_EVENTS_MAX 20
+#define PROFIT_MAX 100000
+#define DEBT_MAX 5000
 
-enum Season {Winter, Spring, Summer, Fall, Error};
+enum Season {Winter, Spring, Summer, Autumn, Error};
 enum Equipment {Screen_Size, Projector_Quality, Sound_Intensity};
 
 void Divider();
 void XBorderedBlankSpace();
+void XBorderedDivider();
 void BorderX();
 void ClearScreen();
 void Pause();
+void BlankLines(int);
+void BlankSpaces(int);
 void introduction();
 void runInstructions();
+void goodByeMessage();
 
 #endif // GLOBALVARIABLES_H_INCLUDED

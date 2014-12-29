@@ -132,7 +132,7 @@ string Movie::convertSeasonToString(Season Season)
     }
     else if (Season == 3)
     {
-        return "Fall";
+        return "Autumn";
     }
     else
         {

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <sstream>
 #include <stdlib.h>
@@ -269,28 +270,306 @@ string Cinema::getPromotionInUse()
 
 void Cinema::hud()
 {
-    cout << "Week: " << p_Calendar->getWeek() << "/52  Season: " << p_Calendar->getCurrentSeasonString() << "  Year: ";
-    cout << p_Calendar->getYear() << endl << endl;
-    cout << "You have:" << endl << "Bank: $" << Bank << endl;
-    cout << "Theaters: " << NumOfTheaters << "/" << THEATERS_MAX << endl;
-    cout << "Total Seats: " << getTotalNumOfSeats() << "/" << (NumOfTheaters * 100) << endl;
-    cout << "Total Licenses: " << NumOfMovieLicenses << endl;
-    cout << "Total Employees: " << NumOfEmployees << "/" << (NumOfTheaters * 5) << " (" << StaffPerformance << ")" << endl;
-    cout << "Total Snack Types: " << NumOfSnacks << "/" << SNACK_MAX << endl;
-    cout << "Current Promotion in use: " << PromotionInUse << endl;
-    cout << "Current Ticket Price: $" << TPrice << endl;
-    cout << "Total $ From Ticket Sales Last Week: $" << TicketSales << endl;
-    cout << "Total $ From Food Sales Last Week: $" << SnackSales << endl;
-    cout << "Total $ For Expenses Last Week: $" << Expenses << endl;
-    cout << "Total $ in Profit/(Loss): $";
-    if (((TicketSales + SnackSales) - (Expenses)) < 0)
+    string CurrentSeason = p_Calendar->getCurrentSeasonString();
+    int CurrentWeek = p_Calendar->getWeek();
+    int CurrentYear = p_Calendar->getYear();
+    int CurrentNumOfSeats = getTotalNumOfSeats();
+    int MostEmployeesPossible = (NumOfTheaters * 5);
+
+    BorderX();
+    XBorderedBlankSpace();
+    cout << "X";
+    if (CurrentWeek < 10 && CurrentYear < 10)
     {
-        cout << "(" << fabs((TicketSales + SnackSales) - (Expenses)) << ")" << endl;
+        BlankSpaces(20);
+        cout << "Week: " << CurrentWeek << "/52  Season: " << CurrentSeason << "  Year: " << CurrentYear;
+        BlankSpaces(22);
+    }
+    else if ((CurrentWeek < 10 && CurrentYear >= 10) || (CurrentWeek >= 10 && CurrentYear < 10))
+    {
+        BlankSpaces(20);
+        cout << "Week: " << CurrentWeek << "/52  Season: " << CurrentSeason << "  Year: " << CurrentYear;
+        BlankSpaces(21);
+    }
+    else if (CurrentWeek >= 10 && CurrentYear >= 10)
+    {
+        BlankSpaces(20);
+        cout << "Week: " << CurrentWeek << "/52  Season: " << CurrentSeason << "  Year: " << CurrentYear;
+        BlankSpaces(20);
+    }
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    XBorderedDivider();
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(2);
+    cout << "Bank: ";
+    if (Bank < 0)
+    {
+        cout << "-$" << fabs((int)Bank);
+        if (fabs((int)Bank) < 10)
+        {
+            BlankSpaces(22);
+        }
+        else if (fabs((int)Bank) >= 10 && fabs((int)Bank) < 100)
+        {
+            BlankSpaces(21);
+        }
+        else if (fabs((int)Bank) >= 100 && fabs((int)Bank) < 1000)
+        {
+            BlankSpaces(20);
+        }
+        else if (fabs((int)Bank) >= 1000 && fabs((int)Bank) < 10000)
+        {
+            BlankSpaces(19);
+        }
+        else if (fabs((int)Bank) >= 10000 && fabs((int)Bank) < 100000)
+        {
+            BlankSpaces(18);
+        }
+        else BlankSpaces(17);
     }
     else
     {
-        cout << ((TicketSales + SnackSales) - (Expenses)) << endl;
+        cout << "$" << (int)Bank;
+        if ((int)Bank < 10)
+        {
+            BlankSpaces(22);
+        }
+        else if ((int)Bank >= 10 && (int)Bank < 100)
+        {
+            BlankSpaces(22);
+        }
+        else if ((int)Bank >= 100 && (int)Bank < 1000)
+        {
+            BlankSpaces(21);
+        }
+        else if ((int)Bank >= 1000 && (int)Bank < 10000)
+        {
+            BlankSpaces(20);
+        }
+        else if ((int)Bank >= 10000 && (int)Bank < 100000)
+        {
+            BlankSpaces(19);
+        }
+        else BlankSpaces(18);
     }
+    cout << "Total $ From Ticket Sales Last Week: $" << (int)TicketSales;
+    if ((int)TicketSales < 10)
+    {
+        BlankSpaces(5);
+    }
+    else if ((int)TicketSales >= 10 && (int)TicketSales < 100)
+    {
+        BlankSpaces(4);
+    }
+    else if ((int)TicketSales >= 100 && (int)TicketSales < 1000)
+    {
+        BlankSpaces(3);
+    }
+    else if ((int)TicketSales >= 1000 && (int)TicketSales < 10000)
+    {
+        BlankSpaces(2);
+    }
+    else
+    {
+        BlankSpaces(1);
+    }
+    cout << "X" << endl << "X";
+    BlankSpaces(2);
+    cout << "Theaters: " << NumOfTheaters << "/" << THEATERS_MAX;
+    if (NumOfTheaters < 10)
+    {
+        BlankSpaces(17);
+    }
+    else if (NumOfTheaters >= 10 && NumOfTheaters < 100)
+    {
+        BlankSpaces(16);
+    }
+    else
+    {
+        BlankSpaces(15);
+    }
+    cout << "Total $ From Food Sales Last Week: $" << (int)SnackSales;
+    if ((int)SnackSales < 10)
+    {
+        BlankSpaces(7);
+    }
+    else if ((int)SnackSales >= 10 && (int)SnackSales < 100)
+    {
+        BlankSpaces(6);
+    }
+    else if ((int)SnackSales >= 100 && (int)SnackSales < 1000)
+    {
+        BlankSpaces(5);
+    }
+    else if ((int)SnackSales >= 1000 && (int)SnackSales < 10000)
+    {
+        BlankSpaces(4);
+    }
+    else
+    {
+        BlankSpaces(3);
+    }
+    cout << "X" << endl << "X";
+    BlankSpaces(2);
+    cout << "Total Seats: " << CurrentNumOfSeats << "/" << (NumOfTheaters * 100);
+    if (NumOfTheaters < 10 && CurrentNumOfSeats < 10)
+    {
+        BlankSpaces(13);
+    }
+    else if ((NumOfTheaters < 10 && CurrentNumOfSeats >= 10 && CurrentNumOfSeats < 100) ||
+             (NumOfTheaters >= 10 && NumOfTheaters < 100 && CurrentNumOfSeats < 10))
+    {
+        BlankSpaces(12);
+    }
+    else if ((NumOfTheaters < 10 && CurrentNumOfSeats >= 100 && CurrentNumOfSeats < 1000) ||
+             (NumOfTheaters >= 10 && NumOfTheaters < 100 && CurrentNumOfSeats >= 10 && CurrentNumOfSeats < 100) ||
+             (NumOfTheaters >= 100 && NumOfTheaters < 1000 && CurrentNumOfSeats < 10))
+    {
+        BlankSpaces(11);
+    }
+    else if ((NumOfTheaters < 10 && CurrentNumOfSeats >= 1000 && CurrentNumOfSeats < 10000) ||
+             (NumOfTheaters >= 10 && NumOfTheaters < 100 && CurrentNumOfSeats >= 100 && CurrentNumOfSeats < 1000))
+    {
+        BlankSpaces(10);
+    }
+    else if ((NumOfTheaters < 10 && CurrentNumOfSeats >= 10000 && CurrentNumOfSeats < 100000) ||
+             (NumOfTheaters >= 10 && NumOfTheaters < 100 && CurrentNumOfSeats >= 1000 && CurrentNumOfSeats < 10000))
+    {
+        BlankSpaces(9);
+    }
+    else
+    {
+        BlankSpaces(8);
+    }
+    cout << "Total $ For Expenses Last Week: $" << (int)Expenses;
+    if ((int)Expenses < 10)
+    {
+        BlankSpaces(10);
+    }
+    else if ((int)Expenses >= 10 && (int)Expenses < 100)
+    {
+        BlankSpaces(9);
+    }
+    else if ((int)Expenses >= 100 && (int)Expenses < 1000)
+    {
+        BlankSpaces(8);
+    }
+    else if ((int)Expenses >= 1000 && (int)Expenses < 10000)
+    {
+        BlankSpaces(7);
+    }
+    else
+    {
+        BlankSpaces(6);
+    }
+    cout << "X" << endl << "X";
+    BlankSpaces(2);
+    cout << "Total Licenses: " << NumOfMovieLicenses;
+    if (NumOfMovieLicenses < 10)
+    {
+        BlankSpaces(14);
+    }
+    else if (NumOfMovieLicenses >= 10 && NumOfMovieLicenses < 100)
+    {
+        BlankSpaces(13);
+    }
+    cout << "Total $ in Profit/(Loss): $";
+    if (((TicketSales + SnackSales) - (Expenses)) < 0)
+    {
+        float Loss = fabs((TicketSales + SnackSales) - (Expenses));
+        cout << "(" << (int)Loss << ")";
+        if ((int)Loss < 10)
+        {
+            BlankSpaces(14);
+        }
+        else if ((int)Loss >= 10 && (int)Loss < 100)
+        {
+            BlankSpaces(13);
+        }
+        else if ((int)Loss >= 100 && (int)Loss < 1000)
+        {
+            BlankSpaces(12);
+        }
+        else if ((int)Loss >= 1000 && (int)Loss < 10000)
+        {
+            BlankSpaces(11);
+        }
+        else
+        {
+            BlankSpaces(10);
+        }
+    }
+    else
+    {
+        float Profit = ((TicketSales + SnackSales) - (Expenses));
+        cout << (int)Profit;
+        if ((int)Profit < 10)
+        {
+            BlankSpaces(16);
+        }
+        else if ((int)Profit >= 10 && (int)Profit < 100)
+        {
+            BlankSpaces(15);
+        }
+        else if ((int)Profit >= 100 && (int)Profit < 1000)
+        {
+            BlankSpaces(14);
+        }
+        else if ((int)Profit >= 1000 && (int)Profit < 10000)
+        {
+            BlankSpaces(13);
+        }
+        else
+        {
+            BlankSpaces(12);
+        }
+    }
+    cout << "X" << endl << "X";
+    BlankSpaces(2);
+    cout << "Total Snack Types: " << NumOfSnacks << "/" << SNACK_MAX;
+    if (SNACK_MAX < 10 && NumOfSnacks < 10)
+    {
+        BlankSpaces(9);
+    }
+    else if ((SNACK_MAX < 10 && NumOfSnacks >= 10 && NumOfSnacks < 100) ||
+             (SNACK_MAX >= 10 && SNACK_MAX < 100 && NumOfSnacks < 10))
+    {
+        BlankSpaces(8);
+    }
+        else if (SNACK_MAX >= 10 && SNACK_MAX < 100 && NumOfSnacks >= 10 && NumOfSnacks < 100)
+    {
+        BlankSpaces(7);
+    }
+    cout << "Total Employees: " << NumOfEmployees << "/" << MostEmployeesPossible << " (" << StaffPerformance << ")";
+    // 2 digits
+    if (MostEmployeesPossible < 10 && NumOfEmployees < 10)
+    {
+        BlankSpaces(15);
+    }
+    // 3 digits
+    else if ((MostEmployeesPossible < 10 && NumOfEmployees >= 10 && NumOfEmployees < 100) ||
+             (MostEmployeesPossible >= 10 && MostEmployeesPossible < 100 && NumOfEmployees < 10))
+    {
+        BlankSpaces(14);
+    }
+    // 4 digits
+    else if (MostEmployeesPossible >= 10 && MostEmployeesPossible < 100 && NumOfEmployees >= 10 && NumOfEmployees < 100)
+    {
+        BlankSpaces(13);
+    }
+    cout << "X" << endl << "X";
+    BlankSpaces(2);
+    cout << std::setprecision(2) << std::fixed;
+    cout << "Current Ticket Price: $" << TPrice;
+    BlankSpaces(3);
+    cout << "Current Promotion in use: " << PromotionInUse;
+    BlankSpaces(14);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    BorderX();
+    cout << endl;
 }
 
 void Cinema::addTheater()
