@@ -1697,6 +1697,7 @@ float RandomEvent::presentOutcome(char Choice)
         printDescriptionResultA();
         XBorderedBlankSpace();
         BorderX();
+        BlankLines(2);
         Pause();
         // Determines how much money the player won or lost based on their decision
         // and whether the Random Event was a 'G'ood event or a 'B'ad event.
@@ -1716,6 +1717,7 @@ float RandomEvent::presentOutcome(char Choice)
         printDescriptionResultB();
         XBorderedBlankSpace();
         BorderX();
+        BlankLines(2);
         Pause();
         // Determines how much money the player won or lost based on their decision
         // and whether the Random Event was a 'G'ood event or a 'B'ad event.
@@ -1735,6 +1737,7 @@ float RandomEvent::presentOutcome(char Choice)
         printDescriptionResultC();
         XBorderedBlankSpace();
         BorderX();
+        BlankLines(2);
         Pause();
         // Determines how much money the player won or lost based on their decision
         // and whether the Random Event was a 'G'ood event or a 'B'ad event.
@@ -1754,6 +1757,7 @@ float RandomEvent::presentOutcome(char Choice)
         printDescriptionResultD();
         XBorderedBlankSpace();
         BorderX();
+        BlankLines(2);
         Pause();
         // Determines how much money the player won or lost based on their decision
         // and whether the Random Event was a 'G'ood event or a 'B'ad event.

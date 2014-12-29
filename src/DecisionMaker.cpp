@@ -116,7 +116,7 @@ void DecisionMaker::choiceTree_01_05(int PromotionInUseIndex)
     cout << " / Week)" << endl << endl;
     cout << endl << "The available promotions are as follows:" << endl << endl;
 
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 6; i++)
     {
         cout << i << ". " << Promotions[i] << " ($" << (PROMOTION_MULTIPLY_COST * i) << " / Week)" << endl;
     }
@@ -154,10 +154,43 @@ void DecisionMaker::choiceTree_02()
 
 void DecisionMaker::choiceTree_03(float TicketPrice)
 {
-    cout << endl << "You've selected to Change the Ticket Price." << endl << endl;
-    cout << "Current Ticket Price is $" << TicketPrice << endl << endl;
-    cout << "You can choose any price between $0.00 and $20.00" << endl << endl;
-    cout << "What do you want the new Ticket Price to be: ";
+    BorderX();
+    XBorderedBlankSpace();
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(3);
+    cout << "You've selected to Change the Ticket Price.";
+    BlankSpaces(31);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(3);
+    cout << "Current Ticket Price is $" << TicketPrice;
+    if (TicketPrice < 10)
+    {
+        BlankSpaces(45);
+    }
+    else if (TicketPrice >= 10)
+    {
+        BlankSpaces(44);
+    }
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(3);
+    cout << "You can choose any price between $0.00 and $20.00";
+    BlankSpaces(25);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(3);
+    cout << "What do you want the new Ticket Price to be: (Type number, then ENTER)";
+    BlankSpaces(4);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    XBorderedBlankSpace();
+    BorderX();
+    BlankLines(5);
 }
 
 void DecisionMaker::choiceTree_04(int Theaters)
@@ -223,13 +256,6 @@ string DecisionMaker::calculateStaffLevel(int Employees, int Theaters)
 string DecisionMaker::calculatePromotionLevel(int PromotionInUseIndex)
 {
     string PromotionType = Promotions[PromotionInUseIndex];
-    int CostWeekly = PROMOTION_MULTIPLY_COST * PromotionInUseIndex;
-    stringstream ss;
-    ss << CostWeekly;
-    string str = ss.str();
-    PromotionType.append(" ($");
-    PromotionType.append(str);
-    PromotionType.append(" / Week)");
     return PromotionType;
 }
 void DecisionMaker::choiceHireStaff(int Employees, int Theaters)
@@ -470,7 +496,7 @@ char DecisionMaker::getSelection_01_05(int PreviousPromotion)
 
     ClearScreen();
 
-    for (int i = 48; i < 53; i++)
+    for (int i = 48; i < 54; i++)
     {
         if ((int)c == i)
         {
@@ -679,19 +705,34 @@ float DecisionMaker::getNewTicketPrice()
         {
             if (NewPrice > 0)
             {
-                cout << endl << "$" << NewPrice << " is not a valid amount. Try again: ";
                 cin.clear();
                 string garbage;
                 getline(cin, garbage);
+                ClearScreen();
+                choiceTree_03(TheCinema->getTicketPrice());
+                cout << "==> ";
             }
             else if (NewPrice < 0)
             {
-                cout << endl << "-$" << abs(NewPrice) << " is not a valid amount. Try again: ";
+                cin.clear();
+                string garbage;
+                getline(cin, garbage);
+                ClearScreen();
+                choiceTree_03(TheCinema->getTicketPrice());
+                cout << "==> ";
+            }
+            else if ( !(NewPrice >= 0 && NewPrice <= 20) )
+            {
+                cin.clear();
+                string garbage;
+                getline(cin, garbage);
+                ClearScreen();
+                choiceTree_03(TheCinema->getTicketPrice());
+                cout << "==> ";
             }
         }
         if ( !(cin >> NewPrice) )
         {
-            cout << "Clearing egregious input flags." << endl;
             cin.clear();
             string garbage;
             getline(cin, garbage);
@@ -998,11 +1039,11 @@ void DecisionMaker::activateDecisionTree()
     {
         int CurrentEmployeeAmount = TheCinema->getNumOfEmployees();
         int CurrentTheaterAmount = TheCinema->getNumOfTheaters();
-        int CurrentBankAmount = TheCinema->getBank();
+        float CurrentBankAmount = TheCinema->getBank();
         int CurrentNumberOfSnacks = TheCinema->getNumOfSnacks();
         int CurrentPromotionsSelected = TheCinema->getPromotionSelected();
         int CurrentNumOfLicensesOwned = TheCinema->getNumOfMovieLicenses();
-        int CurrentTicketPrice = TheCinema->getTicketPrice();
+        float CurrentTicketPrice = TheCinema->getTicketPrice();
         Season CurrentSeasonInt = TheCinema->p_Calendar->getCurrentSeasonInt();
 
         // The only way for a player to lose, is to incur -5000 in debt.
@@ -1462,8 +1503,8 @@ void DecisionMaker::activateDecisionTree()
             // Player chose to Change the Ticket Price. Loop breaks when 'R' or Go Back is selected.
             choiceTree_03(CurrentTicketPrice);
             // Player's selection is collected and stored.
+            cout << "==> ";
             TheCinema->changeTicketPrice(getNewTicketPrice());
-            Pause();
             break;
 //MAIN SWITCH - CHANGE MOVIE#########################################################################################
         case '4' :
@@ -1593,9 +1634,28 @@ void DecisionMaker::activateDecisionTree()
             cha = 'Z';
             if (TheatersWithoutMoviesPlaying > 0)
             {
-                cout << "You have one or more theaters without movies playing." << endl << endl;
-                cout << "Theaters without movies playing, earn no profit." << endl << endl;
+                BorderX();
+                XBorderedBlankSpace();
+                XBorderedBlankSpace();
+                cout << "X";
+                BlankSpaces(10);
+                cout << "You have one or more theaters without movies playing.";
+                BlankSpaces(14);
+                cout << "X" << endl << "X";
+                BlankSpaces(10);
+                cout << "Theaters without movies playing, earn no profit.";
+                BlankSpaces(19);
+                cout << "X" << endl;
+                XBorderedBlankSpace();
+                cout << "X";
+                BlankSpaces(10);
                 cout << "Are you sure you want to end you your turn? (Y or N)";
+                BlankSpaces(15);
+                cout << "X" << endl;
+                XBorderedBlankSpace();
+                XBorderedBlankSpace();
+                BorderX();
+                BlankLines(6);
                 do
                 {
                     cha = getYesOrNo();
@@ -1606,11 +1666,21 @@ void DecisionMaker::activateDecisionTree()
                 }
             }
             TheatersWithoutMoviesPlaying = 0;
-            cout << endl << "You've selected to End this Turn." << endl << endl;
             // Makes sure player actually wants to end turn. This If checks in case previous If already checked.
             if (cha != 'Y' && cha != 'y')
             {
-                cout << "Are you sure you want to end you your turn? (Y or N)";
+                BorderX();
+                XBorderedBlankSpace();
+                XBorderedBlankSpace();
+                cout << "X";
+                BlankSpaces(15);
+                cout << "Are you sure you want to end your turn? (Y or N)";
+                BlankSpaces(14);
+                cout << "X" << endl;
+                XBorderedBlankSpace();
+                XBorderedBlankSpace();
+                BorderX();
+                BlankLines(8);
                 do
                 {
                     cha = getYesOrNo();
@@ -1652,7 +1722,19 @@ void DecisionMaker::activateDecisionTree()
             }
             else
             {
-                cout << "Nothing out of the ordinary happens this week." << endl << endl;
+                ClearScreen();
+                BorderX();
+                XBorderedBlankSpace();
+                XBorderedBlankSpace();
+                cout << "X";
+                BlankSpaces(15);
+                cout << "Nothing out of the ordinary happens this week.";
+                BlankSpaces(16);
+                cout << "X" << endl;
+                XBorderedBlankSpace();
+                XBorderedBlankSpace();
+                BorderX();
+                BlankLines(8);
                 Pause();
                 ClearScreen();
             }

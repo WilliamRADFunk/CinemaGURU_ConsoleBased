@@ -21,10 +21,10 @@ private:
     Cinema* TheCinema;
     RandomEventHandler* TheREHandler;
 
-    const std::string Snacks[6] =            {"Popcorn", "Soda", "HotDogs", "Cappuccinos", "Pretzels", "Nachos"};
-    const std::string StaffPerformance[5] =  {"Dismal", "Below Average", "Mediocre", "Above Average", "Flawless"};
-    const std::string Promotions[6] =        {"No Promotion", "Tickets Half-Off on Tuesdays", "Free Snack w/ Ticket",
-                                              "Flood Local Papers w/ Advertisements", "Mass-Mailed Coupon Booklets", "TV Commercial"};
+    const std::string Snacks[6] =            {"Popcorn", "BigSoda", "HotDogs", "Coffees", "Pretzel", "Candies"};
+    const std::string StaffPerformance[5] =  {"Dismal", "Shoddy", "Decent", "B+Work", "Superb"};
+    const std::string Promotions[6] =        {"No Promotion", "1/2 $ Monday", "Bonus Snacks",
+                                              "Issue Fliers", "Coupon Books", "A Commercial"};
 
     char Decision, DecisionBuy, DecisionBuyUpgrade, DecisionStaff,
          DecisionBuyMovieLicense, DecisionMovieSelection, DecisionRandomEvent;

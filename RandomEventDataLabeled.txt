@@ -37,7 +37,7 @@ FactorChoiceA: 3
 FactorChoiceB: 1
 FactorChoiceC: 2
 FactorChoiceD: 4
-Scenario: One of your employees inform you there's a leaky pipe in the men's bathroom. He's waiting for instructions.
+Scenario: One of your employees informs you there's a leaky pipe in the men's bathroom. He's waiting for instructions.
 OptionA: Tell him not to waste your time with the minutiae when you have a cinema empire to run.
 OptionB: Have him slide a bucket under the pipe to catch the water. It's one more problem on the list of many you can't get to right now.
 OptionC: Instruct him to call a plumber. It'll be pricey on short notice, but why risk it.
@@ -45,7 +45,7 @@ OptionD: Get the employee to repair the leak on his own. Time to earn your pay, 
 DescriptionResultA: Procrastination rarely leads to positive results. The leak soaked through the floor, ruining part of the foundation. Repairs to renovate cost you $
 DescriptionResultB: Sometimes the simple solutions are best. The employee peridocially dumps the water out of the bucket. Next day, at regular rates, the plumber fixes your pipe. You only spend $
 DescriptionResultC: An emergency plumber is pricey. Peace of mind is priceless. The bill sets you back $
-DescriptionResultD: Not the brightest bulb in the obx, your employee lacked the necessary know-how and finesse to fix the pipe. Instead, he turned the leak into a rupture, flooding the cinema. You lost $
+DescriptionResultD: Not the brightest bulb in the box, your employee lacked the necessary know-how and finesse to fix the pipe. Instead, he turned the leak into a rupture, flooding the cinema. You lost $
 # 4
 Rating: G
 MonetaryBase: 400
@@ -72,8 +72,8 @@ FactorChoiceD: 3
 Scenario: Scandalous! One of your employees was arrested for selling drugs from behind YOUR snack counter in the cinema lobby. Damage control time. 
 OptionA: Play it off as though you were helping the police all along in catching this dastardly fiend.
 OptionB: Lawyer up!
-OptionC: Hire someone twice as charming as your former employee. Maybe they'll forget the blackheart.
-OptionD: Claim in was a frame job. Your employee could never have done anything of the sort. You stand behind them a hundred and ten percent.
+OptionC: Hire someone twice as charming as your former employee. Maybe people will forget the blackheart.
+OptionD: Claim it was a frame job. Your employee could never have done anything of the sort. You stand behind them a hundred and ten percent.
 DescriptionResultA: Your patrons buy your act, but so do you employees. You notice a distinct drop in efficiency as your hirelings have lost their trust in you. There's a net loss of $
 DescriptionResultB: Gag orders descend on anyone who knows anything about anything. The story dies fast, but the lawyers' bill blooms. You pay $
 DescriptionResultC: Not bad. Your patrons like the new kid better than their shifty-eyed predecessor. It takes less time for you patrons to come back. The net loss is only $
@@ -123,7 +123,7 @@ OptionB: Slip the stadium announcer a few bucks to direct people your way.
 OptionC: Drive around telling people that going to a movie on a rainy day is great.
 OptionD: Turn the cinema lights on bright. If they can see it, they will come.
 DescriptionResultA: Whew! Saved yourself a lot of extra cleanup time. Of course, you didn't sell any extra tickets, earning you $
-DescriptionResultB: You had to turn people away they were wanted in so bad. You earned an extra $
+DescriptionResultB: You had to turn people away they wanted in so bad. You earned an extra $
 DescriptionResultC: Not the best method to getting the word out there, but you did increase ticket sales a little for a total of $
 DescriptionResultD: Unfortunately, the heavy rain made your lights hard to see. Only those who thought of it on their own swung by, earning you an extra $
 # 9
@@ -173,7 +173,7 @@ OptionD: Adjust the seat arrangements to make the back rows more visibile, disco
 DescriptionResultA: You manage to the numbers of your younger audience, while ostrasizing some of the older folks. The net in ticket sales costs you $
 DescriptionResultB: There's less wandering hands now, but people are annoyed by the constant interruption by your employees. Ticket sales take a hit for $
 DescriptionResultC: Story redacted. The reputation of your establishment is again along the straight and narrow. Attorney fees cost you $
-DescriptionResultD: Well played. Unable to get away with the really kinky stuff, those pesky teenagers will have to settle for making out.
+DescriptionResultD: Well played. Unable to get away with the really kinky stuff, those pesky teenagers will have to settle for making out. You net $
 # 12
 Rating: G
 MonetaryBase: 200

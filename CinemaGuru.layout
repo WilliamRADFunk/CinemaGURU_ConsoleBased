@@ -1,9 +1,59 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
+	<File name="include\RandomEvent.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="452" topLine="43" />
+		</Cursor>
+	</File>
+	<File name="src\Calendar.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1309" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="922" topLine="23" />
+		</Cursor>
+	</File>
+	<File name="src\RandomEvent.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4836" topLine="189" />
+		</Cursor>
+	</File>
 	<File name="include\Calendar.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="215" topLine="9" />
+		</Cursor>
+	</File>
+	<File name="include\Cinema.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1756" topLine="62" />
+		</Cursor>
+	</File>
+	<File name="src\RandomEventHandler.cpp" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5275" topLine="126" />
+		</Cursor>
+	</File>
+	<File name="src\Movie.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2186" topLine="129" />
+		</Cursor>
+	</File>
+	<File name="include\Global.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="475" topLine="2" />
+		</Cursor>
+	</File>
+	<File name="include\Movie.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="413" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\DecisionMaker.h" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1109" topLine="18" />
 		</Cursor>
 	</File>
 	<File name="src\DecisionMaker.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
@@ -13,47 +63,7 @@
 	</File>
 	<File name="src\Global.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="13390" topLine="480" />
-		</Cursor>
-	</File>
-	<File name="src\Movie.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2186" topLine="129" />
-		</Cursor>
-	</File>
-	<File name="src\RandomEvent.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4836" topLine="189" />
-		</Cursor>
-	</File>
-	<File name="src\RandomEventHandler.cpp" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="5275" topLine="126" />
-		</Cursor>
-	</File>
-	<File name="src\Theater.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2036" topLine="88" />
-		</Cursor>
-	</File>
-	<File name="include\DecisionMaker.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2075" topLine="53" />
-		</Cursor>
-	</File>
-	<File name="include\Global.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="589" topLine="13" />
-		</Cursor>
-	</File>
-	<File name="include\Movie.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="413" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\RandomEvent.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="452" topLine="43" />
+			<Cursor1 position="330" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="include\RandomEventHandler.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -66,24 +76,14 @@
 			<Cursor1 position="299" topLine="19" />
 		</Cursor>
 	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+	<File name="src\Cinema.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="922" topLine="26" />
+			<Cursor1 position="17857" topLine="590" />
 		</Cursor>
 	</File>
-	<File name="src\Calendar.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Theater.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1309" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\Cinema.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="709" topLine="18" />
-		</Cursor>
-	</File>
-	<File name="src\Cinema.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="15832" topLine="546" />
+			<Cursor1 position="2036" topLine="88" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

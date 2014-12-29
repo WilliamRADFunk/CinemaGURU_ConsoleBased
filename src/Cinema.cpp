@@ -507,6 +507,10 @@ void Cinema::hud()
     {
         BlankSpaces(13);
     }
+    else if (NumOfMovieLicenses >= 100 && NumOfMovieLicenses < 1000)
+    {
+        BlankSpaces(12);
+    }
     cout << "Total $ in Profit/(Loss): $";
     if (((TicketSales + SnackSales) - (Expenses)) < 0)
     {
@@ -600,7 +604,14 @@ void Cinema::hud()
     BlankSpaces(2);
     cout << std::setprecision(2) << std::fixed;
     cout << "Current Ticket Price: $" << TPrice;
-    BlankSpaces(3);
+    if (TPrice < 10)
+    {
+        BlankSpaces(4);
+    }
+    else if (TPrice >= 10)
+    {
+        BlankSpaces(3);
+    }
     cout << "Current Promotion in use: " << PromotionInUse;
     BlankSpaces(6);
     cout << "X" << endl;
