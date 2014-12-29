@@ -697,55 +697,27 @@ int DecisionMaker::getNumOfEmployeesToFire(int Employees, int Theaters)
 
 float DecisionMaker::getNewTicketPrice()
 {
-    float NewPrice = -(9456);
+    float NewPrice;
 
     do
     {
-        if (NewPrice != -(9456))
-        {
-            if (NewPrice > 0)
-            {
-                cin.clear();
-                string garbage;
-                getline(cin, garbage);
-                ClearScreen();
-                choiceTree_03(TheCinema->getTicketPrice());
-                cout << "==> ";
-            }
-            else if (NewPrice < 0)
-            {
-                cin.clear();
-                string garbage;
-                getline(cin, garbage);
-                ClearScreen();
-                choiceTree_03(TheCinema->getTicketPrice());
-                cout << "==> ";
-            }
-            else if ( !(NewPrice >= 0 && NewPrice <= 20) )
-            {
-                cin.clear();
-                string garbage;
-                getline(cin, garbage);
-                ClearScreen();
-                choiceTree_03(TheCinema->getTicketPrice());
-                cout << "==> ";
-            }
-        }
+        // Makes sure the number is a number. If not, NewPrice is set to trigger next if statement.
         if ( !(cin >> NewPrice) )
+        {
+            NewPrice = -1.00;
+        }
+        // If NewPrice isn't within the acceptable range, cin is reset, and questions is re-asked.
+        if ( !(NewPrice >= 0 && NewPrice <= 20) )
         {
             cin.clear();
             string garbage;
             getline(cin, garbage);
+            ClearScreen();
+            // Recursive use of this function until useful input is received.
+            choiceTree_03(TheCinema->getTicketPrice());
+            cout << "==> ";
         }
     } while ( !(NewPrice >= 0.0 && NewPrice <= 20.0) );
-    if (NewPrice >= 20.0)
-    {
-        NewPrice = 20.0;
-    }
-    else if (NewPrice <= 0)
-    {
-        NewPrice = 0.0;
-    }
     // Round to the nearest hundredths.
     NewPrice = float(int(NewPrice * 100 + 0.5)) / 100;
 
