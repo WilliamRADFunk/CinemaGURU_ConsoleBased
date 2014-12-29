@@ -277,6 +277,7 @@ void Cinema::hud()
     int MostEmployeesPossible = (NumOfTheaters * 5);
     int MostSeatsPossible = (NumOfTheaters * SEATS_MAX);
 
+    // Displays the Week, Season, and Year at the top of the HUD with an "X" border.
     BorderX();
     XBorderedBlankSpace();
     cout << "X";
@@ -302,6 +303,7 @@ void Cinema::hud()
     XBorderedBlankSpace();
     XBorderedDivider();
     XBorderedBlankSpace();
+    // Displays the Bank balance in the HUD with an "X" border.
     cout << "X";
     BlankSpaces(2);
     cout << "Bank: ";
@@ -355,6 +357,7 @@ void Cinema::hud()
         }
         else BlankSpaces(18);
     }
+    // Displays the Total income from Ticket Sales in the HUD with an "X" border.
     cout << "Total $ From Ticket Sales Last Week: $" << (int)TicketSales;
     if ((int)TicketSales < 10)
     {
@@ -376,6 +379,7 @@ void Cinema::hud()
     {
         BlankSpaces(1);
     }
+    // Displays the number of Theaters owned, and Max number possible to own, in the HUD with an "X" border.
     cout << "X" << endl << "X";
     BlankSpaces(2);
     cout << "Theaters: " << NumOfTheaters << "/" << THEATERS_MAX;
@@ -406,6 +410,7 @@ void Cinema::hud()
     {
         BlankSpaces(13);
     }
+    // Displays the Total income from Snack Sales in the HUD with an "X" border.
     cout << "Total $ From Food Sales Last Week: $" << (int)SnackSales;
     if ((int)SnackSales < 10)
     {
@@ -427,6 +432,7 @@ void Cinema::hud()
     {
         BlankSpaces(3);
     }
+    // Displays the number of Seats owned, and Max number possible to own, in the HUD with an "X" border.
     cout << "X" << endl << "X";
     BlankSpaces(2);
     cout << "Total Seats: " << CurrentNumOfSeats << "/" << MostSeatsPossible;
@@ -475,6 +481,7 @@ void Cinema::hud()
     {
         BlankSpaces(6);
     }
+    // Displays the Total expenses incurred for last turn in the HUD with an "X" border.
     cout << "Total $ For Expenses Last Week: $" << (int)Expenses;
     if ((int)Expenses < 10)
     {
@@ -496,6 +503,7 @@ void Cinema::hud()
     {
         BlankSpaces(6);
     }
+    // Displays the number of Movie Licenses owned in the HUD with an "X" border.
     cout << "X" << endl << "X";
     BlankSpaces(2);
     cout << "Total Licenses: " << NumOfMovieLicenses;
@@ -511,6 +519,7 @@ void Cinema::hud()
     {
         BlankSpaces(12);
     }
+    // Displays the Total income/(loss) for last turn in the HUD with an "X" border.
     cout << "Total $ in Profit/(Loss): $";
     if (((TicketSales + SnackSales) - (Expenses)) < 0)
     {
@@ -562,6 +571,7 @@ void Cinema::hud()
             BlankSpaces(12);
         }
     }
+    // Displays the number of Snack types owned, and Max number possible to own, in the HUD with an "X" border.
     cout << "X" << endl << "X";
     BlankSpaces(2);
     cout << "Total Snack Types: " << NumOfSnacks << "/" << SNACK_MAX;
@@ -578,6 +588,7 @@ void Cinema::hud()
     {
         BlankSpaces(7);
     }
+    // Displays the number of employees employed, and Max number possible to employ, in the HUD with an "X" border.
     cout << "Total Employees: " << NumOfEmployees << "/" << MostEmployeesPossible << " (" << StaffPerformance << ")";
     if (MostEmployeesPossible < 10 && NumOfEmployees < 10)
     {
@@ -600,6 +611,7 @@ void Cinema::hud()
     {
         BlankSpaces(11);
     }
+    // Displays the Current Ticket Price in the HUD with an "X" border.
     cout << "X" << endl << "X";
     BlankSpaces(2);
     cout << std::setprecision(2) << std::fixed;
@@ -612,6 +624,7 @@ void Cinema::hud()
     {
         BlankSpaces(3);
     }
+    // Displays the Current Promotion Used in the HUD with an "X" border.
     cout << "Current Promotion in use: " << PromotionInUse;
     BlankSpaces(6);
     cout << "X" << endl;
