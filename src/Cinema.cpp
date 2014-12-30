@@ -283,9 +283,9 @@ void Cinema::hud()
     cout << "X";
     if (CurrentWeek < 10 && CurrentYear < 10)
     {
-        BlankSpaces(20);
-        cout << "Week: " << CurrentWeek << "/52  Season: " << CurrentSeason << "  Year: " << CurrentYear;
-        BlankSpaces(22);
+        BlankSpaces(15);
+        cout << "--- Week: " << CurrentWeek << "/52 -- Season: " << CurrentSeason << " -- Year: " << CurrentYear << " ---";
+        BlankSpaces(15);
     }
     else if ((CurrentWeek < 10 && CurrentYear >= 10) || (CurrentWeek >= 10 && CurrentYear < 10))
     {

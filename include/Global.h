@@ -5,7 +5,7 @@
 
 #define SEATS_MIN 10
 #define SEATS_MAX 100
-#define THEATERS_MAX 100
+#define THEATERS_MAX 10
 #define SNACK_MAX 6
 #define SOUND_MAX 1.5
 #define SCREEN_MAX 1.5

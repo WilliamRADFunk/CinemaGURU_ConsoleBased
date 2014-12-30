@@ -145,11 +145,40 @@ void DecisionMaker::choiceTree_01_06(int Theaters)
 
 void DecisionMaker::choiceTree_02()
 {
-    cout << endl << "You've selected to Manage your Staff." << endl << endl;
-    cout << "1. Hire Employees" << endl;
-    cout << "2. Fire Employees" << endl << endl;
-    cout << "R. Go Back" << endl << endl;
+    BorderX();
+    XBorderedBlankSpace();
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(10);
+    cout << "You've selected to Manage your Staff.";
+    BlankSpaces(30);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(10);
+    cout << "1. Hire Employees";
+    BlankSpaces(50);
+    cout << "X" << endl << "X";
+    BlankSpaces(10);
+    cout << "2. Fire Employees";
+    BlankSpaces(50);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(10);
+    cout << "R. Go Back";
+    BlankSpaces(57);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(10);
     cout << "Which of these actions would you like to perform?";
+    BlankSpaces(18);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    XBorderedBlankSpace();
+    BorderX();
+    BlankLines(5);
 }
 
 void DecisionMaker::choiceTree_03(float TicketPrice)
@@ -250,6 +279,10 @@ string DecisionMaker::calculateStaffLevel(int Employees, int Theaters)
 {
     int MaxEmployees = Theaters * 5;
     int StaffLevelEquation = (int)(5 * ((float)Employees / ((float)MaxEmployees))) - 1;
+    if (StaffLevelEquation < 0)
+    {
+        StaffLevelEquation = 0;
+    }
     return StaffPerformance[StaffLevelEquation];
 }
 
@@ -262,9 +295,14 @@ void DecisionMaker::choiceHireStaff(int Employees, int Theaters)
 {
     int MaxEmployees = Theaters * 5;
     int NumAllowedToChange = MaxEmployees - Employees;
+    int TotalEmployeeCost = Employees * EMPLOYEE_WAGE;
 
     TheCinema->setStaffPerformance(calculateStaffLevel(Employees, Theaters));
 
+    BorderX();
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
     cout << "You currently employ " << Employees << " ";
     if (Employees == 1)
     {
@@ -274,11 +312,96 @@ void DecisionMaker::choiceHireStaff(int Employees, int Theaters)
     {
         cout << "people, ";
     }
-    cout << "for a total weekly cost of $" << (Employees * EMPLOYEE_WAGE) << "." << endl << endl;
-    cout << "Your staff's performance is " << TheCinema->getStaffPerformance() << "." << endl << endl;
-    cout << "You can employ 5 people for every theater in your cinema." << endl << endl;
-    cout << "Since you have " << Theaters << " theater, you can employ ";
-    cout << "a total of " << MaxEmployees << " people." << endl << endl;
+    cout << "for a total weekly cost of $" << TotalEmployeeCost << ".";
+    if (Employees < 10 && TotalEmployeeCost < 10)
+    {
+        BlankSpaces(11);
+    }
+    else if (Employees < 10 && TotalEmployeeCost >= 10 && TotalEmployeeCost < 100)
+    {
+        BlankSpaces(10);
+    }
+    else if ((Employees < 10 && TotalEmployeeCost >= 100 && TotalEmployeeCost < 1000) ||
+             (Employees >= 10 && Employees < 100 && TotalEmployeeCost >= 10 && TotalEmployeeCost < 100))
+    {
+        BlankSpaces(9);
+    }
+    else if ((Employees < 10 && TotalEmployeeCost >= 1000 && TotalEmployeeCost < 10000) ||
+             (Employees >= 10 && Employees < 100 && TotalEmployeeCost >= 100 && TotalEmployeeCost < 1000))
+    {
+        BlankSpaces(8);
+    }
+    else if ((Employees < 10 && TotalEmployeeCost >= 10000 && TotalEmployeeCost < 100000) ||
+             (Employees >= 10 && Employees < 100 && TotalEmployeeCost >= 1000 && TotalEmployeeCost < 10000) ||
+             (Employees >= 100 && Employees < 1000 && TotalEmployeeCost >= 100 && TotalEmployeeCost < 1000))
+    {
+        BlankSpaces(7);
+    }
+    else if ((Employees >= 10 && Employees < 100 && TotalEmployeeCost >= 10000 && TotalEmployeeCost < 100000) ||
+             (Employees >= 100 && Employees < 1000 && TotalEmployeeCost >= 1000 && TotalEmployeeCost < 10000))
+    {
+        BlankSpaces(6);
+    }
+    else if ((Employees >= 100 && Employees < 1000 && TotalEmployeeCost >= 10000 && TotalEmployeeCost < 100000) ||
+             (Employees >= 1000 && Employees < 10000 && TotalEmployeeCost >= 1000 && TotalEmployeeCost < 10000))
+    {
+        BlankSpaces(5);
+    }
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "Your staff's performance is " << TheCinema->getStaffPerformance() << ".";
+    BlankSpaces(37);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "You can employ 5 people for every theater in your cinema.";
+    BlankSpaces(15);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "Since you have " << Theaters << " theater";
+    if (Theaters == 1)
+    {
+        cout << ", you can employ a total of " << MaxEmployees << " people.";
+    }
+    else
+    {
+        cout << "s, you can employ a total of " << MaxEmployees << " people.";
+    }
+
+    if (Theaters == 1)
+    {
+        BlankSpaces(11);
+    }
+    if (Theaters > 1 && Theaters < 10 && MaxEmployees < 10)
+    {
+        BlankSpaces(10);
+    }
+    else if (Theaters < 10 && MaxEmployees >= 10 && MaxEmployees < 100)
+    {
+        BlankSpaces(9);
+    }
+    else if (Theaters >= 10 && Theaters < 100 && MaxEmployees >= 10 && MaxEmployees < 100)
+    {
+        BlankSpaces(8);
+    }
+    else if (Theaters >= 10 && Theaters < 100 && MaxEmployees >= 100 && MaxEmployees < 1000)
+    {
+        BlankSpaces(7);
+    }
+    else if ((Theaters >= 10 && Theaters < 100 && MaxEmployees >= 1000 && MaxEmployees < 10000) ||
+             (Theaters >= 100 && Theaters < 1000 && MaxEmployees >= 100 && MaxEmployees < 1000))
+    {
+        BlankSpaces(6);
+    }
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
     cout << "As it stands, you can hire at most: " << NumAllowedToChange << " more ";
     if (NumAllowedToChange == 1)
     {
@@ -288,17 +411,60 @@ void DecisionMaker::choiceHireStaff(int Employees, int Theaters)
     {
         cout << "people.";
     }
-    cout << endl << endl << "Remember that each employee costs $" << EMPLOYEE_WAGE << " per week." << endl << endl;
-    cout << "Hire how many people? (Enter 0 if you're budget can't spare it)";
+    if (NumAllowedToChange < 10)
+    {
+        BlankSpaces(22);
+    }
+    else if (NumAllowedToChange >= 10 && NumAllowedToChange < 100)
+    {
+        BlankSpaces(21);
+    }
+    else if (NumAllowedToChange >= 100 && NumAllowedToChange < 1000)
+    {
+        BlankSpaces(20);
+    }
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "Remember that each employee costs $" << EMPLOYEE_WAGE << " per week.";
+    if (EMPLOYEE_WAGE < 10)
+    {
+        BlankSpaces(26);
+    }
+    else if (EMPLOYEE_WAGE >= 10 && EMPLOYEE_WAGE < 100)
+    {
+        BlankSpaces(25);
+    }
+    else if (EMPLOYEE_WAGE >= 100 && EMPLOYEE_WAGE < 1000)
+    {
+        BlankSpaces(24);
+    }
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "Hire how many people? (Type a number, then ENTER)";
+    BlankSpaces(23);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    BorderX();
+    BlankLines(3);
+    cout << "==> ";
 }
 
 void DecisionMaker::choiceFireStaff(int Employees, int Theaters)
 {
     int MaxEmployees = Theaters * 5;
-    int NumAllowedToChange = MaxEmployees - Employees;
+    int NumAllowedToChange = Employees - 1;
+    int TotalEmployeeCost = Employees * EMPLOYEE_WAGE;
 
     TheCinema->setStaffPerformance(calculateStaffLevel(Employees, Theaters));
 
+    BorderX();
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
     cout << "You currently employ " << Employees << " ";
     if (Employees == 1)
     {
@@ -308,20 +474,104 @@ void DecisionMaker::choiceFireStaff(int Employees, int Theaters)
     {
         cout << "people, ";
     }
-    cout << "for a total weekly cost of $" << (Employees * EMPLOYEE_WAGE) << "." << endl << endl;
-    cout << "Your staff's performance is " << TheCinema->getStaffPerformance() << "." << endl << endl;
-    cout << "You must have at least 1 employee to operate your cinema, and " << endl;
-    cout << "each employee costs $" << EMPLOYEE_WAGE << " per week." << endl << endl;
-    cout << "As it stands, you can fire at most: " << (Employees - 1) << "  ";
+    cout << "for a total weekly cost of $" << TotalEmployeeCost << ".";
+    if (Employees < 10 && TotalEmployeeCost < 10)
+    {
+        BlankSpaces(11);
+    }
+    else if (Employees < 10 && TotalEmployeeCost >= 10 && TotalEmployeeCost < 100)
+    {
+        BlankSpaces(10);
+    }
+    else if ((Employees < 10 && TotalEmployeeCost >= 100 && TotalEmployeeCost < 1000) ||
+             (Employees >= 10 && Employees < 100 && TotalEmployeeCost >= 10 && TotalEmployeeCost < 100))
+    {
+        BlankSpaces(9);
+    }
+    else if ((Employees < 10 && TotalEmployeeCost >= 1000 && TotalEmployeeCost < 10000) ||
+             (Employees >= 10 && Employees < 100 && TotalEmployeeCost >= 100 && TotalEmployeeCost < 1000))
+    {
+        BlankSpaces(8);
+    }
+    else if ((Employees < 10 && TotalEmployeeCost >= 10000 && TotalEmployeeCost < 100000) ||
+             (Employees >= 10 && Employees < 100 && TotalEmployeeCost >= 1000 && TotalEmployeeCost < 10000) ||
+             (Employees >= 100 && Employees < 1000 && TotalEmployeeCost >= 100 && TotalEmployeeCost < 1000))
+    {
+        BlankSpaces(7);
+    }
+    else if ((Employees >= 10 && Employees < 100 && TotalEmployeeCost >= 10000 && TotalEmployeeCost < 100000) ||
+             (Employees >= 100 && Employees < 1000 && TotalEmployeeCost >= 1000 && TotalEmployeeCost < 10000))
+    {
+        BlankSpaces(6);
+    }
+    else if ((Employees >= 100 && Employees < 1000 && TotalEmployeeCost >= 10000 && TotalEmployeeCost < 100000) ||
+             (Employees >= 1000 && Employees < 10000 && TotalEmployeeCost >= 1000 && TotalEmployeeCost < 10000))
+    {
+        BlankSpaces(5);
+    }
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "Your staff's performance is " << TheCinema->getStaffPerformance() << ".";
+    BlankSpaces(37);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "You must have at least 1 employee to operate your cinema, and ";
+    BlankSpaces(10);
+    cout << "X" << endl << "X";
+    BlankSpaces(5);
+    cout << "each employee costs $" << EMPLOYEE_WAGE << " per week.";
+    if (EMPLOYEE_WAGE < 10)
+    {
+        BlankSpaces(40);
+    }
+    else if (EMPLOYEE_WAGE >= 10 && EMPLOYEE_WAGE < 100)
+    {
+        BlankSpaces(39);
+    }
+    else if (EMPLOYEE_WAGE >= 100 && EMPLOYEE_WAGE < 1000)
+    {
+        BlankSpaces(38);
+    }
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "As it stands, you can fire at most: " << (Employees - 1);
     if (NumAllowedToChange == 1)
     {
-        cout << "person.";
+        cout << " person.";
     }
     else
     {
-        cout << "people.";
+        cout << " people.";
     }
-    cout << endl << endl << "Fire how many people? (Enter 0 if you've had a change of heart)";
+    if (NumAllowedToChange < 10)
+    {
+        BlankSpaces(27);
+    }
+    else if (NumAllowedToChange >= 10 && NumAllowedToChange < 100)
+    {
+        BlankSpaces(26);
+    }
+    else if (NumAllowedToChange >= 100 && NumAllowedToChange < 1000)
+    {
+        BlankSpaces(25);
+    }
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "Fire how many people? (Type a number, then ENTER)";
+    BlankSpaces(23);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    BorderX();
+    BlankLines(3);
+    cout << "==> ";
 }
 
 void DecisionMaker::currentMovie(int TheaterNumber, string Title)
@@ -638,17 +888,26 @@ char DecisionMaker::getSelectionUpgradePurchase()
 int DecisionMaker::getNumOfEmployeesToHire(int Employees, int Theaters)
 {
     int HireQuantity;
+    int MaxEmployeesToHire = (Theaters * 5) - Employees;
 
     do
     {
+        // Makes sure the number is a number. If not, HireQuantity is set to trigger next if statement.
         if ( !(cin >> HireQuantity) )
         {
-            cout << "Incorrect choice made." << endl;
+            HireQuantity = -1.00;
+        }
+        // If HireQuantity isn't within the acceptable range, cin is reset, and the question is re-asked.
+        if ( !(HireQuantity >= 0 && HireQuantity <= MaxEmployeesToHire) )
+        {
             cin.clear();
             string garbage;
             getline(cin, garbage);
+            ClearScreen();
+            // Recursive use of this function until useful input is received.
+            choiceHireStaff(Employees, Theaters);
         }
-    } while ( !(HireQuantity >= 0 && HireQuantity <= ((Theaters * 5) - Employees)) );
+    } while ( !(HireQuantity >= 0 && HireQuantity <= MaxEmployeesToHire) );
 
     TheCinema->setStaffPerformance(calculateStaffLevel(Employees + HireQuantity, Theaters));
 
@@ -656,11 +915,68 @@ int DecisionMaker::getNumOfEmployeesToHire(int Employees, int Theaters)
 
     if (HireQuantity > 0)
     {
-        cout << endl << endl << "You've hired " << HireQuantity << " new employees." << endl << endl;
-        cout << "There are " << (Employees + HireQuantity) << " people now working at your cinema." << endl << endl;
-        cout << "Your staff's performance is now " << TheCinema->getStaffPerformance() << "." << endl << endl;
+        BorderX();
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(15);
+        cout << "You've hired " << HireQuantity << " new employees.";
+        if (HireQuantity < 10)
+        {
+            BlankSpaces(33);
+        }
+        else if (HireQuantity >= 10 && HireQuantity < 100)
+        {
+            BlankSpaces(32);
+        }
+        else if (HireQuantity >= 100 && HireQuantity < 1000)
+        {
+            BlankSpaces(31);
+        }
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(15);
+        cout << "There are " << (Employees + HireQuantity) << " people now working at your cinema.";
+        if ((Employees + HireQuantity) < 10)
+        {
+            BlankSpaces(16);
+        }
+        else if ((Employees + HireQuantity) >= 10 && (Employees + HireQuantity) < 100)
+        {
+            BlankSpaces(15);
+        }
+        else if ((Employees + HireQuantity) >= 100 && (Employees + HireQuantity) < 1000)
+        {
+            BlankSpaces(14);
+        }
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(15);
+        cout << "Your staff's performance is now " << TheCinema->getStaffPerformance() << ".";
+        BlankSpaces(23);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        BorderX();
+        BlankLines(5);
     }
-    else cout << "Perhaps you'll want to hire more people later..." << endl << endl;
+    else
+    {
+        BorderX();
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(10);
+        cout << "Perhaps you'll want to hire more people later...";
+        BlankSpaces(19);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        BorderX();
+        BlankLines(8);
+    }
 
     return HireQuantity;
 }
@@ -668,17 +984,26 @@ int DecisionMaker::getNumOfEmployeesToHire(int Employees, int Theaters)
 int DecisionMaker::getNumOfEmployeesToFire(int Employees, int Theaters)
 {
     int FireQuantity;
+    int MaxEmployeesToFire = Employees - 1;
 
     do
     {
+        // Makes sure the number is a number. If not, FireQuantity is set to trigger next if statement.
         if ( !(cin >> FireQuantity) )
         {
-            cout << "Incorrect choice made." << endl;
+            FireQuantity = -1.00;
+        }
+        // If HireQuantity isn't within the acceptable range, cin is reset, and the question is re-asked.
+        if ( !(FireQuantity >= 0 && FireQuantity <= MaxEmployeesToFire) )
+        {
             cin.clear();
             string garbage;
             getline(cin, garbage);
+            ClearScreen();
+            // Recursive use of this function until useful input is received.
+            choiceFireStaff(Employees, Theaters);
         }
-    } while ( !(FireQuantity >= 0 && FireQuantity < (Employees)) );
+    } while ( !(FireQuantity >= 0 && FireQuantity <= MaxEmployeesToFire) );
 
     TheCinema->setStaffPerformance(calculateStaffLevel(Employees - FireQuantity, Theaters));
 
@@ -686,11 +1011,88 @@ int DecisionMaker::getNumOfEmployeesToFire(int Employees, int Theaters)
 
     if (FireQuantity > 0)
     {
-        cout << endl << endl << "You've fired " << FireQuantity << " workers." << endl << endl;
-        cout << "There are " << (Employees - FireQuantity) << " people trying to make up the difference." << endl << endl;
-        cout << "Your staff's performance is now " << TheCinema->getStaffPerformance() << "." << endl << endl;
+        BorderX();
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(15);
+        cout << "You've fired " << FireQuantity << " worker";
+        if (FireQuantity == 1)
+        {
+            cout << ". ";
+        }
+        else
+        {
+            cout << "s.";
+        }
+        if (FireQuantity < 10)
+        {
+            BlankSpaces(39);
+        }
+        else if (FireQuantity >= 10 && FireQuantity < 100)
+        {
+            BlankSpaces(38);
+        }
+        else if (FireQuantity >= 100 && FireQuantity < 1000)
+        {
+            BlankSpaces(37);
+        }
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(15);
+        cout << "There ";
+        if ((Employees - FireQuantity) == 1)
+        {
+            cout << "is " << (Employees - FireQuantity) << " person trying to make up the difference.";
+        }
+        else
+        {
+            cout << "are " << (Employees - FireQuantity) << " people trying to make up the difference.";
+        }
+        if ((Employees - FireQuantity) == 1)
+        {
+            BlankSpaces(11);
+        }
+        else if ((Employees - FireQuantity) > 1 && (Employees - FireQuantity) < 10)
+        {
+            BlankSpaces(10);
+        }
+        else if ((Employees - FireQuantity) >= 10 && (Employees - FireQuantity) < 100)
+        {
+            BlankSpaces(9);
+        }
+        else if ((Employees - FireQuantity) >= 100 && (Employees - FireQuantity) < 1000)
+        {
+            BlankSpaces(8);
+        }
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(15);
+        cout << "Your staff's performance is now " << TheCinema->getStaffPerformance() << ".";
+        BlankSpaces(23);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        BorderX();
+        BlankLines(5);
     }
-    else cout << "At least now the lazy peons know you could fire them anytime..." << endl << endl;
+    else
+    {
+        BorderX();
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(5);
+        cout << "At least now the lazy peons know you could fire them anytime...";
+        BlankSpaces(9);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        BorderX();
+        BlankLines(8);
+    }
 
     return FireQuantity;
 }
