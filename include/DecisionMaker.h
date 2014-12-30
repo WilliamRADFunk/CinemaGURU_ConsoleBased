@@ -67,7 +67,7 @@ public:
     bool getSelection_01_06(int, int);
     char getSelection_02();
     int getSelection_TheaterNum(int);
-    int getSelectionSeatPurchase();
+    int getSelectionSeatPurchase(int, int);
     char getSelectionUpgradePurchase();
     int getNumOfEmployeesToHire(int, int);
     int getNumOfEmployeesToFire(int, int);

@@ -276,6 +276,7 @@ void Cinema::hud()
     int CurrentNumOfSeats = getTotalNumOfSeats();
     int MostEmployeesPossible = (NumOfTheaters * 5);
     int MostSeatsPossible = (NumOfTheaters * SEATS_MAX);
+    int CurrentBank = fabs((int)Bank);
 
     // Displays the Week, Season, and Year at the top of the HUD with an "X" border.
     BorderX();
@@ -309,24 +310,24 @@ void Cinema::hud()
     cout << "Bank: ";
     if (Bank < 0)
     {
-        cout << "-$" << fabs((int)Bank);
-        if (fabs((int)Bank) < 10)
+        cout << "-$" << CurrentBank;
+        if (CurrentBank < 10)
         {
             BlankSpaces(22);
         }
-        else if (fabs((int)Bank) >= 10 && fabs((int)Bank) < 100)
+        else if (CurrentBank >= 10 && CurrentBank < 100)
         {
             BlankSpaces(21);
         }
-        else if (fabs((int)Bank) >= 100 && fabs((int)Bank) < 1000)
+        else if (CurrentBank >= 100 && CurrentBank < 1000)
         {
             BlankSpaces(20);
         }
-        else if (fabs((int)Bank) >= 1000 && fabs((int)Bank) < 10000)
+        else if (CurrentBank >= 1000 && CurrentBank < 10000)
         {
             BlankSpaces(19);
         }
-        else if (fabs((int)Bank) >= 10000 && fabs((int)Bank) < 100000)
+        else if (CurrentBank >= 10000 && CurrentBank < 100000)
         {
             BlankSpaces(18);
         }
@@ -334,24 +335,24 @@ void Cinema::hud()
     }
     else
     {
-        cout << "$" << (int)Bank;
-        if ((int)Bank < 10)
+        cout << "$" << CurrentBank;
+        if (CurrentBank < 10)
         {
             BlankSpaces(22);
         }
-        else if ((int)Bank >= 10 && (int)Bank < 100)
+        else if (CurrentBank >= 10 && CurrentBank < 100)
         {
             BlankSpaces(22);
         }
-        else if ((int)Bank >= 100 && (int)Bank < 1000)
+        else if (CurrentBank >= 100 && CurrentBank < 1000)
         {
             BlankSpaces(21);
         }
-        else if ((int)Bank >= 1000 && (int)Bank < 10000)
+        else if (CurrentBank >= 1000 && CurrentBank < 10000)
         {
             BlankSpaces(20);
         }
-        else if ((int)Bank >= 10000 && (int)Bank < 100000)
+        else if (CurrentBank >= 10000 && CurrentBank < 100000)
         {
             BlankSpaces(19);
         }

@@ -41,24 +41,114 @@ void DecisionMaker::choiceTree_Main()
 
 void DecisionMaker::choiceTree_01()
 {
-    cout << endl << "You've selected to Make a Purchase." << endl << endl;
-    cout << "1. Buy More Seats" << endl;
-    cout << "2. Buy More Movie Licenses" << endl;
-    cout << "3. Buy More Snack Choices" << endl;
-    cout << "4. Buy Upgrades" << endl;
-    cout << "5. Buy Promotional Event" << endl;
-    cout << "6. Buy Additional Theater" << endl << endl;
-    cout << "R. Go Back" << endl << endl;
-    cout << "Which of these actions do you want to perform?" << endl;
+    BorderX();
+    XBorderedBlankSpace();
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "You've selected to Make a Purchase.";
+    BlankSpaces(37);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "1. Buy More Seats";
+    BlankSpaces(55);
+    cout << "X" << endl << "X";
+    BlankSpaces(5);
+    cout << "2. Buy More Movie Licenses";
+    BlankSpaces(46);
+    cout << "X" << endl << "X";
+    BlankSpaces(5);
+    cout << "3. Buy More Snack Choices";
+    BlankSpaces(47);
+    cout << "X" << endl << "X";
+    BlankSpaces(5);
+    cout << "4. Buy Upgrades";
+    BlankSpaces(57);
+    cout << "X" << endl << "X";
+    BlankSpaces(5);
+    cout << "5. Buy Promotional Event";
+    BlankSpaces(48);
+    cout << "X" << endl << "X";
+    BlankSpaces(5);
+    cout << "6. Buy Additional Theater";
+    BlankSpaces(47);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "R. Go Back";
+    BlankSpaces(62);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "Which of these actions do you want to perform?";
+    BlankSpaces(26);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    XBorderedBlankSpace();
+    BorderX();
+    BlankLines(3);
 }
 
 void DecisionMaker::choiceTree_01_01(int Theaters)
 {
     if (Theaters > 1)
     {
-        cout << "You've chosen to purchase more seats for your theater." << endl << endl;
-        cout << "You have " << Theaters << " theater(s)." << endl;
+        BorderX();
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(5);
+        cout << "You've chosen to purchase more seats for your theater.";
+        BlankSpaces(18);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(5);
+        cout << "You have " << Theaters << " theater(s).";
+        if (Theaters < 10)
+        {
+            BlankSpaces(50);
+        }
+        else if (Theaters >= 10 && Theaters < 100)
+        {
+            BlankSpaces(49);
+        }
+        else if (Theaters >= 100 && Theaters < 1000)
+        {
+            BlankSpaces(48);
+        }
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(5);
         cout << "Select 1 through " << Theaters << " to choose which theater to buy seats for:";
+        if (Theaters < 10)
+        {
+            BlankSpaces(12);
+        }
+        else if (Theaters >= 10 && Theaters < 100)
+        {
+            BlankSpaces(11);
+        }
+        else if (Theaters >= 100 && Theaters < 1000)
+        {
+            BlankSpaces(10);
+        }
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        BorderX();
+        BlankLines(5);
+        cout << "==> ";
+    }
+    else
+    {
+        cout << "WARNING: An incorrent # of Theaters was entered into" << endl;
+        cout << "DecisionMaker::choiceTree_01_01(int Theaters)" << endl;
     }
 }
 
@@ -234,9 +324,98 @@ void DecisionMaker::choiceTree_04(int Theaters)
 
 void DecisionMaker::choiceNumOfSeats(int TheaterNumber, int AmountOfSeats)
 {
-    cout << "In Theater #" << TheaterNumber << ", you have " << AmountOfSeats << " seats." << endl << endl;
-    cout << "Each new seat costs $" << SEAT_PRICE << ". The maximum number of seats is 100 for any theater." << endl << endl;
-    cout << "How many seats would you like to buy? (Enter 0 seats to change your mind)";
+    BorderX();
+    XBorderedBlankSpace();
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "In Theater #" << TheaterNumber << ", you have " << AmountOfSeats << " seats.";
+    if (TheaterNumber < 10 && AmountOfSeats < 10)
+    {
+        BlankSpaces(40);
+    }
+    else if ((TheaterNumber < 10 && AmountOfSeats >= 10 && AmountOfSeats < 100) ||
+             (TheaterNumber >= 10 && TheaterNumber < 100 && AmountOfSeats < 10))
+    {
+        BlankSpaces(39);
+    }
+    else if ((TheaterNumber < 10 && AmountOfSeats >= 100 && AmountOfSeats < 1000) ||
+             (TheaterNumber >= 10 && TheaterNumber < 100 && AmountOfSeats >= 10 && AmountOfSeats < 100))
+    {
+        BlankSpaces(38);
+    }
+    else if (TheaterNumber >= 10 && TheaterNumber < 100 && AmountOfSeats >= 100 && AmountOfSeats < 1000)
+    {
+        BlankSpaces(37);
+    }
+    else if ((TheaterNumber < 10 && TheaterNumber < 100 && AmountOfSeats >= 1000 && AmountOfSeats < 10000) ||
+             (TheaterNumber >= 100 && AmountOfSeats >= 100 && AmountOfSeats < 1000))
+    {
+        BlankSpaces(36);
+    }
+    else if ((TheaterNumber < 10 && TheaterNumber < 100 && AmountOfSeats >= 10000 && AmountOfSeats < 100000) ||
+             (TheaterNumber >= 100 && AmountOfSeats >= 1000 && AmountOfSeats < 10000))
+    {
+        BlankSpaces(35);
+    }
+    else if (TheaterNumber >= 100 && AmountOfSeats >= 10000 && AmountOfSeats < 100000)
+    {
+        BlankSpaces(34);
+    }
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "Each new seat costs $" << SEAT_PRICE << ".";
+    if (SEAT_PRICE < 10)
+    {
+        BlankSpaces(49);
+    }
+    else if (SEAT_PRICE >= 10 && SEAT_PRICE < 100)
+    {
+        BlankSpaces(48);
+    }
+    else if (SEAT_PRICE >= 100 && SEAT_PRICE < 1000)
+    {
+        BlankSpaces(47);
+    }
+    else if (SEAT_PRICE >= 1000 && SEAT_PRICE < 10000)
+    {
+        BlankSpaces(46);
+    }
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "The maximum number of seats is " << SEATS_MAX << " for any theater.";
+    if (SEATS_MAX < 10)
+    {
+        BlankSpaces(23);
+    }
+    else if (SEATS_MAX >= 10 && SEATS_MAX < 100)
+    {
+        BlankSpaces(22);
+    }
+    else if (SEATS_MAX >= 100 && SEATS_MAX < 1000)
+    {
+        BlankSpaces(21);
+    }
+    else if (SEATS_MAX >= 1000 && SEATS_MAX < 10000)
+    {
+        BlankSpaces(20);
+    }
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "How many seats would you like to buy? (Type a number, then ENTER)";
+    BlankSpaces(7);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    XBorderedBlankSpace();
+    BorderX();
+    BlankLines(5);
+    cout << "==> ";
 }
 
 void DecisionMaker::choiceUpgradeLevels(int TheaterNumber, float ScreenLevel, float ProjectorLevel, float SoundLevel)
@@ -455,7 +634,6 @@ void DecisionMaker::choiceHireStaff(int Employees, int Theaters)
 
 void DecisionMaker::choiceFireStaff(int Employees, int Theaters)
 {
-    int MaxEmployees = Theaters * 5;
     int NumAllowedToChange = Employees - 1;
     int TotalEmployeeCost = Employees * EMPLOYEE_WAGE;
 
@@ -840,32 +1018,50 @@ int DecisionMaker::getSelection_TheaterNum(int Theaters)
 
     do
     {
+        // Makes sure the number is a number. If not, TheaterSelection is set to trigger next if statement.
         if ( !(cin >> TheaterSelection) )
         {
-            cout << "Incorrect choice made." << endl;
+            TheaterSelection = -1.00;
+        }
+        // If TheaterSelection isn't within the acceptable range, cin is reset, and the question is re-asked.
+        if ( !(TheaterSelection > 0 && TheaterSelection <= Theaters) )
+        {
             cin.clear();
             string garbage;
             getline(cin, garbage);
+            ClearScreen();
+            // Recursive use of this function until useful input is received.
+            choiceTree_01_01(Theaters);
         }
     } while ( !(TheaterSelection >= 1 && TheaterSelection <= Theaters) );
 
     return TheaterSelection;
 }
 
-int DecisionMaker::getSelectionSeatPurchase()
+int DecisionMaker::getSelectionSeatPurchase(int TheaterNumber, int AmountOfSeats)
 {
     int SeatQuantity;
 
     do
     {
+        // Makes sure the number is a number. If not, SeatQuantity is set to trigger next if statement.
         if ( !(cin >> SeatQuantity) )
         {
-            cout << "Incorrect choice made." << endl;
+            SeatQuantity = -1.00;
+        }
+        // If SeatQuantity isn't within the acceptable range, cin is reset, and the question is re-asked.
+        if ( !(SeatQuantity >= 0 && SeatQuantity <= (SEATS_MAX - SEATS_MIN)) )
+        {
             cin.clear();
             string garbage;
             getline(cin, garbage);
+            ClearScreen();
+            // Recursive use of this function until useful input is received.
+            choiceNumOfSeats(TheaterNumber, AmountOfSeats);
         }
-    } while ( !(SeatQuantity >= 0 && SeatQuantity <= 90) );
+    } while ( !(SeatQuantity >= 0 && SeatQuantity <= (SEATS_MAX - SEATS_MIN)) );
+
+    ClearScreen();
 
     return SeatQuantity;
 }
@@ -993,7 +1189,7 @@ int DecisionMaker::getNumOfEmployeesToFire(int Employees, int Theaters)
         {
             FireQuantity = -1.00;
         }
-        // If HireQuantity isn't within the acceptable range, cin is reset, and the question is re-asked.
+        // If FireQuantity isn't within the acceptable range, cin is reset, and the question is re-asked.
         if ( !(FireQuantity >= 0 && FireQuantity <= MaxEmployeesToFire) )
         {
             cin.clear();
@@ -1288,10 +1484,71 @@ bool DecisionMaker::checksPurchaseOfSeats(int Bank, int AmountOfSeats, int Seats
 
     if (CostOfPurchase > Bank)
     {
-        cout << "That would cost $" << CostOfPurchase << " and you only have $"
-             << Bank << " in the Bank. Try a smaller purchase." << endl;
+        BorderX();
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(5);
+        cout << "That would cost $" << CostOfPurchase << ".";
+        if (CostOfPurchase < 10)
+        {
+            BlankSpaces(53);
+        }
+        else if (CostOfPurchase >= 10 && CostOfPurchase < 100)
+        {
+            BlankSpaces(52);
+        }
+        else if (CostOfPurchase >= 100 && CostOfPurchase < 1000)
+        {
+            BlankSpaces(51);
+        }
+        else if (CostOfPurchase >= 1000 && CostOfPurchase < 10000)
+        {
+            BlankSpaces(50);
+        }
+        else if (CostOfPurchase >= 10000 && CostOfPurchase < 100000)
+        {
+            BlankSpaces(49);
+        }
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(5);
+        cout << "You only have $" << Bank << " in the Bank.";
+        if (Bank < 10)
+        {
+            BlankSpaces(43);
+        }
+        else if (Bank >= 10 && Bank < 100)
+        {
+            BlankSpaces(42);
+        }
+        else if (Bank >= 100 && Bank < 1000)
+        {
+            BlankSpaces(41);
+        }
+        else if (Bank >= 1000 && Bank < 10000)
+        {
+            BlankSpaces(40);
+        }
+        else if (Bank >= 10000 && Bank < 100000)
+        {
+            BlankSpaces(39);
+        }
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(5);
+        cout << "Try a smaller purchase.";
+        BlankSpaces(49);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        BorderX();
+        BlankLines(5);
 
         Pause();
+        ClearScreen();
 
         return false;
     }
@@ -1508,7 +1765,8 @@ void DecisionMaker::activateDecisionTree()
                         choiceNumOfSeats(Decision_TheaterNum + 1,
                                          TheCinema->accessTheaters(Decision_TheaterNum)->getNumOfSeats());
                         // Player's selection is collected and stored.
-                        HowManySeatsToBuy = getSelectionSeatPurchase();
+                        HowManySeatsToBuy = getSelectionSeatPurchase(Decision_TheaterNum + 1,
+                                                                     TheCinema->accessTheaters(Decision_TheaterNum)->getNumOfSeats());
                         // Checks if player has enough money, or if number exceeds max seats for theater.
                         IllegalPurchase = checksPurchaseOfSeats(CurrentBankAmount,
                                                                 TheCinema->accessTheaters(Decision_TheaterNum)->getNumOfSeats(),
