@@ -420,12 +420,51 @@ void DecisionMaker::choiceNumOfSeats(int TheaterNumber, int AmountOfSeats)
 
 void DecisionMaker::choiceUpgradeLevels(int TheaterNumber, float ScreenLevel, float ProjectorLevel, float SoundLevel)
 {
-    cout << "In Theater #" << TheaterNumber << ", you have:" << endl;
-    cout << "1. Screen Size:        " << (ScreenLevel * 100) << " square feet." << endl;
-    cout << "2. Projector Quality:  " << (ProjectorLevel * 1000) << " pixels/square foot." << endl;
-    cout << "3. Sound Intensity:    " << (SoundLevel * 70) << " decibels." << endl << endl;
-    cout << "R. Go Back" << endl << endl;
+    BorderX();
+    XBorderedBlankSpace();
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "In Theater #" << TheaterNumber << ", you have:";
+    BlankSpaces(48);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "1. Screen Size:        " << (ScreenLevel * 100) << " square feet.";
+    BlankSpaces(30);
+    cout << "X" << endl << "X";
+    BlankSpaces(5);
+    cout << "2. Projector Quality:  " << (ProjectorLevel * 1000) << " pixels/square foot.";
+    BlankSpaces(22);
+    cout << "X" << endl << "X";
+    BlankSpaces(5);
+    cout << "3. Sound Intensity:    " << (SoundLevel * 70) << " decibels.";
+    if ((SoundLevel * 70) >= 10 && (SoundLevel * 70) < 100)
+    {
+        BlankSpaces(34);
+    }
+    else if ((SoundLevel * 70) >= 100 && (SoundLevel * 70) < 1000)
+    {
+        BlankSpaces(33);
+    }
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "R. Go Back";
+    BlankSpaces(62);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
     cout << "Which of these systems would you like to upgrade?";
+    BlankSpaces(23);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    XBorderedBlankSpace();
+    BorderX();
+    BlankLines(4);
 }
 
 bool DecisionMaker::choiceUpgradeChosenEquipment(float Level, Equipment EquipmentUpgraded)
@@ -435,10 +474,40 @@ bool DecisionMaker::choiceUpgradeChosenEquipment(float Level, Equipment Equipmen
     {
         if (Level >= LEVEL_MAX)
         {
-            cout << "You've selected to increase your screen size." << endl << endl;
-            cout << "Your screen size is " << (Level * 100) << " square feet." << endl << endl;
-            cout << "This is the maximum size available on the market." << endl << endl;
-            cout << "Try upgrading a different piece of equipment, or select a different theater." << endl << endl;
+            BorderX();
+            XBorderedBlankSpace();
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(13);
+            cout << "You've selected to increase your screen size.";
+            BlankSpaces(19);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(13);
+            cout << "Your screen size is " << (Level * 100) << " square feet.";
+            BlankSpaces(25);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(13);
+            cout << "This is the maximum size available on the market.";
+            BlankSpaces(15);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(13);
+            cout << "Try upgrading a different piece of equipment,";
+            BlankSpaces(19);
+            cout << "X" << endl << "X";
+            BlankSpaces(13);
+            cout << "or select a different theater.";
+            BlankSpaces(34);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            XBorderedBlankSpace();
+            BorderX();
+            BlankLines(5);
             Pause();
             return false;
         }
@@ -529,25 +598,25 @@ bool DecisionMaker::choiceUpgradeChosenEquipment(float Level, Equipment Equipmen
             cout << "X";
             BlankSpaces(10);
             cout << "To upgrade from " << (Level * 1000) << " pixels/square foot to " << (LevelUpgraded * 1000);
-            BlankSpaces(21);
+            BlankSpaces(14);
             cout << "X" << endl << "X";
             BlankSpaces(10);
-            cout << " pixels/square foot, it will cost $" << UPGRADE_PRICE;
+            cout << "pixels/square foot, it will cost $" << UPGRADE_PRICE;
             if (UPGRADE_PRICE < 10)
             {
-                BlankSpaces(24);
+                BlankSpaces(32);
             }
             else if (UPGRADE_PRICE >= 10 && UPGRADE_PRICE < 100)
             {
-                BlankSpaces(23);
+                BlankSpaces(31);
             }
             else if (UPGRADE_PRICE >= 100 && UPGRADE_PRICE < 1000)
             {
-                BlankSpaces(22);
+                BlankSpaces(30);
             }
             else if (UPGRADE_PRICE >= 1000 && UPGRADE_PRICE < 10000)
             {
-                BlankSpaces(21);
+                BlankSpaces(29);
             }
             cout << "X" << endl;
             XBorderedBlankSpace();
