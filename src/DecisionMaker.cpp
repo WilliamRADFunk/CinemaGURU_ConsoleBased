@@ -216,19 +216,169 @@ void DecisionMaker::choiceTree_01_05(int PromotionInUseIndex)
 
 void DecisionMaker::choiceTree_01_06(int Theaters)
 {
-    cout << "You've chosen to expand your Cinema by one additional theater." << endl << endl;
-    cout << "A new theater costs $" << THEATER_PRICE << "." << endl << endl;
-    cout << "Keep in mind that each theater you own costs you $" << THEATER_RENT << " per Week in rent." << endl << endl;
-    cout << "Your cinema currently has " << Theaters << " theater(s) out of a maximum of " << THEATERS_MAX << "." << endl << endl;
-    cout << "This number of theater(s) costs you $" << Theaters * THEATER_RENT << " per Week in rent." << endl << endl;
+    int TotalTheaterRent = Theaters * THEATER_RENT;
+
+    BorderX();
+    XBorderedBlankSpace();
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "You've chosen to expand your Cinema by one additional theater.";
+    BlankSpaces(10);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "A new theater costs $" << THEATER_PRICE << ".";
+    if (THEATER_PRICE < 10)
+    {
+        BlankSpaces(49);
+    }
+    else if (THEATER_PRICE >= 10 && THEATER_PRICE < 100)
+    {
+        BlankSpaces(48);
+    }
+    else if (THEATER_PRICE >= 100 && THEATER_PRICE < 1000)
+    {
+        BlankSpaces(47);
+    }
+    else if (THEATER_PRICE >= 1000 && THEATER_PRICE < 10000)
+    {
+        BlankSpaces(46);
+    }
+    else if (THEATER_PRICE >= 10000 && THEATER_PRICE < 100000)
+    {
+        BlankSpaces(45);
+    }
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "Keep in mind that each theater you own costs";
+    BlankSpaces(28);
+    cout << "X" << endl << "X";
+    BlankSpaces(5);
+    cout << "you $" << THEATER_RENT << " per Week in rent.";
+    if (THEATER_RENT < 10)
+    {
+        BlankSpaces(48);
+    }
+    else if (THEATER_RENT >= 10 && THEATER_RENT < 100)
+    {
+        BlankSpaces(47);
+    }
+    else if (THEATER_RENT >= 100 && THEATER_RENT < 1000)
+    {
+        BlankSpaces(46);
+    }
+    else if (THEATER_RENT >= 1000 && THEATER_RENT < 10000)
+    {
+        BlankSpaces(45);
+    }
+    else if (THEATER_RENT >= 10000 && THEATER_RENT < 100000)
+    {
+        BlankSpaces(44);
+    }
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "Your cinema currently has " << Theaters << " theater(s) out of a maximum of " << THEATERS_MAX << ".";
+    if (Theaters < 10 && THEATERS_MAX < 10)
+    {
+        BlankSpaces(11);
+    }
+    else if (Theaters < 10 && THEATERS_MAX >= 10 && THEATERS_MAX < 100)
+    {
+        BlankSpaces(10);
+    }
+    else if ((Theaters < 10 && THEATERS_MAX >= 100 && THEATERS_MAX < 1000) ||
+             (Theaters >= 10 && Theaters < 100 && THEATERS_MAX >= 10 && THEATERS_MAX < 100))
+    {
+        BlankSpaces(9);
+    }
+    else if (Theaters >= 10 && Theaters < 100 && THEATERS_MAX >= 100 && THEATERS_MAX < 1000)
+    {
+        BlankSpaces(8);
+    }
+    else if (Theaters >= 100 && Theaters < 1000 && THEATERS_MAX >= 100 && THEATERS_MAX < 1000)
+    {
+        BlankSpaces(7);
+    }
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "This number of theater(s) costs you $" << TotalTheaterRent << " per Week in rent.";
+    if (TotalTheaterRent < 10)
+    {
+        BlankSpaces(16);
+    }
+    else if (TotalTheaterRent >= 10 && TotalTheaterRent < 100)
+    {
+        BlankSpaces(15);
+    }
+    else if (TotalTheaterRent >= 100 && TotalTheaterRent < 1000)
+    {
+        BlankSpaces(14);
+    }
+    else if (TotalTheaterRent >= 1000 && TotalTheaterRent < 10000)
+    {
+        BlankSpaces(13);
+    }
+    else if (TotalTheaterRent >= 10000 && TotalTheaterRent < 100000)
+    {
+        BlankSpaces(12);
+    }
+    cout << "X" << endl;
+    XBorderedBlankSpace();
     if ( !(Theaters >= THEATERS_MAX) )
     {
-        cout << endl << "Expand for an additional theater space? (Y or N)";
+        cout << "X";
+        BlankSpaces(5);
+        cout << "Expand for an additional theater space? (Y or N)";
+        BlankSpaces(24);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        BorderX();
+        BlankLines(3);
     }
     else
     {
-        cout << endl << "You already have the maximum amount of theaters your building will support" << endl << endl;
-        cout << "Try upgrading your existing theaters, picking a better promotion, or hiring more workers." << endl << endl;
+        XBorderedBlankSpace();
+        BorderX();
+        BlankLines(4);
+
+        Pause();
+        ClearScreen();
+
+        BorderX();
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(5);
+        cout << "You already have the maximum amount of theaters";
+        BlankSpaces(25);
+        cout << "X" << endl << "X";
+        BlankSpaces(5);
+        cout << "your building will support";
+        BlankSpaces(46);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(5);
+        cout << "Try upgrading your existing theaters, picking a better promotion,";
+        BlankSpaces(7);
+        cout << "X" << endl << "X";
+        BlankSpaces(5);
+        cout << "or hiring more workers.";
+        BlankSpaces(49);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        BorderX();
+        BlankLines(5);
         Pause();
     }
 }
