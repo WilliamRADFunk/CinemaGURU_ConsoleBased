@@ -316,9 +316,57 @@ void DecisionMaker::choiceTree_04(int Theaters)
 {
     if (Theaters > 1)
     {
-        cout << "You've selected to Change the Movie in one of your theaters." << endl << endl;
-        cout << "You have " << Theaters << " theater(s)." << endl << endl;
-        cout << "Select 1 through " << Theaters << " to choose which theater to change movies for:";
+        BorderX();
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(5);
+        cout << "You've selected to Change the Movie in one of your theaters.";
+        BlankSpaces(12);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(5);
+        cout << "You have " << Theaters << " theater(s).";
+        if (Theaters < 10)
+        {
+            BlankSpaces(50);
+        }
+        else if (Theaters >= 10 && Theaters < 100)
+        {
+            BlankSpaces(49);
+        }
+        else if (Theaters >= 100 && Theaters < 1000)
+        {
+            BlankSpaces(48);
+        }
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(5);
+        cout << "Select 1 through " << Theaters << ", (then ENTER)";
+        if (Theaters < 10)
+        {
+            BlankSpaces(40);
+        }
+        else if (Theaters >= 10 && Theaters < 100)
+        {
+            BlankSpaces(39);
+        }
+        else if (Theaters >= 100 && Theaters < 1000)
+        {
+            BlankSpaces(38);
+        }
+        cout << "X" << endl << "X";
+        BlankSpaces(5);
+        cout << "to choose which theater to change movies for:";
+        BlankSpaces(27);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        BorderX();
+        BlankLines(5);
+        cout << "==> ";
     }
 }
 
