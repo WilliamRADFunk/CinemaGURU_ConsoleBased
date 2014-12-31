@@ -192,15 +192,42 @@ void DecisionMaker::choiceTree_01_04(int Theaters)
 {
     if (Theaters > 1)
     {
-        cout << "You've chosen to purchase upgrades for your cinema." << endl << endl;
-        cout << "You have " << Theaters << " theater(s)." << endl;
-        cout << "Select 1 through " << Theaters << " to choose which theater to buy upgrades for:";
+        BorderX();
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(5);
+        cout << "You've chosen to purchase upgrades for your cinema.";
+        BlankSpaces(21);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(5);
+        cout << "You have " << Theaters << " theater(s).";
+        BlankSpaces(49);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(5);
+        cout << "Select 1 through " << Theaters << ", (then ENTER)";
+        BlankSpaces(39);
+        cout << "X" << endl << "X";
+        BlankSpaces(5);
+        cout << "to choose which theater to buy upgrades for:";
+        BlankSpaces(28);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        BorderX();
+        BlankLines(5);
+        cout << "==> ";
     }
 }
 
 void DecisionMaker::choiceTree_01_05(int PromotionInUseIndex)
 {
     string PromotionInUse = Promotions[PromotionInUseIndex];
+
     cout << "You've chosen to change the promotion you're using." << endl << endl;
     cout << "You're currently using: " << PromotionInUse << " ($" << (PROMOTION_MULTIPLY_COST * PromotionInUseIndex);
     cout << " / Week)" << endl << endl;

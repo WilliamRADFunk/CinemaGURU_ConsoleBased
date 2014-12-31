@@ -125,7 +125,7 @@ void introduction()
     XBorderedBlankSpace();
     XBorderedBlankSpace();
     BorderX();
-    BlankLines(5);
+    BlankLines(7);
     Pause();
 }
 
