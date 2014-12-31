@@ -1957,21 +1957,61 @@ bool DecisionMaker::checkPurchaseOfUpgrade(int Bank, float Level, Equipment Equi
     }
     else
     {
-        cout << endl << endl << "Congratulations!" << endl << endl;
+        ClearScreen();
+
+        BorderX();
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(15);
+        cout << "Congratulations!";
+        BlankSpaces(46);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(15);
         cout << "You've purchased an upgrade to your ";
         if (EquipmentUpgraded == 0)
         {
-            cout << "screen size. It is now " << ((Level + 0.1) * 100) << " square feet." << endl << endl;
+            cout << "screen size.";
+            BlankSpaces(14);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(15);
+            cout << "It is now " << ((Level + 0.1) * 100) << " square feet.";
+            BlankSpaces(33);
+            cout << "X" << endl;
         }
         else if (EquipmentUpgraded == 1)
         {
-            cout << "projector quality." << endl << "It is now " << ((Level + 0.1) * 1000) << " pixels/square foot." << endl << endl;
+            cout << "projector quality.";
+            BlankSpaces(8);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(15);
+            cout << "It is now " << ((Level + 0.1) * 1000) << " pixels/square foot.";
+            BlankSpaces(25);
+            cout << "X" << endl;
         }
         else if (EquipmentUpgraded == 2)
         {
-            cout << "sound intensity. It is now " << ((Level + 0.1) * 70) << " decibels." << endl << endl;
+            cout << "sound intensity.";
+            BlankSpaces(10);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(15);
+            cout << "It is now " << ((Level + 0.1) * 70) << " decibels.";
+            BlankSpaces(37);
+            cout << "X" << endl;
         }
         else cout << endl << endl << "ERROR: No such equipment type exists!" << endl << endl;
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        BorderX();
+        BlankLines(5);
         Pause();
         return false;
     }
