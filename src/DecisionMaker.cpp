@@ -478,10 +478,40 @@ bool DecisionMaker::choiceUpgradeChosenEquipment(float Level, Equipment Equipmen
     {
         if (Level >= LEVEL_MAX)
         {
-            cout << "You've selected to increase your projector quality." << endl << endl;
-            cout << "Your screen size is " << (Level * 1000) << " pixels/square foot." << endl << endl;
-            cout << "This is the maximum size available on the market." << endl << endl;
-            cout << "Try upgrading a different piece of equipment, or select a different theater." << endl << endl;
+            BorderX();
+            XBorderedBlankSpace();
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(13);
+            cout << "You've selected to increase your projector quality.";
+            BlankSpaces(13);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(13);
+            cout << "Your projector quality is " << (Level * 1000) << " pixels/square foot.";
+            BlankSpaces(11);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(13);
+            cout << "This is the maximum size available on the market.";
+            BlankSpaces(15);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(13);
+            cout << "Try upgrading a different piece of equipment,";
+            BlankSpaces(19);
+            cout << "X" << endl << "X";
+            BlankSpaces(13);
+            cout << "or select a different theater.";
+            BlankSpaces(34);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            XBorderedBlankSpace();
+            BorderX();
+            BlankLines(5);
             Pause();
             return false;
         }
@@ -498,12 +528,27 @@ bool DecisionMaker::choiceUpgradeChosenEquipment(float Level, Equipment Equipmen
             XBorderedBlankSpace();
             cout << "X";
             BlankSpaces(10);
-            cout << "To upgrade from " << (Level * 1000) << " pixels/square foot to ";
+            cout << "To upgrade from " << (Level * 1000) << " pixels/square foot to " << (LevelUpgraded * 1000);
             BlankSpaces(21);
             cout << "X" << endl << "X";
             BlankSpaces(10);
-            cout << (LevelUpgraded * 1000) << " pixels/square foot, it will cost $" << UPGRADE_PRICE;
-            BlankSpaces(22);
+            cout << " pixels/square foot, it will cost $" << UPGRADE_PRICE;
+            if (UPGRADE_PRICE < 10)
+            {
+                BlankSpaces(24);
+            }
+            else if (UPGRADE_PRICE >= 10 && UPGRADE_PRICE < 100)
+            {
+                BlankSpaces(23);
+            }
+            else if (UPGRADE_PRICE >= 100 && UPGRADE_PRICE < 1000)
+            {
+                BlankSpaces(22);
+            }
+            else if (UPGRADE_PRICE >= 1000 && UPGRADE_PRICE < 10000)
+            {
+                BlankSpaces(21);
+            }
             cout << "X" << endl;
             XBorderedBlankSpace();
             cout << "X";
@@ -521,10 +566,47 @@ bool DecisionMaker::choiceUpgradeChosenEquipment(float Level, Equipment Equipmen
     {
         if (Level >= LEVEL_MAX)
         {
-            cout << "You've selected to increase your sound intensity." << endl << endl;
-            cout << "Your screen size is " << (Level * 70) << " decibels." << endl << endl;
-            cout << "This is the maximum size available on the market." << endl << endl;
-            cout << "Try upgrading a different piece of equipment, or select a different theater." << endl << endl;
+            BorderX();
+            XBorderedBlankSpace();
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(14);
+            cout << "You've selected to increase your sound intensity.";
+            BlankSpaces(14);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(14);
+            cout << "Your sound volume is " << (Level * 70) << " decibels.";
+            if ((Level * 70) >= 10 && (Level * 70) < 100)
+            {
+                BlankSpaces(27);
+            }
+            else if ((Level * 70) >= 100 && (Level * 70) < 1000)
+            {
+                BlankSpaces(26);
+            }
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(14);
+            cout << "This is the maximum size available on the market.";
+            BlankSpaces(14);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(14);
+            cout << "Try upgrading a different piece of equipment,";
+            BlankSpaces(18);
+            cout << "X" << endl << "X";
+            BlankSpaces(14);
+            cout << "or select a different theater.";
+            BlankSpaces(33);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            XBorderedBlankSpace();
+            BorderX();
+            BlankLines(5);
             Pause();
             return false;
         }
@@ -541,12 +623,35 @@ bool DecisionMaker::choiceUpgradeChosenEquipment(float Level, Equipment Equipmen
             XBorderedBlankSpace();
             cout << "X";
             BlankSpaces(14);
-            cout << "To upgrade from " << (Level * 70) << " decibels to ";
-            BlankSpaces(29);
+            cout << "To upgrade from " << (Level * 70) << " decibels to " << (LevelUpgraded * 70);
+            if ((Level * 70) >= 10 && (Level * 70) < 100 && (LevelUpgraded * 70) >= 10 && (LevelUpgraded * 70) < 100)
+            {
+                BlankSpaces(24);
+            }
+            else if (((Level * 70) >= 100 && (Level * 70) < 1000 && (LevelUpgraded * 70) >= 10 && (LevelUpgraded * 70) < 100) ||
+                     ((Level * 70) >= 10 && (Level * 70) < 100 && (LevelUpgraded * 70) >= 100 && (LevelUpgraded * 70) < 1000))
+            {
+                BlankSpaces(23);
+            }
             cout << "X" << endl << "X";
             BlankSpaces(14);
-            cout << (LevelUpgraded * 70) << " decibels, it will cost $" << UPGRADE_PRICE;
-            BlankSpaces(30);
+            cout << "decibels, it will cost $" << UPGRADE_PRICE << ".";
+            if (UPGRADE_PRICE < 10)
+            {
+                BlankSpaces(37);
+            }
+            else if (UPGRADE_PRICE >= 10 && UPGRADE_PRICE < 100)
+            {
+                BlankSpaces(36);
+            }
+            else if (UPGRADE_PRICE >= 100 && UPGRADE_PRICE < 1000)
+            {
+                BlankSpaces(35);
+            }
+            else if (UPGRADE_PRICE >= 1000 && UPGRADE_PRICE < 10000)
+            {
+                BlankSpaces(34);
+            }
             cout << "X" << endl;
             XBorderedBlankSpace();
             cout << "X";
@@ -1043,10 +1148,59 @@ char DecisionMaker::getSelection_01_05(int PreviousPromotion)
         {
             if (PreviousPromotion != (i - 48))
             {
-                cout << "You've selected the promotion: " << Promotions[i - 48] << endl << endl;
-                cout << "It will cost you $" << (PROMOTION_MULTIPLY_COST * (i - 48)) << " / Week to use." << endl << endl;
+                BorderX();
+                XBorderedBlankSpace();
+                XBorderedBlankSpace();
+                cout << "X";
+                BlankSpaces(17);
+                cout << "You've selected the promotion: " << Promotions[i - 48];
+                BlankSpaces(17);
+                cout << "X" << endl;
+                XBorderedBlankSpace();
+                cout << "X";
+                BlankSpaces(17);
+                cout << "It will cost you $" << (PROMOTION_MULTIPLY_COST * (i - 48)) << " / Week to use.";
+                if ((PROMOTION_MULTIPLY_COST * (i - 48)) < 10)
+                {
+                    BlankSpaces(26);
+                }
+                else if ((PROMOTION_MULTIPLY_COST * (i - 48)) >= 10 && (PROMOTION_MULTIPLY_COST * (i - 48)) < 100)
+                {
+                    BlankSpaces(25);
+                }
+                else if ((PROMOTION_MULTIPLY_COST * (i - 48)) >= 100 && (PROMOTION_MULTIPLY_COST * (i - 48)) < 1000)
+                {
+                    BlankSpaces(24);
+                }
+                else if ((PROMOTION_MULTIPLY_COST * (i - 48)) >= 1000 && (PROMOTION_MULTIPLY_COST * (i - 48)) < 10000)
+                {
+                    BlankSpaces(23);
+                }
+                else if ((PROMOTION_MULTIPLY_COST * (i - 48)) >= 10000 && (PROMOTION_MULTIPLY_COST * (i - 48)) < 100000)
+                {
+                    BlankSpaces(22);
+                }
+                cout << "X" << endl;
+                XBorderedBlankSpace();
+                XBorderedBlankSpace();
+                BorderX();
+                BlankLines(7);
             }
-            else cout << "You've chosen to keep the same promotion." << endl << endl;
+            else
+            {
+                BorderX();
+                XBorderedBlankSpace();
+                XBorderedBlankSpace();
+                cout << "X";
+                BlankSpaces(18);
+                cout << "You've chosen to keep the same promotion.";
+                BlankSpaces(18);
+                cout << "X" << endl;
+                XBorderedBlankSpace();
+                XBorderedBlankSpace();
+                BorderX();
+                BlankLines(5);
+            }
 
             Pause();
 
@@ -1061,6 +1215,7 @@ char DecisionMaker::getSelection_01_05(int PreviousPromotion)
 bool DecisionMaker::getSelection_01_06(int Bank, int Theaters)
 {
     char ch;
+    int TotalTheatersCost = (Theaters + 1) * THEATER_RENT;
 
     while ( !(Theaters >= THEATERS_MAX) )
     {
@@ -1072,19 +1227,113 @@ bool DecisionMaker::getSelection_01_06(int Bank, int Theaters)
         {
             if (Bank >= THEATER_PRICE)
             {
-                cout << endl << endl << "Congratulations!" << endl << endl;
-                cout << "You've expanded your cinema by one theater." << endl << endl;
-                cout << "It starts off with " << SEATS_MIN << " seats, and currently isn't playing a movie." << endl << endl;
-                cout << "You now have a total of " << (Theaters + 1)<< " theaters, costing you $" << ((Theaters + 1) * THEATER_RENT);
-                cout << " per Week" << endl << endl;
+                BorderX();
+                XBorderedBlankSpace();
+                XBorderedBlankSpace();
+                cout << "X";
+                BlankSpaces(15);
+                cout << "Congratulations!";
+                BlankSpaces(46);
+                cout << "X" << endl;
+                XBorderedBlankSpace();
+                cout << "X";
+                BlankSpaces(15);
+                cout << "You've expanded your cinema by one theater.";
+                BlankSpaces(19);
+                cout << "X" << endl;
+                XBorderedBlankSpace();
+                cout << "X";
+                BlankSpaces(15);
+                cout << "It starts off with " << SEATS_MIN << " seats,";
+                if (SEATS_MIN < 10)
+                {
+                    BlankSpaces(35);
+                }
+                else if (SEATS_MIN >= 10 && SEATS_MIN < 100)
+                {
+                    BlankSpaces(34);
+                }
+                else if (SEATS_MIN >= 100 && SEATS_MIN < 1000)
+                {
+                    BlankSpaces(33);
+                }
+                else if (SEATS_MIN >= 1000 && SEATS_MIN < 10000)
+                {
+                    BlankSpaces(32);
+                }
+                cout << "X" << endl << "X";
+                BlankSpaces(15);
+                cout << "and currently isn't playing a movie.";
+                BlankSpaces(26);
+                cout << "X" << endl;
+                XBorderedBlankSpace();
+                cout << "X";
+                BlankSpaces(15);
+                cout << "You now have a total of " << (Theaters + 1) << " theaters,";
+                if ((Theaters + 1) < 10)
+                {
+                    BlankSpaces(27);
+                }
+                else if ((Theaters + 1) >= 10 && (Theaters + 1) < 100)
+                {
+                    BlankSpaces(26);
+                }
+                else if ((Theaters + 1) >= 100 && (Theaters + 1) < 1000)
+                {
+                    BlankSpaces(25);
+                }
+                cout << "X" << endl << "X";
+                BlankSpaces(15);
+                cout << "costing you $" << TotalTheatersCost << " per Week";
+                if (TotalTheatersCost < 10)
+                {
+                    BlankSpaces(39);
+                }
+                else if (TotalTheatersCost >= 10 && TotalTheatersCost < 100)
+                {
+                    BlankSpaces(38);
+                }
+                else if (TotalTheatersCost >= 100 && TotalTheatersCost < 1000)
+                {
+                    BlankSpaces(37);
+                }
+                else if (TotalTheatersCost >= 1000 && TotalTheatersCost < 10000)
+                {
+                    BlankSpaces(36);
+                }
+                else if (TotalTheatersCost >= 10000 && TotalTheatersCost < 100000)
+                {
+                    BlankSpaces(35);
+                }
+                cout << "X" << endl;
+                XBorderedBlankSpace();
+                XBorderedBlankSpace();
+                BorderX();
+                BlankLines(5);
                 Pause();
 
                 return true;
             }
             else
             {
-                cout << endl << endl << "You don't have enough money in the bank for this expansion." << endl << endl;
-                cout << "Try again when you've got more money." << endl << endl;
+                BorderX();
+                XBorderedBlankSpace();
+                XBorderedBlankSpace();
+                cout << "X";
+                BlankSpaces(9);
+                cout << "You don't have enough money in the bank for this expansion.";
+                BlankSpaces(9);
+                cout << "X" << endl;
+                XBorderedBlankSpace();
+                cout << "X";
+                BlankSpaces(9);
+                cout << "Try again when you've got more money.";
+                BlankSpaces(31);
+                cout << "X" << endl;
+                XBorderedBlankSpace();
+                XBorderedBlankSpace();
+                BorderX();
+                BlankLines(7);
                 Pause();
 
                 return false;
@@ -1869,7 +2118,26 @@ bool DecisionMaker::checkPurchaseOfSnacks(int Bank, int SnacksOwned)
 {
     if (Bank < SNACK_PRICE)
     {
-        cout << endl << endl << "You don't have enough money. Perhaps you can try again later." << endl << endl;
+        ClearScreen();
+
+        BorderX();
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(24);
+        cout << "You don't have enough money.";
+        BlankSpaces(25);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(24);
+        cout << "Perhaps you can try again later.";
+        BlankSpaces(21);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        BorderX();
+        BlankLines(7);
         Pause();
         return true;
     }
@@ -1951,7 +2219,26 @@ bool DecisionMaker::checkPurchaseOfUpgrade(int Bank, float Level, Equipment Equi
 {
     if (Bank < UPGRADE_PRICE)
     {
-        cout << endl << endl << "You don't have enough money. Perhaps you can try again later." << endl << endl;
+        ClearScreen();
+
+        BorderX();
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(24);
+        cout << "You don't have enough money.";
+        BlankSpaces(25);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(24);
+        cout << "Perhaps you can try again later.";
+        BlankSpaces(21);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        BorderX();
+        BlankLines(7);
         Pause();
         return true;
     }
@@ -2004,7 +2291,14 @@ bool DecisionMaker::checkPurchaseOfUpgrade(int Bank, float Level, Equipment Equi
             cout << "X";
             BlankSpaces(15);
             cout << "It is now " << ((Level + 0.1) * 70) << " decibels.";
-            BlankSpaces(37);
+            if (((Level + 0.1) * 70) >= 10 && ((Level + 0.1) * 70) < 100)
+            {
+                BlankSpaces(37);
+            }
+            else if (((Level + 0.1) * 70) >= 100 && ((Level + 0.1) * 70) < 1000)
+            {
+                BlankSpaces(36);
+            }
             cout << "X" << endl;
         }
         else cout << endl << endl << "ERROR: No such equipment type exists!" << endl << endl;
