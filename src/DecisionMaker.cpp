@@ -444,9 +444,34 @@ bool DecisionMaker::choiceUpgradeChosenEquipment(float Level, Equipment Equipmen
         }
         else
         {
-            cout << "You've selected to increase your screen size." << endl << endl;
+            BorderX();
+            XBorderedBlankSpace();
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(15);
+            cout << "You've selected to increase your screen size.";
+            BlankSpaces(17);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(15);
             cout << "To upgrade from " << (Level * 100) << " square feet to ";
-            cout << (LevelUpgraded * 100) << " square feet," << endl;
+            BlankSpaces(24);
+            cout << "X" << endl << "X";
+            BlankSpaces(15);
+            cout << (LevelUpgraded * 100) << " square feet, it will cost $" << UPGRADE_PRICE << ".";
+            BlankSpaces(24);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(15);
+            cout << "Purchase upgrade? (Y or N)";
+            BlankSpaces(36);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            XBorderedBlankSpace();
+            BorderX();
+            BlankLines(5);
         }
     }
     else if (EquipmentUpgraded == 1)
@@ -462,9 +487,34 @@ bool DecisionMaker::choiceUpgradeChosenEquipment(float Level, Equipment Equipmen
         }
         else
         {
-            cout << "You've selected to increase your projector quality." << endl << endl;
+            BorderX();
+            XBorderedBlankSpace();
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(10);
+            cout << "You've selected to increase your projector quality.";
+            BlankSpaces(16);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(10);
             cout << "To upgrade from " << (Level * 1000) << " pixels/square foot to ";
-            cout << (LevelUpgraded * 1000) << " pixels/square foot," << endl;
+            BlankSpaces(21);
+            cout << "X" << endl << "X";
+            BlankSpaces(10);
+            cout << (LevelUpgraded * 1000) << " pixels/square foot, it will cost $" << UPGRADE_PRICE;
+            BlankSpaces(22);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(10);
+            cout << "Purchase upgrade? (Y or N)";
+            BlankSpaces(41);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            XBorderedBlankSpace();
+            BorderX();
+            BlankLines(5);
         }
     }
     else if (EquipmentUpgraded == 2)
@@ -480,17 +530,40 @@ bool DecisionMaker::choiceUpgradeChosenEquipment(float Level, Equipment Equipmen
         }
         else
         {
-            cout << "You've selected to increase your sound intensity." << endl << endl;
+            BorderX();
+            XBorderedBlankSpace();
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(14);
+            cout << "You've selected to increase your sound intensity.";
+            BlankSpaces(14);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(14);
             cout << "To upgrade from " << (Level * 70) << " decibels to ";
-            cout << (LevelUpgraded * 70) << " decibels," << endl;
+            BlankSpaces(29);
+            cout << "X" << endl << "X";
+            BlankSpaces(14);
+            cout << (LevelUpgraded * 70) << " decibels, it will cost $" << UPGRADE_PRICE;
+            BlankSpaces(30);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(14);
+            cout << "Purchase upgrade? (Y or N)";
+            BlankSpaces(37);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            XBorderedBlankSpace();
+            BorderX();
+            BlankLines(5);
         }
     }
     else
     {
         cout << endl << endl << "ERROR: No such equipment type exists!" << endl << endl;
     }
-
-    cout << " it will cost $" << UPGRADE_PRICE << ". Purchase upgrade? (Y or N)";
     return true;
 }
 
@@ -2250,10 +2323,6 @@ void DecisionMaker::activateDecisionTree()
                                     Pause();
                                 }
                             }
-                            else
-                            {
-                                DecisionBuyUpgrade = 'R';
-                            }
                         }
 //...................................................................................................................
                         // Player chose to upgrade projector quality.
@@ -2304,10 +2373,6 @@ void DecisionMaker::activateDecisionTree()
                                     Pause();
                                 }
                             }
-                            else
-                            {
-                                DecisionBuyUpgrade = 'R';
-                            }
                         }
 //...................................................................................................................
                         // Player chose to upgrade sound intensity.
@@ -2357,10 +2422,6 @@ void DecisionMaker::activateDecisionTree()
                                     BlankLines(8);
                                     Pause();
                                 }
-                            }
-                            else
-                            {
-                                DecisionBuyUpgrade = 'R';
                             }
                         }
                         // Player chose to go back a step.
