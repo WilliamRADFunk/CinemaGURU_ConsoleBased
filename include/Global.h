@@ -22,7 +22,7 @@
 #define RANDOM_EVENTS_MAX 20 // Only 20 scenarios have been written. More will need to be added before this can be changed.
 #define PROFIT_MAX 100000 // Formatting can handle $999,999. It will need adjustment for more.
 #define DEBT_MAX 5000 // Formatting can handle $999,999. It will need adjustment beyond that.
-#define MaxLevel 1.5 // Do not exceed. This directly affects the algorithm used to determine tickets purchased each turn.
+#define LEVEL_MAX 1.5 // Do not exceed. This directly affects the algorithm used to determine tickets purchased each turn.
 
 enum Season {Winter, Spring, Summer, Autumn, Error};
 enum Equipment {Screen_Size, Projector_Quality, Sound_Intensity};

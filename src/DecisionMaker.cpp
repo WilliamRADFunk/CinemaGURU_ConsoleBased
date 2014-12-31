@@ -428,30 +428,70 @@ void DecisionMaker::choiceUpgradeLevels(int TheaterNumber, float ScreenLevel, fl
     cout << "Which of these systems would you like to upgrade?";
 }
 
-void DecisionMaker::choiceUpgradeChosenEquipment(float Level, Equipment EquipmentUpgraded)
+bool DecisionMaker::choiceUpgradeChosenEquipment(float Level, Equipment EquipmentUpgraded)
 {
     float LevelUpgraded = Level + 0.1;
-    cout << "You've selected to increase your ";
     if (EquipmentUpgraded == 0)
     {
-        cout << "screen size." << endl << endl;
-        cout << "To upgrade from " << (Level * 100) << " square feet to "
-         << (LevelUpgraded * 100) << " square feet," << endl;
+        if (Level >= LEVEL_MAX)
+        {
+            cout << "You've selected to increase your screen size." << endl << endl;
+            cout << "Your screen size is " << (Level * 100) << " square feet." << endl << endl;
+            cout << "This is the maximum size available on the market." << endl << endl;
+            cout << "Try upgrading a different piece of equipment, or select a different theater." << endl << endl;
+            Pause();
+            return false;
+        }
+        else
+        {
+            cout << "You've selected to increase your screen size." << endl << endl;
+            cout << "To upgrade from " << (Level * 100) << " square feet to ";
+            cout << (LevelUpgraded * 100) << " square feet," << endl;
+        }
     }
     else if (EquipmentUpgraded == 1)
     {
-        cout << "projector quality." << endl << endl;
-        cout << "To upgrade from " << (Level * 1000) << " pixels/square foot to "
-         << (LevelUpgraded * 1000) << " pixels/square foot," << endl;
+        if (Level >= LEVEL_MAX)
+        {
+            cout << "You've selected to increase your projector quality." << endl << endl;
+            cout << "Your screen size is " << (Level * 1000) << " pixels/square foot." << endl << endl;
+            cout << "This is the maximum size available on the market." << endl << endl;
+            cout << "Try upgrading a different piece of equipment, or select a different theater." << endl << endl;
+            Pause();
+            return false;
+        }
+        else
+        {
+            cout << "You've selected to increase your projector quality." << endl << endl;
+            cout << "To upgrade from " << (Level * 1000) << " pixels/square foot to ";
+            cout << (LevelUpgraded * 1000) << " pixels/square foot," << endl;
+        }
     }
     else if (EquipmentUpgraded == 2)
     {
-        cout << "sound intensity." << endl << endl;
-        cout << "To upgrade from " << (Level * 70) << " decibels to "
-         << (LevelUpgraded * 70) << " decibels," << endl;
+        if (Level >= LEVEL_MAX)
+        {
+            cout << "You've selected to increase your sound intensity." << endl << endl;
+            cout << "Your screen size is " << (Level * 70) << " decibels." << endl << endl;
+            cout << "This is the maximum size available on the market." << endl << endl;
+            cout << "Try upgrading a different piece of equipment, or select a different theater." << endl << endl;
+            Pause();
+            return false;
+        }
+        else
+        {
+            cout << "You've selected to increase your sound intensity." << endl << endl;
+            cout << "To upgrade from " << (Level * 70) << " decibels to ";
+            cout << (LevelUpgraded * 70) << " decibels," << endl;
+        }
     }
-    else cout << endl << endl << "ERROR: No such equipment type exists!" << endl << endl;
+    else
+    {
+        cout << endl << endl << "ERROR: No such equipment type exists!" << endl << endl;
+    }
+
     cout << " it will cost $" << UPGRADE_PRICE << ". Purchase upgrade? (Y or N)";
+    return true;
 }
 
 string DecisionMaker::calculateStaffLevel(int Employees, int Theaters)
@@ -2165,47 +2205,54 @@ void DecisionMaker::activateDecisionTree()
                         // Player chose to upgrade screen size.
                         if (DecisionBuyUpgrade == '1')
                         {
-                            // Displays next level of screen size and cost. Asks player yes or no to purchase.
-                            choiceUpgradeChosenEquipment(TheCinema->accessTheaters(Decision_TheaterNum)->getScreenLevel(),
-                                                         Screen_Size);
-                            // Player's selection is collected and stored.
-                            char ch = getYesOrNo();
-                            if (ch == 'y' || ch == 'Y')
+                            // Displays next level of Screen Size and cost. Asks player yes or no to purchase.
+                            // Also, if maximum level has been achieved, if returns false and exits.
+                            if (choiceUpgradeChosenEquipment(TheCinema->accessTheaters(Decision_TheaterNum)->getScreenLevel(),
+                                                         Screen_Size))
                             {
-                                // If check comes back true, there's not enough money in the bank.
-                                if (checkPurchaseOfUpgrade(CurrentBankAmount,
-                                                          TheCinema->accessTheaters(Decision_TheaterNum)->getScreenLevel(),
-                                                          Screen_Size))
+                                // Player's selection is collected and stored.
+                                char ch = getYesOrNo();
+                                if (ch == 'y' || ch == 'Y')
                                 {
-                                    // Purchase failed, control reverts back to specific theater's upgrade options.
-                                    DecisionBuyUpgrade = 'R';
+                                    // If check comes back true, there's not enough money in the bank.
+                                    if (checkPurchaseOfUpgrade(CurrentBankAmount,
+                                                              TheCinema->accessTheaters(Decision_TheaterNum)->getScreenLevel(),
+                                                              Screen_Size))
+                                    {
+                                        // Purchase failed, control reverts back to specific theater's upgrade options.
+                                        DecisionBuyUpgrade = 'R';
+                                    }
+                                    else
+                                    {
+                                        TheCinema->adjustBank(-(UPGRADE_PRICE));
+                                        TheCinema->accessTheaters(Decision_TheaterNum)->addScreenLevel();
+                                        // With purchase made, control reverts back to main menu.
+                                        DecisionBuyUpgrade = 'R';
+                                        DecisionBuy = 'R';
+                                    }
                                 }
-                                else
+                                else if (ch == 'n' || ch == 'N')
                                 {
-                                    TheCinema->adjustBank(-(UPGRADE_PRICE));
-                                    TheCinema->accessTheaters(Decision_TheaterNum)->addScreenLevel();
-                                    // With purchase made, control reverts back to main menu.
-                                    DecisionBuyUpgrade = 'R';
-                                    DecisionBuy = 'R';
+                                    ClearScreen();
+
+                                    BorderX();
+                                    XBorderedBlankSpace();
+                                    XBorderedBlankSpace();
+                                    cout << "X";
+                                    BlankSpaces(24);
+                                    cout << "Perhaps another time then...";
+                                    BlankSpaces(25);
+                                    cout << "X" << endl;
+                                    XBorderedBlankSpace();
+                                    XBorderedBlankSpace();
+                                    BorderX();
+                                    BlankLines(8);
+                                    Pause();
                                 }
                             }
-                            else if (ch == 'n' || ch == 'N')
+                            else
                             {
-                                ClearScreen();
-
-                                BorderX();
-                                XBorderedBlankSpace();
-                                XBorderedBlankSpace();
-                                cout << "X";
-                                BlankSpaces(24);
-                                cout << "Perhaps another time then...";
-                                BlankSpaces(25);
-                                cout << "X" << endl;
-                                XBorderedBlankSpace();
-                                XBorderedBlankSpace();
-                                BorderX();
-                                BlankLines(8);
-                                Pause();
+                                DecisionBuyUpgrade = 'R';
                             }
                         }
 //...................................................................................................................
@@ -2213,93 +2260,107 @@ void DecisionMaker::activateDecisionTree()
                         else if (DecisionBuyUpgrade == '2')
                         {
                             // Displays next level of projector quality and cost. Asks player yes or no to purchase.
-                            choiceUpgradeChosenEquipment(TheCinema->accessTheaters(Decision_TheaterNum)->getProjectorLevel(),
-                                                         Projector_Quality);
-                            // Player's selection is collected and stored.
-                            char ch = getYesOrNo();
-                            if (ch == 'y' || ch == 'Y')
+                            // Also, if maximum level has been achieved, if returns false and exits.
+                            if (choiceUpgradeChosenEquipment(TheCinema->accessTheaters(Decision_TheaterNum)->getProjectorLevel(),
+                                                         Projector_Quality))
                             {
-                                // If check comes back true, there's not enough money in the bank.
-                                if (checkPurchaseOfUpgrade(CurrentBankAmount,
-                                                          TheCinema->accessTheaters(Decision_TheaterNum)->getProjectorLevel(),
-                                                          Projector_Quality))
+                                // Player's selection is collected and stored.
+                                char ch = getYesOrNo();
+                                if (ch == 'y' || ch == 'Y')
                                 {
-                                    // Purchase failed, control reverts back to specific theater's upgrade options.
-                                    DecisionBuyUpgrade = 'R';
+                                    // If check comes back true, there's not enough money in the bank.
+                                    if (checkPurchaseOfUpgrade(CurrentBankAmount,
+                                                              TheCinema->accessTheaters(Decision_TheaterNum)->getProjectorLevel(),
+                                                              Projector_Quality))
+                                    {
+                                        // Purchase failed, control reverts back to specific theater's upgrade options.
+                                        DecisionBuyUpgrade = 'R';
+                                    }
+                                    else
+                                    {
+                                        TheCinema->adjustBank(-(UPGRADE_PRICE));
+                                        TheCinema->accessTheaters(Decision_TheaterNum)->addProjectorLevel();
+                                        // With purchase made, control reverts back to main menu.
+                                        DecisionBuyUpgrade = 'R';
+                                        DecisionBuy = 'R';
+                                    }
                                 }
-                                else
+                                else if (ch == 'n' || ch == 'N')
                                 {
-                                    TheCinema->adjustBank(-(UPGRADE_PRICE));
-                                    TheCinema->accessTheaters(Decision_TheaterNum)->addProjectorLevel();
-                                    // With purchase made, control reverts back to main menu.
-                                    DecisionBuyUpgrade = 'R';
-                                    DecisionBuy = 'R';
+                                    ClearScreen();
+
+                                    BorderX();
+                                    XBorderedBlankSpace();
+                                    XBorderedBlankSpace();
+                                    cout << "X";
+                                    BlankSpaces(24);
+                                    cout << "Perhaps another time then...";
+                                    BlankSpaces(25);
+                                    cout << "X" << endl;
+                                    XBorderedBlankSpace();
+                                    XBorderedBlankSpace();
+                                    BorderX();
+                                    BlankLines(8);
+                                    Pause();
                                 }
                             }
-                            else if (ch == 'n' || ch == 'N')
+                            else
                             {
-                                ClearScreen();
-
-                                BorderX();
-                                XBorderedBlankSpace();
-                                XBorderedBlankSpace();
-                                cout << "X";
-                                BlankSpaces(24);
-                                cout << "Perhaps another time then...";
-                                BlankSpaces(25);
-                                cout << "X" << endl;
-                                XBorderedBlankSpace();
-                                XBorderedBlankSpace();
-                                BorderX();
-                                BlankLines(8);
-                                Pause();
+                                DecisionBuyUpgrade = 'R';
                             }
                         }
 //...................................................................................................................
                         // Player chose to upgrade sound intensity.
                         else if (DecisionBuyUpgrade == '3')
                         {
-                            // Displays next level of sound intensity and cost. Asks player yes or no to purchase.
-                            choiceUpgradeChosenEquipment(TheCinema->accessTheaters(Decision_TheaterNum)->getSoundLevel(),
-                                                         Sound_Intensity);
-                            // Player's selection is collected and stored.
-                            char ch = getYesOrNo();
-                            if (ch == 'y' || ch == 'Y')
+                            // Displays next level of Sound Intensity and cost. Asks player yes or no to purchase.
+                            // Also, if maximum level has been achieved, if returns false and exits.
+                            if (choiceUpgradeChosenEquipment(TheCinema->accessTheaters(Decision_TheaterNum)->getSoundLevel(),
+                                                         Sound_Intensity))
                             {
-                                // If check comes back true, there's not enough money in the bank.
-                                if (checkPurchaseOfUpgrade(CurrentBankAmount,
-                                                          TheCinema->accessTheaters(Decision_TheaterNum)->getSoundLevel(),
-                                                          Sound_Intensity))
+                                // Player's selection is collected and stored.
+                                char ch = getYesOrNo();
+                                if (ch == 'y' || ch == 'Y')
                                 {
-                                    // Purchase failed, control reverts back to specific theater's upgrade options.
-                                    DecisionBuyUpgrade = 'R';
+                                    // If check comes back true, there's not enough money in the bank.
+                                    if (checkPurchaseOfUpgrade(CurrentBankAmount,
+                                                              TheCinema->accessTheaters(Decision_TheaterNum)->getSoundLevel(),
+                                                              Sound_Intensity))
+                                    {
+                                        // Purchase failed, control reverts back to specific theater's upgrade options.
+                                        DecisionBuyUpgrade = 'R';
+                                    }
+                                    else
+                                    {
+                                        TheCinema->adjustBank(-(UPGRADE_PRICE));
+                                        TheCinema->accessTheaters(Decision_TheaterNum)->addSoundLevel();
+                                        // With purchase made, control reverts back to main menu.
+                                        DecisionBuyUpgrade = 'R';
+                                        DecisionBuy = 'R';
+                                    }
                                 }
-                                else
+                                else if (ch == 'n' || ch == 'N')
                                 {
-                                    TheCinema->adjustBank(-(UPGRADE_PRICE));
-                                    TheCinema->accessTheaters(Decision_TheaterNum)->addSoundLevel();
-                                    // With purchase made, control reverts back to main menu.
-                                    DecisionBuyUpgrade = 'R';
-                                    DecisionBuy = 'R';
+                                    ClearScreen();
+
+                                    BorderX();
+                                    XBorderedBlankSpace();
+                                    XBorderedBlankSpace();
+                                    cout << "X";
+                                    BlankSpaces(24);
+                                    cout << "Perhaps another time then...";
+                                    BlankSpaces(25);
+                                    cout << "X" << endl;
+                                    XBorderedBlankSpace();
+                                    XBorderedBlankSpace();
+                                    BorderX();
+                                    BlankLines(8);
+                                    Pause();
                                 }
                             }
-                            else if (ch == 'n' || ch == 'N')
+                            else
                             {
-                                ClearScreen();
-
-                                BorderX();
-                                XBorderedBlankSpace();
-                                XBorderedBlankSpace();
-                                cout << "X";
-                                BlankSpaces(24);
-                                cout << "Perhaps another time then...";
-                                BlankSpaces(25);
-                                cout << "X" << endl;
-                                XBorderedBlankSpace();
-                                XBorderedBlankSpace();
-                                BorderX();
-                                BlankLines(8);
-                                Pause();
+                                DecisionBuyUpgrade = 'R';
                             }
                         }
                         // Player chose to go back a step.

@@ -51,7 +51,7 @@ public:
     void choiceTree_04(int);
     void choiceNumOfSeats(int, int);
     void choiceUpgradeLevels(int, float, float, float);
-    void choiceUpgradeChosenEquipment(float, Equipment);
+    bool choiceUpgradeChosenEquipment(float, Equipment);
     std::string calculateStaffLevel(int, int);
     std::string calculatePromotionLevel(int);
     void choiceHireStaff(int, int);
