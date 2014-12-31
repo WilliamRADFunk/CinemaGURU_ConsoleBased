@@ -147,7 +147,7 @@ Have T-Shirts made with your cinema's name and logo on it.
 Forgetting that the local church is a place of worship for many of your usual patrons, you lose out on a valuable opportunity. Neither win, nor lose, you get $
 They were a hit with the crowd. Calculating the lose of the tickets themselves, you gained an extra $
 You sneaky devil. Not only did you get them to buy more tickets, they still had to partially pay for the snacks. You gained $
-The church's representatives weren't exactly impressed with you donation, but they accepted it. After taking into account the cost of ths shirts, you gained $
+The church's representatives weren't exactly impressed with you donation, but they accepted it. After taking into account the cost of the shirts, you gained $
 B
 100
 2
@@ -277,7 +277,7 @@ B
 It's not your day. The screen in one of your theaters fell, the sound system is bugging out, and a projector won't play anything slower than mach speed.
 Have the screen fixed, and quickly patch the rest.
 Repair the sound system, and slap some duct tape on the others.
-Breath life back into the projector, and improvise the other two.
+Breathe life back into the projector, and improvise the other two.
 Spread your resources around equally amongst the three.
 It isn't perfect, but it will get you through the day. Repair cost $
 It isn't perfect, but it will get you through the day. Repair cost $

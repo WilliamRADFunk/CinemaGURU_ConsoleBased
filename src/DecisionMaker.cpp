@@ -556,7 +556,7 @@ void DecisionMaker::choiceHireStaff(int Employees, int Theaters)
     {
         BlankSpaces(11);
     }
-    if (Theaters > 1 && Theaters < 10 && MaxEmployees < 10)
+    else if (Theaters > 1 && Theaters < 10 && MaxEmployees < 10)
     {
         BlankSpaces(10);
     }
@@ -979,7 +979,18 @@ bool DecisionMaker::getSelection_01_06(int Bank, int Theaters)
         }
         else if (ch =='N' || ch == 'n')
         {
-            cout << endl << endl << "Perhaps another time then..." << endl << endl;
+            BorderX();
+            XBorderedBlankSpace();
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(24);
+            cout << "Perhaps another time then...";
+            BlankSpaces(25);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            XBorderedBlankSpace();
+            BorderX();
+            BlankLines(8);
             Pause();
 
             return false;
@@ -1751,8 +1762,25 @@ bool DecisionMaker::checkPurchaseOfSnacks(int Bank, int SnacksOwned)
     }
     else
     {
-        cout << endl << endl << "Congratulations!" << endl << endl;
-        cout << "You've purchased the equipment for a new snack to sell." << endl << endl;
+        ClearScreen();
+
+        BorderX();
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(3);
+        cout << "Congratulations!";
+        BlankSpaces(58);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(3);
+        cout << "You've purchased the equipment for a new snack to sell.";
+        BlankSpaces(19);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(3);
         cout << "You now sell: ";
         for (int i = 0; i < SnacksOwned + 1; i++)
         {
@@ -1766,7 +1794,41 @@ bool DecisionMaker::checkPurchaseOfSnacks(int Bank, int SnacksOwned)
                 cout << ", ";
             }
         }
-        cout << "." << endl << endl;
+        cout << ".";
+        if (SnacksOwned <= 0)
+        {
+            cout << "ERROR: System reading Zero or less snacks owned!" << endl;
+        }
+        else if (SnacksOwned == 1)
+        {
+            BlankSpaces(39);
+        }
+        else if (SnacksOwned == 2)
+        {
+            BlankSpaces(30);
+        }
+        else if (SnacksOwned == 3)
+        {
+            BlankSpaces(21);
+        }
+        else if (SnacksOwned == 4)
+        {
+            BlankSpaces(12);
+        }
+        else if (SnacksOwned == 5)
+        {
+            BlankSpaces(3);
+        }
+        else if (SnacksOwned == 6)
+        {
+
+        }
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        BorderX();
+        BlankLines(6);
+
         Pause();
         return false;
     }
@@ -2048,7 +2110,20 @@ void DecisionMaker::activateDecisionTree()
                         }
                         else if (ch == 'n' || ch == 'N')
                         {
-                            cout << endl << endl << "Perhaps another time then..." << endl << endl;
+                            ClearScreen();
+
+                            BorderX();
+                            XBorderedBlankSpace();
+                            XBorderedBlankSpace();
+                            cout << "X";
+                            BlankSpaces(24);
+                            cout << "Perhaps another time then...";
+                            BlankSpaces(25);
+                            cout << "X" << endl;
+                            XBorderedBlankSpace();
+                            XBorderedBlankSpace();
+                            BorderX();
+                            BlankLines(8);
                             Pause();
                         }
                     }
@@ -2116,7 +2191,20 @@ void DecisionMaker::activateDecisionTree()
                             }
                             else if (ch == 'n' || ch == 'N')
                             {
-                                cout << endl << endl << "Perhaps another time then..." << endl << endl;
+                                ClearScreen();
+
+                                BorderX();
+                                XBorderedBlankSpace();
+                                XBorderedBlankSpace();
+                                cout << "X";
+                                BlankSpaces(24);
+                                cout << "Perhaps another time then...";
+                                BlankSpaces(25);
+                                cout << "X" << endl;
+                                XBorderedBlankSpace();
+                                XBorderedBlankSpace();
+                                BorderX();
+                                BlankLines(8);
                                 Pause();
                             }
                         }
@@ -2150,7 +2238,20 @@ void DecisionMaker::activateDecisionTree()
                             }
                             else if (ch == 'n' || ch == 'N')
                             {
-                                cout << endl << endl << "Perhaps another time then..." << endl << endl;
+                                ClearScreen();
+
+                                BorderX();
+                                XBorderedBlankSpace();
+                                XBorderedBlankSpace();
+                                cout << "X";
+                                BlankSpaces(24);
+                                cout << "Perhaps another time then...";
+                                BlankSpaces(25);
+                                cout << "X" << endl;
+                                XBorderedBlankSpace();
+                                XBorderedBlankSpace();
+                                BorderX();
+                                BlankLines(8);
                                 Pause();
                             }
                         }
@@ -2184,7 +2285,20 @@ void DecisionMaker::activateDecisionTree()
                             }
                             else if (ch == 'n' || ch == 'N')
                             {
-                                cout << endl << endl << "Perhaps another time then..." << endl << endl;
+                                ClearScreen();
+
+                                BorderX();
+                                XBorderedBlankSpace();
+                                XBorderedBlankSpace();
+                                cout << "X";
+                                BlankSpaces(24);
+                                cout << "Perhaps another time then...";
+                                BlankSpaces(25);
+                                cout << "X" << endl;
+                                XBorderedBlankSpace();
+                                XBorderedBlankSpace();
+                                BorderX();
+                                BlankLines(8);
                                 Pause();
                             }
                         }

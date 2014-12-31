@@ -21,7 +21,7 @@ private:
     Cinema* TheCinema;
     RandomEventHandler* TheREHandler;
 
-    const std::string Snacks[6] =            {"Popcorn", "BigSoda", "HotDogs", "Coffees", "Pretzel", "Candies"};
+    const std::string Snacks[6] =            {"Popcorn", "SodaPop", "HotDogs", "Coffees", "Pretzel", "Candies"};
     const std::string StaffPerformance[5] =  {"Dismal", "Shoddy", "Decent", "B+Work", "Superb"};
     const std::string Promotions[6] =        {"No Promotion", "1/2 $ Monday", "Bonus Snacks",
                                               "Issue Fliers", "Coupon Books", "A Commercial"};

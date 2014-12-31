@@ -20,10 +20,10 @@ Cinema::Cinema()
     NumOfTheaters = 1;
     NumOfEmployees = 1;
     EmployeesMax = 5;
-    NumOfSnacks = 2;
+    NumOfSnacks = 1; // Never set less than one, or more than 6. Formatting will break if you do.
     NumOfMovieLicenses = 1;
     PromotionSelected = 0;
-    TotalNumOfSeats = 10;
+    TotalNumOfSeats = 1;
     Expenses = 0.0;
     TicketSales = 0.0;
     SnackSales = 0.0;
