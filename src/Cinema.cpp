@@ -17,7 +17,7 @@ Cinema::Cinema()
 {
     Bank = 10000.00;
     TPrice = 10.00;
-    NumOfTheaters = 10;
+    NumOfTheaters = 1;
     NumOfEmployees = 1;
     EmployeesMax = 5;
     NumOfSnacks = 1; // Never set less than one, or more than 6. Formatting will break if you do.

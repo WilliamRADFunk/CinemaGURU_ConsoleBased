@@ -204,13 +204,35 @@ void DecisionMaker::choiceTree_01_04(int Theaters)
         cout << "X";
         BlankSpaces(5);
         cout << "You have " << Theaters << " theater(s).";
-        BlankSpaces(49);
+        if (Theaters < 10)
+        {
+            BlankSpaces(50);
+        }
+        else if (Theaters >= 10 && Theaters < 100)
+        {
+            BlankSpaces(49);
+        }
+        else if (Theaters >= 100 && Theaters < 1000)
+        {
+            BlankSpaces(48);
+        }
         cout << "X" << endl;
         XBorderedBlankSpace();
         cout << "X";
         BlankSpaces(5);
         cout << "Select 1 through " << Theaters << ", (then ENTER)";
-        BlankSpaces(39);
+        if (Theaters < 10)
+        {
+            BlankSpaces(40);
+        }
+        else if (Theaters >= 10 && Theaters < 100)
+        {
+            BlankSpaces(39);
+        }
+        else if (Theaters >= 100 && Theaters < 1000)
+        {
+            BlankSpaces(38);
+        }
         cout << "X" << endl << "X";
         BlankSpaces(5);
         cout << "to choose which theater to buy upgrades for:";
