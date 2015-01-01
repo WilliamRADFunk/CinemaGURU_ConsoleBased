@@ -250,17 +250,51 @@ void DecisionMaker::choiceTree_01_05(int PromotionInUseIndex)
 {
     string PromotionInUse = Promotions[PromotionInUseIndex];
 
-    cout << "You've chosen to change the promotion you're using." << endl << endl;
+    BorderX();
+    XBorderedBlankSpace();
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(10);
+    cout << "You've chosen to change the promotion you're using.";
+    BlankSpaces(16);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(10);
     cout << "You're currently using: " << PromotionInUse << " ($" << (PROMOTION_MULTIPLY_COST * PromotionInUseIndex);
-    cout << " / Week)" << endl << endl;
-    cout << endl << "The available promotions are as follows:" << endl << endl;
-
+    cout << " / Week)";
+    BlankSpaces(19);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(10);
+    cout << "The available promotions are as follows:";
+    BlankSpaces(27);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(10);
     for (int i = 0; i < 6; i++)
     {
-        cout << i << ". " << Promotions[i] << " ($" << (PROMOTION_MULTIPLY_COST * i) << " / Week)" << endl;
+        cout << i << ". " << Promotions[i] << " ($" << (PROMOTION_MULTIPLY_COST * i) << " / Week)";
+        if (i == 0)
+        {
+            BlankSpaces(40);
+        }
+        else
+        {
+            BlankSpaces(38);
+        }
+        cout << "X" << endl << "X";
+        BlankSpaces(10);
     }
-
-    cout << endl << "Which promotion would like to use?";
+    cout << "Which promotion would like to use?";
+    BlankSpaces(33);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    XBorderedBlankSpace();
+    BorderX();
+    BlankLines(2);
 }
 
 void DecisionMaker::choiceTree_01_06(int Theaters)
@@ -1515,7 +1549,7 @@ char DecisionMaker::getSelection_01_05(int PreviousPromotion)
                 XBorderedBlankSpace();
                 XBorderedBlankSpace();
                 BorderX();
-                BlankLines(5);
+                BlankLines(7);
             }
 
             Pause();
