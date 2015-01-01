@@ -155,6 +155,8 @@ void DecisionMaker::choiceTree_01_01(int Theaters)
 void DecisionMaker::choiceTree_01_03(int SnacksOwned)
 {
     string SnackToBuy = Snacks[SnacksOwned];
+
+
     cout << "You've chosen to increase your selection of snacks offered." << endl << endl;
     cout << "You currently offer: ";
     for (int i = 0; i < SnacksOwned; i++)
@@ -1316,7 +1318,7 @@ void DecisionMaker::choiceFireStaff(int Employees, int Theaters)
     cout << "X" << endl;
     XBorderedBlankSpace();
     BorderX();
-    BlankLines(3);
+    BlankLines(4);
     cout << "==> ";
 }
 
@@ -2426,7 +2428,7 @@ bool DecisionMaker::checksPurchaseOfSeats(int Bank, int AmountOfSeats, int Seats
                 XBorderedBlankSpace();
                 XBorderedBlankSpace();
                 BorderX();
-                BlankLines(5);
+                BlankLines(8);
             }
 
             Pause();

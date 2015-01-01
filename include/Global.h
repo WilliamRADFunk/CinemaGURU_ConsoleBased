@@ -18,7 +18,7 @@
 #define THEATER_PRICE 2000
 #define THEATER_RENT 1000
 #define EMPLOYEE_WAGE 100 // Formatting can handle $999 per employee. Any more and that section will need adjustment.
-#define PROMOTION_MULTIPLY_COST 100
+#define PROMOTION_MULTIPLY_COST 100 // Do not exceed 199 or formatting will break.
 #define RANDOM_EVENTS_MAX 20 // Only 20 scenarios have been written. More will need to be added before this can be changed.
 #define PROFIT_MAX 100000 // Formatting can handle $999,999. It will need adjustment for more.
 #define DEBT_MAX 5000 // Formatting can handle $999,999. It will need adjustment beyond that.
