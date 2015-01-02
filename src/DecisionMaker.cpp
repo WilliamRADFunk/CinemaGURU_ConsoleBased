@@ -156,15 +156,39 @@ void DecisionMaker::choiceTree_01_03(int SnacksOwned)
 {
     string SnackToBuy = Snacks[SnacksOwned];
 
-
-    cout << "You've chosen to increase your selection of snacks offered." << endl << endl;
+    BorderX();
+    XBorderedBlankSpace();
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "You've chosen to increase your selection of snacks offered.";
+    BlankSpaces(13);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
     cout << "You currently offer: ";
     for (int i = 0; i < SnacksOwned; i++)
     {
+        // Bypasses the commas and the "and"
+        if (SnacksOwned == 1)
+        {
+            cout << Snacks[i];
+            break;
+        }
+        // Because the sixth snack won't fit, this drops it down to the next line.
+        if (i == 5)
+        {
+            BlankSpaces(6);
+            cout << "X" << endl << "X";
+            BlankSpaces(26);
+            cout << "and " << Snacks[i];
+            break;
+        }
         if (i >= SnacksOwned - 1)
-            {
-                cout << "and ";
-            }
+        {
+            cout << "and ";
+        }
         cout << Snacks[i];
         if (i < SnacksOwned - 1)
         {
@@ -175,19 +199,88 @@ void DecisionMaker::choiceTree_01_03(int SnacksOwned)
             else cout << " ";
         }
     }
-    cout << "." << endl << endl;
+    cout << ".";
+    if (SnacksOwned <= 0)
+        {
+            cout << "ERROR: System reading Zero or less snacks owned!" << endl;
+            Pause();
+        }
+        else if (SnacksOwned == 1)
+        {
+            BlankSpaces(43);
+        }
+        else if (SnacksOwned == 2)
+        {
+            BlankSpaces(31);
+        }
+        else if (SnacksOwned == 3)
+        {
+            BlankSpaces(21);
+        }
+        else if (SnacksOwned == 4)
+        {
+            BlankSpaces(12);
+        }
+        else if (SnacksOwned == 5)
+        {
+            BlankSpaces(3);
+        }
+        else if (SnacksOwned == 6)
+        {
+            BlankSpaces(32);
+        }
+        else if (SnacksOwned == 7)
+        {
+            cout << "ERROR: Maximum snack amount exceeded. Please readjust SNACK_MAX." << endl;
+            Pause();
+        }
+
     if (SnacksOwned >= SNACK_MAX)
     {
-        cout << "You currently offer all the available snacks available." << endl;
-        cout << "Try spending your money on other lucrative purchases." << endl << endl;
+        BlankSpaces(7);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(5);
+        cout << "You currently offer all the available snacks.";
+        BlankSpaces(27);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(5);
+        cout << "Try spending your money on other lucrative purchases.";
+        BlankSpaces(19);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        BorderX();
+        BlankLines(5);
 
         Pause();
 
         return;
     }
-    cout << "The next snack option, " << SnackToBuy << ", will cost you $";
-    cout << SNACK_PRICE << endl << "to buy the necessary machinery." << endl << endl;
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "The next snack option, " << SnackToBuy << ", will cost you $" << SNACK_PRICE;
+    BlankSpaces(22);
+    cout << "X" << endl << "X";
+    BlankSpaces(5);
+    cout << "to buy the necessary machinery.";
+    BlankSpaces(41);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
     cout << "Would you like to add " << SnackToBuy << " to your snacks counter? (Y or N)";
+    BlankSpaces(10);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    XBorderedBlankSpace();
+    BorderX();
+    BlankLines(5);
 }
 
 void DecisionMaker::choiceTree_01_04(int Theaters)
@@ -2524,17 +2617,22 @@ bool DecisionMaker::checkPurchaseOfSnacks(int Bank, int SnacksOwned)
             cout << Snacks[i];
             if (i < SnacksOwned)
             {
-                cout << ", ";
+                if (SnacksOwned > 1)
+                {
+                    cout << ", ";
+                }
+                else cout << " ";
             }
         }
         cout << ".";
         if (SnacksOwned <= 0)
         {
             cout << "ERROR: System reading Zero or less snacks owned!" << endl;
+            Pause();
         }
         else if (SnacksOwned == 1)
         {
-            BlankSpaces(39);
+            BlankSpaces(40);
         }
         else if (SnacksOwned == 2)
         {
@@ -2554,7 +2652,8 @@ bool DecisionMaker::checkPurchaseOfSnacks(int Bank, int SnacksOwned)
         }
         else if (SnacksOwned == 6)
         {
-
+            cout << "ERROR: Maximum snack amount exceeded. Please readjust SNACK_MAX." << endl;
+            Pause();
         }
         cout << "X" << endl;
         XBorderedBlankSpace();
