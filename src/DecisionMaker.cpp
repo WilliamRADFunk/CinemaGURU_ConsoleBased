@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <sstream>
+#include <locale>
 #include <time.h>
 #include <math.h>
 
@@ -1417,17 +1418,180 @@ void DecisionMaker::choiceFireStaff(int Employees, int Theaters)
 
 void DecisionMaker::currentMovie(int TheaterNumber, string Title)
 {
+    locale loc;
+    char c;
+
+    string Original = "the movie ";
+    Original.append(Title);
+    Original.append(" is now playing.");
+
+    string String1 = "";
+    string String2 = "";
+    string String3 = "";
+
+    BorderX();
+    XBorderedBlankSpace();
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
     cout << "In Theater #" << TheaterNumber << ", ";
     if (Title != "No Movie Playing")
     {
-        cout << "the movie " << Title << " is now playing." << endl << endl;
+        for (int i = 0, j = 0, k = 0; i < Original.length();)
+        {
+        // i keeps track of index in original string.
+        // j creates enough whitespace after each string to each line align with border.
+        // k ensures there are the same number of character in each string.
+        c = Original[i];
+        // Resets j for the next string once j reaches maximum string length.
+        if (j >= 57)
+        {
+            j = 0;
+            i++;
+        }
+        // Fills String1 with approx 50 characters from original string.
+        // At the end of nearest word, input begins on string2.
+        if (k < 57)
+        {
+            if (j >= 34 && !isspace(c,loc))
+            {
+                String1 += Original[i];
+                i++;
+                if ( i >= Original.length() )
+                {
+                    for (; j < 56; j++)
+                    {
+                        String1 += " ";
+                    }
+                }
+            }
+            else if (j >= 34 && isspace(c,loc))
+            {
+                String1 += " ";
+            }
+            else
+            {
+                String1 += Original[i];
+                i++;
+                if ( i >= Original.length() )
+                {
+                    for (; j < 56; j++)
+                    {
+                        String1 += " ";
+                    }
+                }
+            }
+        }
+        // Fills String2 with approx 50 characters from original string.
+        // At the end of nearest word, input begins on string3.
+        else if (k >= 57 && k < 130)
+        {
+            if (j >= 34 && !isspace(c,loc))
+            {
+                String2 += Original[i];
+                i++;
+                if ( i >= Original.length() )
+                {
+                    for (; j < 56; j++)
+                    {
+                        String2 += " ";
+                    }
+                }
+            }
+            else if (j >= 34 && isspace(c,loc))
+            {
+                String2 += " ";
+            }
+            else
+            {
+                String2 += Original[i];
+                i++;
+                if ( i >= Original.length() )
+                {
+                    for (; j < 56; j++)
+                    {
+                        String2 += " ";
+                    }
+                }
+            }
+        }
+        // In the event the maximum number of character is passed.
+        // The extras are dumped into a dummy string.
+        else
+        {
+            cout << "The Original string is too long." << endl;
+            String3 += Original[i];
+        }
+        j++;
+        k++;
+        }
+        cout << String1 << "X" << endl;
+        // If the description was short enough to fit into one string, don't display the others.
+        if (String2 != "")
+        {
+            cout << String2 << "X" << endl;
+        }
+        if (String3 != "")
+        {
+            cout << String3 << "X" << endl;
+        }
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(5);
     }
     else
     {
-        cout << "there is no movie playing at the moment." << endl << endl;
+        cout << "there is no movie playing at the moment.";
+        BlankSpaces(17);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(5);
     }
 
-    cout << "You are able to play the following movies: " << endl << endl;
+    cout << "You are able to play the following movies: ";
+    BlankSpaces(29);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    XBorderedBlankSpace();
+}
+
+void DecisionMaker::listOfAvailableMovies(int NumOfLicensesOwned)
+{
+    locale loc;
+    char c;
+    char ch = 48;
+
+    string Original = "";
+
+    string String1 = "";
+    string String2 = "";
+    string String3 = "";
+
+    cout << "X";
+    BlankSpaces(5);
+
+    for (int i = 0; i <= NumOfLicensesOwned; i += 2)
+    {
+        if (TheCinema->accessMovieLicense(i)->getTitle() != "Untitled")
+        {
+            ch += 1;
+            Original.append(ch);
+            Original.append(". ");
+            Original.append(TheCinema->accessMovieLicense(i)->getTitle());
+            Original.append("\t\t\t");
+        }
+        if (NumOfLicensesOwned > (i + 1))
+        {
+            ch += 2;
+            Original.append(ch);
+            Original.append(". ");
+            Original.append(TheCinema->accessMovieLicense(i + 1)->getTitle());
+            cout << endl;
+        }
+    }
+    cout << (NumOfLicensesOwned + 1) <<". Play Nothing" << endl << endl;
+    cout << "Select one of the above choices for more information:";
 }
 
 char DecisionMaker::getYesOrNo()
@@ -3326,21 +3490,7 @@ void DecisionMaker::activateDecisionTree()
                     currentMovie(Decision_TheaterNum + 1,
                                  TheCinema->accessTheaters(Decision_TheaterNum)->getSelectedMovie()->getTitle());
                     // Displays all the movie licenses purchased by Player.
-                    for (int i = 0; i <= CurrentNumOfLicensesOwned; i += 2)
-                    {
-                        if (TheCinema->accessMovieLicense(i)->getTitle() != "Untitled")
-                        {
-                            cout << (i + 1) << ". " << TheCinema->accessMovieLicense(i)->getTitle();
-                            cout << "\t\t\t";
-                        }
-                        if (CurrentNumOfLicensesOwned > (i + 1))
-                        {
-                            cout << (i + 2) << ". " << TheCinema->accessMovieLicense(i + 1)->getTitle();
-                            cout << endl;
-                        }
-                    }
-                    cout << (CurrentNumOfLicensesOwned + 1) <<". Play Nothing" << endl << endl;
-                    cout << "Select one of the above choices for more information:";
+                    listOfAvailableMovies(CurrentNumOfLicensesOwned);
                     // Since the number of options is variable depending how many licenses are owned at the
                     // time of call, the loop ensures the selection entered matches only the options offered.
                     do
@@ -3365,8 +3515,29 @@ void DecisionMaker::activateDecisionTree()
                     }
                     else if (MovieLicenseSelected == CurrentNumOfLicensesOwned)
                     {
-                        cout << "When there's no movie playing in a theater, it won't sell any tickets." << endl << endl;
+                        BorderX();
+                        XBorderedBlankSpace();
+                        XBorderedBlankSpace();
+                        cout << "X";
+                        BlankSpaces(5);
+                        cout << "When there's no movie playing in a theater,";
+                        BlankSpaces(29);
+                        cout << "X" << endl << "X";
+                        BlankSpaces(5);
+                        cout << "it won't sell any tickets.";
+                        BlankSpaces(46);
+                        cout << "X" << endl;
+                        XBorderedBlankSpace();
+                        cout << "X";
+                        BlankSpaces(5);
                         cout << "Are you sure you want to play no movie in this theater? (Y or N)";
+                        BlankSpaces(8);
+                        cout << "X" << endl;
+                        XBorderedBlankSpace();
+                        XBorderedBlankSpace();
+                        BorderX();
+                        BlankLines(7);
+
                         ch = getYesOrNo();
                     }
                 } while (ch != 'Y' && ch != 'y');

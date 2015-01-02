@@ -57,6 +57,7 @@ public:
     void choiceHireStaff(int, int);
     void choiceFireStaff(int, int);
     void currentMovie(int, std::string);
+    void listOfAvailableMovies(int);
 
     char getYesOrNo();
     char getConfirmation(char);
