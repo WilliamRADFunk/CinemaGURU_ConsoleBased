@@ -3005,10 +3005,65 @@ void DecisionMaker::activateDecisionTree()
         // When -5000 is reached, a goodbye message is delivered, and main loop is broken.
         if (TheCinema->getBank() <= 0 && TheCinema->getBank() > -(DEBT_MAX))
         {
+            int CurrentBank = fabs(TheCinema->getBank());
+
+            BorderX();
+            XBorderedBlankSpace();
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(5);
             cout << "WARNING: You are in debt to the bank for a total of -$";
-            cout << fabs(TheCinema->getBank()) << "." << endl << endl;
-            cout << "If your debt reaches -$" << DEBT_MAX << ", they will foreclose on your cinema." << endl;
-            Divider();
+            cout << CurrentBank << ".";
+            if (CurrentBank < 10)
+            {
+                BlankSpaces(16);
+            }
+            else if (CurrentBank >= 10 && CurrentBank < 100)
+            {
+                BlankSpaces(15);
+            }
+            else if (CurrentBank >= 100 && CurrentBank < 1000)
+            {
+                BlankSpaces(14);
+            }
+            else if (CurrentBank >= 1000 && CurrentBank < 10000)
+            {
+                BlankSpaces(13);
+            }
+            else if (CurrentBank >= 10000 && CurrentBank < 100000)
+            {
+                BlankSpaces(12);
+            }
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(5);
+            cout << "If your debt reaches -$" << DEBT_MAX << ", they will foreclose on your cinema.";
+            if (DEBT_MAX < 10)
+            {
+                BlankSpaces(11);
+            }
+            else if (DEBT_MAX >= 10 && DEBT_MAX < 100)
+            {
+                BlankSpaces(10);
+            }
+            else if (DEBT_MAX >= 100 && DEBT_MAX < 1000)
+            {
+                BlankSpaces(9);
+            }
+            else if (DEBT_MAX >= 1000 && DEBT_MAX < 10000)
+            {
+                BlankSpaces(8);
+            }
+            else if (DEBT_MAX >= 10000 && DEBT_MAX < 100000)
+            {
+                BlankSpaces(7);
+            }
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            XBorderedBlankSpace();
+            BorderX();
+            BlankLines(7);
             Pause();
             ClearScreen();
         }
