@@ -3069,22 +3069,139 @@ void DecisionMaker::activateDecisionTree()
         }
         if (TheCinema->getBank() <= -(DEBT_MAX))
         {
-            cout << "Your debt has reached -$" << fabs(TheCinema->getBank());
-            cout << ", which is more than the allowable -$" << DEBT_MAX << "." << endl << endl;
-            cout << "The bank has decided you are too high a risk," << endl;
-            cout << "and have foreclosed on your cinema. You've lost." << endl << endl;
-            cout << "Try again some time." << endl;
-            Divider();
+            int CurrentBank = fabs(TheCinema->getBank());
+
+            BorderX();
+            XBorderedBlankSpace();
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(15);
+            cout << "Your debt has reached -$" << fabs(TheCinema->getBank()) << ",";
+            if (CurrentBank < 10)
+            {
+                BlankSpaces(36);
+            }
+            else if (CurrentBank >= 10 && CurrentBank < 100)
+            {
+                BlankSpaces(35);
+            }
+            else if (CurrentBank >= 100 && CurrentBank < 1000)
+            {
+                BlankSpaces(34);
+            }
+            else if (CurrentBank >= 1000 && CurrentBank < 10000)
+            {
+                BlankSpaces(33);
+            }
+            else if (CurrentBank >= 10000 && CurrentBank < 100000)
+            {
+                BlankSpaces(32);
+            }
+            cout << "X" << endl << "X";
+            BlankSpaces(15);
+            cout << "which is more than the allowable -$" << DEBT_MAX << ".";
+            if (DEBT_MAX < 10)
+            {
+                BlankSpaces(25);
+            }
+            else if (DEBT_MAX >= 10 && DEBT_MAX < 100)
+            {
+                BlankSpaces(24);
+            }
+            else if (DEBT_MAX >= 100 && DEBT_MAX < 1000)
+            {
+                BlankSpaces(23);
+            }
+            else if (DEBT_MAX >= 1000 && DEBT_MAX < 10000)
+            {
+                BlankSpaces(22);
+            }
+            else if (DEBT_MAX >= 10000 && DEBT_MAX < 100000)
+            {
+                BlankSpaces(21);
+            }
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(15);
+            cout << "The bank has decided you are too high a risk,";
+            BlankSpaces(17);
+            cout << "X" << endl << "X";
+            BlankSpaces(15);
+            cout << "and have foreclosed on your cinema. You've lost.";
+            BlankSpaces(14);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(15);
+            cout << "Try again some time.";
+            BlankSpaces(42);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            XBorderedBlankSpace();
+            BorderX();
+            BlankLines(5);
+
             Pause();
             ClearScreen();
             break;
         }
         if (TheCinema->getBank() >= PROFIT_MAX)
         {
-            cout << " You've earned more than $" << TheCinema->getBank() << "!" << endl << endl;
-            cout << "You have won CinemaGURU. Congratulations!" << endl << endl;
-            cout << "Play again some time." << endl;
-            Divider();
+            int CurrentBank = TheCinema->getBank();
+
+            BorderX();
+            XBorderedBlankSpace();
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(15);
+            cout << "You've earned more than $" << TheCinema->getBank() << "!";
+            if (CurrentBank < 10)
+            {
+                BlankSpaces(35);
+            }
+            else if (CurrentBank >= 10 && CurrentBank < 100)
+            {
+                BlankSpaces(34);
+            }
+            else if (CurrentBank >= 100 && CurrentBank < 1000)
+            {
+                BlankSpaces(33);
+            }
+            else if (CurrentBank >= 1000 && CurrentBank < 10000)
+            {
+                BlankSpaces(32);
+            }
+            else if (CurrentBank >= 10000 && CurrentBank < 100000)
+            {
+                BlankSpaces(31);
+            }
+            else if (CurrentBank >= 100000 && CurrentBank < 1000000)
+            {
+                BlankSpaces(30);
+            }
+            else if (CurrentBank >= 1000000 && CurrentBank < 10000000)
+            {
+                BlankSpaces(29);
+            }
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(15);
+            cout << "You have won CinemaGURU. Congratulations!";
+            BlankSpaces(21);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            cout << "X";
+            BlankSpaces(15);
+            cout << "Play again some time.";
+            BlankSpaces(41);
+            cout << "X" << endl;
+            XBorderedBlankSpace();
+            XBorderedBlankSpace();
+            BorderX();
+            BlankLines(6);
+
             Pause();
             ClearScreen();
             break;
