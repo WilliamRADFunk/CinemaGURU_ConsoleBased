@@ -143,11 +143,317 @@ string Movie::convertSeasonToString(Season Season)
 
 void Movie::displayMovieDetails()
 {
-    cout << "Title: " << Title << endl << endl;
-    cout << "Synipsis: " << Synopsis << endl << endl;
-    cout << "Expected Popularity: " << ExpectedPopularityRating << "/5 (May turn out higher or lower)" << endl;
-    cout << "Optimal Season: " << convertSeasonToString(BestSeason) << endl;
-    cout << "Worst Season: " << convertSeasonToString(WorstSeason) << endl;
-    cout << "Cost of License: $" << CostOfLicensePerWeek << endl;
-    cout << "Length of License: " << UseOfLicenseRemainingInWeeks << " Weeks" << endl;
+    // Displaying the title. The varying length of the title requires an adjustable format.
+    locale loc1;
+    char c;
+
+    string OriginalTitle = "Title: ";
+    OriginalTitle.append(Title);
+
+    string StringTitle1;
+
+    for (unsigned int i = 0, j = 0, k = 0; i < OriginalTitle.length();)
+    {
+        // i keeps track of index in original string.
+        // j creates enough whitespace after each string to each line align with border.
+        // k ensures there are the same number of characters in each string.
+        c = OriginalTitle[i];
+        // Resets j for the next string once j reaches maximum string length.
+        if (j >= 57)
+        {
+            j = 0;
+            i++;
+        }
+        // Fills StringTitle1 with approx 50 characters from original string.
+        // At the end of nearest word, input begins on string2.
+        if (k < 57)
+        {
+            if (j >= 50 && !isspace(c,loc1))
+            {
+                StringTitle1 += OriginalTitle[i];
+                i++;
+                if ( i >= OriginalTitle.length() )
+                {
+                    for (; j < 71; j++)
+                    {
+                        StringTitle1 += " ";
+                    }
+                }
+            }
+            else if (j >= 50 && isspace(c,loc1))
+            {
+                StringTitle1 += " ";
+            }
+            else
+            {
+                StringTitle1 += OriginalTitle[i];
+                i++;
+                if ( i >= OriginalTitle.length() )
+                {
+                    for (; j < 71; j++)
+                    {
+                        StringTitle1 += " ";
+                    }
+                }
+            }
+        }
+        j++;
+        k++;
+    }
+    cout << "X";
+    BlankSpaces(5);
+    cout << StringTitle1;
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "Synopsis: ";
+    // Displaying the Synopsis. The varying length of the title requires an adjustable format.
+    locale loc2;
+    char d;
+
+    string StringSynopsis1 = "";
+    string StringSynopsis2 = "";
+    string StringSynopsis3 = "";
+    string StringSynopsis4 = "";
+    string StringSynopsis5 = "";
+
+    for (unsigned int i = 0, j = 0, k = 0; i < Synopsis.length();)
+    {
+        // i keeps track of index in original string.
+        // j creates enough whitespace after each string to each line align with border.
+        // k ensures there are the same number of characters in each string.
+        d = Synopsis[i];
+        // Resets j for the next string once j reaches maximum string length.
+        if (j >= 62)
+        {
+            j = 0;
+            i++;
+        }
+        // Fills StringSynopsis1 with approx 50 characters from original string.
+        // At the end of nearest word, input begins on string2.
+        if (k < 62)
+        {
+            if (j >= 44 && !isspace(d,loc2))
+            {
+                StringSynopsis1 += Synopsis[i];
+                i++;
+                if ( i >= Synopsis.length() )
+                {
+                    for (; j < 61; j++)
+                    {
+                        StringSynopsis1 += " ";
+                    }
+                }
+            }
+            else if (j >= 44 && isspace(d,loc2))
+            {
+                StringSynopsis1 += " ";
+            }
+            else
+            {
+                StringSynopsis1 += Synopsis[i];
+                i++;
+                if ( i >= Synopsis.length() )
+                {
+                    for (; j < 61; j++)
+                    {
+                        StringSynopsis1 += " ";
+                    }
+                }
+            }
+        }
+        // Fills StringSynopsis2 with approx 50 characters from original string.
+        // At the end of nearest word, input begins on string3.
+        else if (k >= 62 && k < 124)
+        {
+            if (j >= 44 && !isspace(d,loc2))
+            {
+                StringSynopsis2 += Synopsis[i];
+                i++;
+                if ( i >= Synopsis.length() )
+                {
+                    for (; j < 61; j++)
+                    {
+                        StringSynopsis2 += " ";
+                    }
+                }
+            }
+            else if (j >= 44 && isspace(d,loc2))
+            {
+                StringSynopsis2 += " ";
+            }
+            else
+            {
+                StringSynopsis2 += Synopsis[i];
+                i++;
+                if ( i >= Synopsis.length() )
+                {
+                    for (; j < 61; j++)
+                    {
+                        StringSynopsis2 += " ";
+                    }
+                }
+            }
+        }
+        // Fills StringSynopsis3 with approx 50 characters from original string.
+        // At the end of nearest word, input begins on string4.
+        else if (k >= 124 && k < 186)
+        {
+            if (j >= 44 && !isspace(d,loc2))
+            {
+                StringSynopsis3 += Synopsis[i];
+                i++;
+                if ( i >= Synopsis.length() )
+                {
+                    for (; j < 61; j++)
+                    {
+                        StringSynopsis3 += " ";
+                    }
+                }
+            }
+            else if (j >= 44 && isspace(d,loc2))
+            {
+                StringSynopsis3 += " ";
+            }
+            else
+            {
+                StringSynopsis3 += Synopsis[i];
+                i++;
+                if ( i >= Synopsis.length() )
+                {
+                    for (; j < 61; j++)
+                    {
+                        StringSynopsis3 += " ";
+                    }
+                }
+            }
+        }
+        // Fills StringSynopsis4 with approx 50 characters from original string.
+        // At the end of nearest word, input begins on string5.
+        else if (k >= 186 && k < 248)
+        {
+            if (j >= 44 && !isspace(d,loc2))
+            {
+                StringSynopsis4 += Synopsis[i];
+                i++;
+                if ( i >= Synopsis.length() )
+                {
+                    for (; j < 61; j++)
+                    {
+                        StringSynopsis4 += " ";
+                    }
+                }
+            }
+            else if (j >= 44 && isspace(d,loc2))
+            {
+                StringSynopsis4 += " ";
+            }
+            else
+            {
+                StringSynopsis4 += Synopsis[i];
+                i++;
+                if ( i >= Synopsis.length() )
+                {
+                    for (; j < 61; j++)
+                    {
+                        StringSynopsis4 += " ";
+                    }
+                }
+            }
+        }
+        // In the event the maximum number of character is passed. The extras are dumped into a dummy string.
+        else
+        {
+            cout << "The Synopsis string is too long." << endl;
+            StringSynopsis5 += Synopsis[i];
+        }
+        j++;
+        k++;
+    }
+    cout << StringSynopsis1 << "X" << endl;
+    // If the description was short enough to fit into one string, don't display the others.
+    if (StringSynopsis2 != "")
+    {
+        cout << "X";
+        BlankSpaces(15);
+        cout << StringSynopsis2 << "X" << endl;
+    }
+    if (StringSynopsis3 != "")
+    {
+        cout << "X";
+        BlankSpaces(15);
+        cout << StringSynopsis3 << "X" << endl;
+    }
+    if (StringSynopsis4 != "")
+    {
+        cout << "X";
+        BlankSpaces(15);
+        cout << StringSynopsis4 << "X" << endl;
+    }
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    // Displaying the Expected Popularity. The varying length of the title requires an adjustable format.
+    cout << "Expected Popularity: " << ExpectedPopularityRating << "/5 (May turn out higher or lower)";
+    BlankSpaces(17);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    // Displaying the Optimal Season. The varying length of the title requires an adjustable format.
+    cout << "Optimal Season: " << convertSeasonToString(BestSeason);
+    BlankSpaces(50);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    // Displaying the Worst Season. The varying length of the title requires an adjustable format.
+    cout << "Worst Season: " << convertSeasonToString(WorstSeason);
+    BlankSpaces(52);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    // Displaying the Cost of License. The varying length of the title requires an adjustable format.
+    cout << "Cost of License: $" << CostOfLicensePerWeek;
+    if (CostOfLicensePerWeek < 10)
+    {
+        BlankSpaces(50);
+    }
+    else if (CostOfLicensePerWeek >= 10 && CostOfLicensePerWeek < 100)
+    {
+        BlankSpaces(49);
+    }
+    else if (CostOfLicensePerWeek >= 100 && CostOfLicensePerWeek < 1000)
+    {
+        BlankSpaces(48);
+    }
+    else if (CostOfLicensePerWeek >= 1000 && CostOfLicensePerWeek < 10000)
+    {
+        BlankSpaces(47);
+    }
+    else if (CostOfLicensePerWeek >= 10000 && CostOfLicensePerWeek < 100000)
+    {
+        BlankSpaces(46);
+    }
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    // Displaying the Length of License. The varying length of the title requires an adjustable format.
+    cout << "Length of License: " << UseOfLicenseRemainingInWeeks << " Weeks";
+    if (UseOfLicenseRemainingInWeeks < 10)
+    {
+        BlankSpaces(46);
+    }
+    else if (UseOfLicenseRemainingInWeeks >= 10 && UseOfLicenseRemainingInWeeks < 100)
+    {
+        BlankSpaces(45);
+    }
+    else if (UseOfLicenseRemainingInWeeks >= 100 && UseOfLicenseRemainingInWeeks < 1000)
+    {
+        BlankSpaces(44);
+    }
+    cout << "X" << endl;
 }

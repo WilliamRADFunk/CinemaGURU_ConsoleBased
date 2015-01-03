@@ -114,7 +114,7 @@ void introduction()
     else
     {
         BlankSpaces(15);
-        cout << "              X" << endl;
+        cout << "X" << endl;
     }
 
     cout << "X";

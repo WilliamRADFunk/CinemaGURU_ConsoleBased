@@ -1436,7 +1436,7 @@ void DecisionMaker::currentMovie(int TheaterNumber, string Title)
     cout << "In Theater #" << TheaterNumber << ", ";
     if (Title != "No Movie Playing")
     {
-        for (int i = 0, j = 0, k = 0; i < Original.length();)
+        for (unsigned int i = 0, j = 0, k = 0; i < Original.length();)
         {
             // i keeps track of index in original string.
             // j creates enough whitespace after each string to each line align with border.
@@ -1569,6 +1569,7 @@ void DecisionMaker::listOfAvailableMovies(int NumOfLicensesOwned)
 {
     locale loc;
     char c;
+    int TotalLicensesOwned = NumOfLicensesOwned;
 
     string Original = "";
 
@@ -1577,23 +1578,23 @@ void DecisionMaker::listOfAvailableMovies(int NumOfLicensesOwned)
     cout << "X";
     BlankSpaces(5);
 
-    for (int i = 0; i < NumOfLicensesOwned; i++)
+    for (int n = 0; n < TotalLicensesOwned; n++)
     {
-        Original = TheCinema->accessMovieLicense(i)->getTitle();
+        Original = TheCinema->accessMovieLicense(n)->getTitle();
 
         String1 = "";
 
-        if (i == 0)
+        if (n == 0)
         {
-            cout << (i + 1) << ". ";
+            cout << (n + 1) << ". ";
         }
         else
         {
             cout << "X";
             BlankSpaces(5);
-            cout << (i + 1) << ". ";
+            cout << (n + 1) << ". ";
         }
-        for (int i = 0, j = 0, k = 0; i < Original.length();)
+        for (unsigned int i = 0, j = 0, k = 0; i < Original.length();)
         {
             // i keeps track of index in original string.
             // j creates enough whitespace after each string to each line align with border.
@@ -1647,7 +1648,7 @@ void DecisionMaker::listOfAvailableMovies(int NumOfLicensesOwned)
     }
     cout << "X";
     BlankSpaces(5);
-    cout << (NumOfLicensesOwned + 1) <<". Play Nothing";
+    cout << (TotalLicensesOwned + 1) <<". Play Nothing";
     BlankSpaces(57);
     cout << "X" << endl;
     XBorderedBlankSpace();
@@ -3321,12 +3322,24 @@ void DecisionMaker::activateDecisionTree()
                         // Player selected 1-3.
                         else
                         {
+                            BorderX();
+                            XBorderedBlankSpace();
+                            XBorderedBlankSpace();
                             TheCinema->accessMovieLicensesOffered(DesiredLicense - 1)->displayMovieDetails();
-                            cout << endl << endl;
+                            XBorderedBlankSpace();
+                            cout << "X";
+                            BlankSpaces(5);
                             cout << "Do you want to purchase the license for this movie? (Y or N)";
+                            BlankSpaces(12);
+                            cout << "X" << endl;
+                            XBorderedBlankSpace();
+                            XBorderedBlankSpace();
+                            BorderX();
+
                             ch = getYesOrNo();
                             if (ch == 'N' || ch == 'n')
                             {
+                                ClearScreen();
                                 // Displays list of license options again.
                                 DecisionBuyMovieLicense = 'Z';
                                 continue;
@@ -3809,7 +3822,7 @@ void DecisionMaker::activateDecisionTree()
 
                     Original = Title;
 
-                    for (int i = 0, j = 0, k = 0; i < Original.length();)
+                    for (unsigned int i = 0, j = 0, k = 0; i < Original.length();)
                     {
                         // i keeps track of index in original string.
                         // j creates enough whitespace after each string to each line align with border.

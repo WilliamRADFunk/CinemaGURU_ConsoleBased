@@ -57,7 +57,7 @@ void RandomEvent::printScenario()
     string String4 = "";
     string String5 = "";
     XBorderedBlankSpace();
-    for (int i = 0, j = 0, k = 0; i < Scenario.length();)
+    for (unsigned int i = 0, j = 0, k = 0; i < Scenario.length();)
     {
         // i keeps track of index in original string.
         // j creates enough whitespace after each string to each line align with border.
@@ -243,7 +243,7 @@ void RandomEvent::printOptionA()
     string String3 = "   ";
     string String4 = "   ";
     string String5 = "   ";
-    for (int i = 0, j = 0, k = 0; i < OptionA.length();)
+    for (unsigned int i = 0, j = 0, k = 0; i < OptionA.length();)
     {
         // i keeps track of index in original string.
         // j creates enough whitespace after each string to each line align with border.
@@ -422,7 +422,7 @@ void RandomEvent::printOptionB()
     string String3 = "   ";
     string String4 = "   ";
     string String5 = "   ";
-    for (int i = 0, j = 0, k = 0; i < OptionB.length();)
+    for (unsigned int i = 0, j = 0, k = 0; i < OptionB.length();)
     {
         // i keeps track of index in original string.
         // j creates enough whitespace after each string to each line align with border.
@@ -601,7 +601,7 @@ void RandomEvent::printOptionC()
     string String3 = "   ";
     string String4 = "   ";
     string String5 = "   ";
-    for (int i = 0, j = 0, k = 0; i < OptionC.length();)
+    for (unsigned int i = 0, j = 0, k = 0; i < OptionC.length();)
     {
         // i keeps track of index in original string.
         // j creates enough whitespace after each string to each line align with border.
@@ -780,7 +780,7 @@ void RandomEvent::printOptionD()
     string String3 = "   ";
     string String4 = "   ";
     string String5 = "   ";
-    for (int i = 0, j = 0, k = 0; i < OptionD.length();)
+    for (unsigned int i = 0, j = 0, k = 0; i < OptionD.length();)
     {
         // i keeps track of index in original string.
         // j creates enough whitespace after each string to each line align with border.
@@ -960,7 +960,7 @@ void RandomEvent::printDescriptionResultA()
     string String4 = "";
     string String5 = "";
     XBorderedBlankSpace();
-    for (int i = 0, j = 0, k = 0; i < DescriptionResultA.length();)
+    for (unsigned int i = 0, j = 0, k = 0; i < DescriptionResultA.length();)
     {
         // i keeps track of index in original string.
         // j creates enough whitespace after each string to each line align with border.
@@ -1139,7 +1139,7 @@ void RandomEvent::printDescriptionResultB()
     string String4 = "";
     string String5 = "";
     XBorderedBlankSpace();
-    for (int i = 0, j = 0, k = 0; i < DescriptionResultB.length();)
+    for (unsigned int i = 0, j = 0, k = 0; i < DescriptionResultB.length();)
     {
         // i keeps track of index in original string.
         // j creates enough whitespace after each string to each line align with border.
@@ -1318,7 +1318,7 @@ void RandomEvent::printDescriptionResultC()
     string String4 = "";
     string String5 = "";
     XBorderedBlankSpace();
-    for (int i = 0, j = 0, k = 0; i < DescriptionResultC.length();)
+    for (unsigned int i = 0, j = 0, k = 0; i < DescriptionResultC.length();)
     {
         // i keeps track of index in original string.
         // j creates enough whitespace after each string to each line align with border.
@@ -1497,7 +1497,7 @@ void RandomEvent::printDescriptionResultD()
     string String4 = "";
     string String5 = "";
     XBorderedBlankSpace();
-    for (int i = 0, j = 0, k = 0; i < DescriptionResultD.length();)
+    for (unsigned int i = 0, j = 0, k = 0; i < DescriptionResultD.length();)
     {
         // i keeps track of index in original string.
         // j creates enough whitespace after each string to each line align with border.
