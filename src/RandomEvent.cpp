@@ -61,7 +61,7 @@ void RandomEvent::printScenario()
     {
         // i keeps track of index in original string.
         // j creates enough whitespace after each string to each line align with border.
-        // k ensures there are the same number of character in each string.
+        // k ensures there are the same number of characters in each string.
         c = Scenario[i];
         // Resets j for the next string once j reaches maximum string length.
         if (j >= 73)

@@ -226,11 +226,12 @@
 	"Calendar.h"
 	"Global.h"
 
-1420221165 source:c:\users\william\skydrive\documents\work\programming\githubprograms\cinemaguru\trunk\src\decisionmaker.cpp
+1420243316 source:c:\users\william\skydrive\documents\work\programming\githubprograms\cinemaguru\trunk\src\decisionmaker.cpp
 	<iostream>
 	<stdlib.h>
 	<conio.h>
 	<sstream>
+	<locale>
 	<time.h>
 	<math.h>
 	"Cinema.h"
@@ -257,7 +258,7 @@
 	"Calendar.h"
 	"Global.h"
 
-1419876725 source:c:\users\william\skydrive\documents\work\programming\githubprograms\cinemaguru\trunk\src\randomevent.cpp
+1420243484 source:c:\users\william\skydrive\documents\work\programming\githubprograms\cinemaguru\trunk\src\randomevent.cpp
 	<iostream>
 	<sstream>
 	<locale>

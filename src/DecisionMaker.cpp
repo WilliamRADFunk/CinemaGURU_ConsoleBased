@@ -1431,7 +1431,6 @@ void DecisionMaker::currentMovie(int TheaterNumber, string Title)
 
     BorderX();
     XBorderedBlankSpace();
-    XBorderedBlankSpace();
     cout << "X";
     BlankSpaces(5);
     cout << "In Theater #" << TheaterNumber << ", ";
@@ -1439,91 +1438,91 @@ void DecisionMaker::currentMovie(int TheaterNumber, string Title)
     {
         for (int i = 0, j = 0, k = 0; i < Original.length();)
         {
-        // i keeps track of index in original string.
-        // j creates enough whitespace after each string to each line align with border.
-        // k ensures there are the same number of character in each string.
-        c = Original[i];
-        // Resets j for the next string once j reaches maximum string length.
-        if (j >= 57)
-        {
-            j = 0;
-            i++;
-        }
-        // Fills String1 with approx 50 characters from original string.
-        // At the end of nearest word, input begins on string2.
-        if (k < 57)
-        {
-            if (j >= 34 && !isspace(c,loc))
+            // i keeps track of index in original string.
+            // j creates enough whitespace after each string to each line align with border.
+            // k ensures there are the same number of characters in each string.
+            c = Original[i];
+            // Resets j for the next string once j reaches maximum string length.
+            if (j >= 57)
             {
-                String1 += Original[i];
+                j = 0;
                 i++;
-                if ( i >= Original.length() )
+            }
+            // Fills String1 with approx 34 characters from original string.
+            // At the end of nearest word, input begins on string2.
+            if (k < 57)
+            {
+                if (j >= 34 && !isspace(c,loc))
                 {
-                    for (; j < 56; j++)
+                    String1 += Original[i];
+                    i++;
+                    if ( i >= Original.length() )
                     {
-                        String1 += " ";
+                        for (; j < 56; j++)
+                        {
+                            String1 += " ";
+                        }
+                    }
+                }
+                else if (j >= 34 && isspace(c,loc))
+                {
+                    String1 += " ";
+                }
+                else
+                {
+                    String1 += Original[i];
+                    i++;
+                    if ( i >= Original.length() )
+                    {
+                        for (; j < 56; j++)
+                        {
+                            String1 += " ";
+                        }
                     }
                 }
             }
-            else if (j >= 34 && isspace(c,loc))
+            // Fills String2 with approx 34 characters from original string.
+            // At the end of nearest word, input begins on string3.
+            else if (k >= 57 && k < 130)
             {
-                String1 += " ";
+                if (j >= 34 && !isspace(c,loc))
+                {
+                    String2 += Original[i];
+                    i++;
+                    if ( i >= Original.length() )
+                    {
+                        for (; j < 56; j++)
+                        {
+                            String2 += " ";
+                        }
+                    }
+                }
+                else if (j >= 34 && isspace(c,loc))
+                {
+                    String2 += " ";
+                }
+                else
+                {
+                    String2 += Original[i];
+                    i++;
+                    if ( i >= Original.length() )
+                    {
+                        for (; j < 56; j++)
+                        {
+                            String2 += " ";
+                        }
+                    }
+                }
             }
+            // In the event the maximum number of character is passed.
+            // The extras are dumped into a dummy string.
             else
             {
-                String1 += Original[i];
-                i++;
-                if ( i >= Original.length() )
-                {
-                    for (; j < 56; j++)
-                    {
-                        String1 += " ";
-                    }
-                }
+                cout << "The Original string is too long." << endl;
+                String3 += Original[i];
             }
-        }
-        // Fills String2 with approx 50 characters from original string.
-        // At the end of nearest word, input begins on string3.
-        else if (k >= 57 && k < 130)
-        {
-            if (j >= 34 && !isspace(c,loc))
-            {
-                String2 += Original[i];
-                i++;
-                if ( i >= Original.length() )
-                {
-                    for (; j < 56; j++)
-                    {
-                        String2 += " ";
-                    }
-                }
-            }
-            else if (j >= 34 && isspace(c,loc))
-            {
-                String2 += " ";
-            }
-            else
-            {
-                String2 += Original[i];
-                i++;
-                if ( i >= Original.length() )
-                {
-                    for (; j < 56; j++)
-                    {
-                        String2 += " ";
-                    }
-                }
-            }
-        }
-        // In the event the maximum number of character is passed.
-        // The extras are dumped into a dummy string.
-        else
-        {
-            cout << "The Original string is too long." << endl;
-            String3 += Original[i];
-        }
-        j++;
-        k++;
+            j++;
+            k++;
         }
         cout << String1 << "X" << endl;
         // If the description was short enough to fit into one string, don't display the others.
@@ -1542,7 +1541,18 @@ void DecisionMaker::currentMovie(int TheaterNumber, string Title)
     else
     {
         cout << "there is no movie playing at the moment.";
-        BlankSpaces(17);
+        if (TheaterNumber < 10)
+        {
+            BlankSpaces(17);
+        }
+        else if (TheaterNumber >= 10 && TheaterNumber < 100)
+        {
+            BlankSpaces(16);
+        }
+        else if (TheaterNumber >= 100 && TheaterNumber < 1000)
+        {
+            BlankSpaces(15);
+        }
         cout << "X" << endl;
         XBorderedBlankSpace();
         cout << "X";
@@ -1553,45 +1563,103 @@ void DecisionMaker::currentMovie(int TheaterNumber, string Title)
     BlankSpaces(29);
     cout << "X" << endl;
     XBorderedBlankSpace();
-    XBorderedBlankSpace();
 }
 
 void DecisionMaker::listOfAvailableMovies(int NumOfLicensesOwned)
 {
     locale loc;
     char c;
-    char ch = 48;
 
     string Original = "";
 
     string String1 = "";
-    string String2 = "";
-    string String3 = "";
 
     cout << "X";
     BlankSpaces(5);
 
-    for (int i = 0; i <= NumOfLicensesOwned; i += 2)
+    for (int i = 0; i < NumOfLicensesOwned; i++)
     {
-        if (TheCinema->accessMovieLicense(i)->getTitle() != "Untitled")
+        Original = TheCinema->accessMovieLicense(i)->getTitle();
+
+        String1 = "";
+
+        if (i == 0)
         {
-            ch += 1;
-            Original.append(ch);
-            Original.append(". ");
-            Original.append(TheCinema->accessMovieLicense(i)->getTitle());
-            Original.append("\t\t\t");
+            cout << (i + 1) << ". ";
         }
-        if (NumOfLicensesOwned > (i + 1))
+        else
         {
-            ch += 2;
-            Original.append(ch);
-            Original.append(". ");
-            Original.append(TheCinema->accessMovieLicense(i + 1)->getTitle());
-            cout << endl;
+            cout << "X";
+            BlankSpaces(5);
+            cout << (i + 1) << ". ";
         }
+        for (int i = 0, j = 0, k = 0; i < Original.length();)
+        {
+            // i keeps track of index in original string.
+            // j creates enough whitespace after each string to each line align with border.
+            // k ensures there are the same number of characters in each string.
+            c = Original[i];
+            // Resets j for the next string once j reaches maximum string length.
+            if (j >= 57)
+            {
+                j = 0;
+                i++;
+            }
+            // Fills String1 with approx 34 characters from original string.
+            // At the end of nearest word, input begins on string2.
+            if (k < 57)
+            {
+                if (j >= 34 && !isspace(c,loc))
+                {
+                    String1 += Original[i];
+                    i++;
+                    if ( i >= Original.length() )
+                    {
+                        for (; j < 56; j++)
+                        {
+                            String1 += " ";
+                        }
+                    }
+                }
+                else if (j >= 34 && isspace(c,loc))
+                {
+                    String1 += " ";
+                }
+                else
+                {
+                    String1 += Original[i];
+                    i++;
+                    if ( i >= Original.length() )
+                    {
+                        for (; j < 56; j++)
+                        {
+                            String1 += " ";
+                        }
+                    }
+                }
+            }
+            j++;
+            k++;
+        }
+        cout << String1;
+        BlankSpaces(12);
+        cout << "X" << endl;
     }
-    cout << (NumOfLicensesOwned + 1) <<". Play Nothing" << endl << endl;
-    cout << "Select one of the above choices for more information:";
+    cout << "X";
+    BlankSpaces(5);
+    cout << (NumOfLicensesOwned + 1) <<". Play Nothing";
+    BlankSpaces(57);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "Type the number matching your choice, then ENTER:";
+    BlankSpaces(23);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    BorderX();
+    BlankLines(2);
+    cout << "==> ";
 }
 
 char DecisionMaker::getYesOrNo()
