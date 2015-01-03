@@ -1803,6 +1803,7 @@ int DecisionMaker::getSelection_01_02()
             string garbage;
             getline(cin, garbage);
         }
+        cout << "==> ";
     } while ( !(Input > 0 && Input <= (OFFERED_LICENSES_MAX + 1)) );
 
     return Input;
@@ -3288,22 +3289,108 @@ void DecisionMaker::activateDecisionTree()
 
                     do
                     {
-                        cout << "You've chosen to purchase additional movie licenses." << endl << endl;
-                        cout << "Below is a list of newly released movies available for purchase:" << endl;
+                        BorderX();
+                        XBorderedBlankSpace();
+                        XBorderedBlankSpace();
+                        cout << "X";
+                        BlankSpaces(5);
+                        cout << "You've chosen to purchase additional movie licenses.";
+                        BlankSpaces(20);
+                        cout << "X" << endl;
+                        XBorderedBlankSpace();
+                        cout << "X";
+                        BlankSpaces(5);
+                        cout << "Below is a list of newly released movies available for purchase:";
+                        BlankSpaces(8);
+                        cout << "X" << endl;
+                        XBorderedBlankSpace();
                         int Counter = 0;
                         // Displays the items on the list.
-                        for (int i =0; i < OFFERED_LICENSES_MAX; i++)
+                        for (int n = 0; n < OFFERED_LICENSES_MAX; n++)
                         {
-                            if (TheCinema->accessMovieLicensesOffered(i)->getTitle() != "Not Available")
+                            if (TheCinema->accessMovieLicensesOffered(n)->getTitle() != "Not Available")
                             {
-                                cout << (Counter + 1) << ". "
-                                     << TheCinema->accessMovieLicensesOffered(i)->getTitle() << endl;
+                                cout << "X";
+                                BlankSpaces(10);
+                                /////////
+                                locale loc;
+                                char c;
+
+                                string Original = TheCinema->accessMovieLicensesOffered(n)->getTitle();
+
+                                string String1 = "";
+
+                                for (unsigned int i = 0, j = 0, k = 0; i < Original.length();)
+                                {
+                                    // i keeps track of index in original string.
+                                    // j creates enough whitespace after each string to each line align with border.
+                                    // k ensures there are the same number of characters in each string.
+                                    c = Original[i];
+                                    // Resets j for the next string once j reaches maximum string length.
+                                    if (j >= 52)
+                                    {
+                                        j = 0;
+                                        i++;
+                                    }
+                                    // Fills String1 with approx 46 characters from original string.
+                                    // At the end of nearest word, input begins on string2.
+                                    if (k < 52)
+                                    {
+                                        if (j >= 46 && !isspace(c,loc))
+                                        {
+                                            String1 += Original[i];
+                                            i++;
+                                            if ( i >= Original.length() )
+                                            {
+                                                for (; j < 51; j++)
+                                                {
+                                                    String1 += " ";
+                                                }
+                                            }
+                                        }
+                                        else if (j >= 46 && isspace(c,loc))
+                                        {
+                                            String1 += " ";
+                                        }
+                                        else
+                                        {
+                                            String1 += Original[i];
+                                            i++;
+                                            if ( i >= Original.length() )
+                                            {
+                                                for (; j < 51; j++)
+                                                {
+                                                    String1 += " ";
+                                                }
+                                            }
+                                        }
+                                    }
+                                    j++;
+                                    k++;
+                                }
+                                /////////
+                                cout << (Counter + 1) << ". " << String1;
+                                BlankSpaces(12);
+                                cout << "X" << endl;
                                 Counter++;
                             }
                         }
                         // If there's at least one movie offered, offer the no choice option.
-                        cout << Counter + 1<< ". None of these" << endl;
-                        cout << endl << endl << "Which of these do you choose?";
+                        cout << "X";
+                        BlankSpaces(10);
+                        cout << Counter + 1<< ". None of these";
+                        BlankSpaces(51);
+                        cout << "X" << endl;
+                        XBorderedBlankSpace();
+                        cout << "X";
+                        BlankSpaces(5);
+                        cout << "Which of these do you choose? (Type a number, then ENTER)";
+                        BlankSpaces(15);
+                        cout << "X" << endl;
+                        XBorderedBlankSpace();
+                        XBorderedBlankSpace();
+                        BorderX();
+                        BlankLines(4);
                         // Player's selection is collected and stored.
                         DesiredLicense = getSelection_01_02();
 
