@@ -1448,11 +1448,11 @@ void DecisionMaker::currentMovie(int TheaterNumber, string Title)
                 j = 0;
                 i++;
             }
-            // Fills String1 with approx 34 characters from original string.
+            // Fills String1 with approx 52 characters from original string.
             // At the end of nearest word, input begins on string2.
             if (k < 57)
             {
-                if (j >= 34 && !isspace(c,loc))
+                if (j >= 52 && !isspace(c,loc))
                 {
                     String1 += Original[i];
                     i++;
@@ -1464,7 +1464,7 @@ void DecisionMaker::currentMovie(int TheaterNumber, string Title)
                         }
                     }
                 }
-                else if (j >= 34 && isspace(c,loc))
+                else if (j >= 52 && isspace(c,loc))
                 {
                     String1 += " ";
                 }
@@ -1481,11 +1481,11 @@ void DecisionMaker::currentMovie(int TheaterNumber, string Title)
                     }
                 }
             }
-            // Fills String2 with approx 34 characters from original string.
+            // Fills String2 with approx 46 characters from original string.
             // At the end of nearest word, input begins on string3.
             else if (k >= 57 && k < 130)
             {
-                if (j >= 34 && !isspace(c,loc))
+                if (j >= 46 && !isspace(c,loc))
                 {
                     String2 += Original[i];
                     i++;
@@ -1497,7 +1497,7 @@ void DecisionMaker::currentMovie(int TheaterNumber, string Title)
                         }
                     }
                 }
-                else if (j >= 34 && isspace(c,loc))
+                else if (j >= 46 && isspace(c,loc))
                 {
                     String2 += " ";
                 }
@@ -1605,11 +1605,11 @@ void DecisionMaker::listOfAvailableMovies(int NumOfLicensesOwned)
                 j = 0;
                 i++;
             }
-            // Fills String1 with approx 34 characters from original string.
+            // Fills String1 with approx 46 characters from original string.
             // At the end of nearest word, input begins on string2.
             if (k < 57)
             {
-                if (j >= 34 && !isspace(c,loc))
+                if (j >= 46 && !isspace(c,loc))
                 {
                     String1 += Original[i];
                     i++;
@@ -1621,7 +1621,7 @@ void DecisionMaker::listOfAvailableMovies(int NumOfLicensesOwned)
                         }
                     }
                 }
-                else if (j >= 34 && isspace(c,loc))
+                else if (j >= 46 && isspace(c,loc))
                 {
                     String1 += " ";
                 }
@@ -2372,36 +2372,29 @@ float DecisionMaker::getNewTicketPrice()
     return NewPrice;
 }
 
-int DecisionMaker::getSelectedLicense()
+int DecisionMaker::getSelectedLicense(int NumOfLicensesOwned, int TheaterNum, string Title)
 {
-    int NewMovie = -(9768);
+    int NewMovie;
 
     do
     {
-        if (NewMovie != -(9768))
-        {
-            if (NewMovie >= 0)
-            {
-                cout << endl << NewMovie << " is not a valid selection. Try again: ";
-                cin.clear();
-                string garbage;
-                getline(cin, garbage);
-            }
-            else if (NewMovie < 0)
-            {
-                cout << endl << "-" << abs(NewMovie) << " is not a valid selection. Try again: ";
-            }
-        }
+        // Makes sure the number is a number. If not, NewMovie is set to trigger next if statement.
         if ( !(cin >> NewMovie) )
         {
-            cout << "Clearing egregious input flags." << endl;
+            NewMovie = -1.00;
+        }
+        // If NewMovie isn't within the acceptable range, cin is reset, and the question is re-asked.
+        if ( !(NewMovie > 0 && NewMovie <= MOVIES_MAX) )
+        {
             cin.clear();
             string garbage;
             getline(cin, garbage);
+            ClearScreen();
+            // Recursive use of this function until useful input is received.
+            currentMovie(TheaterNum, Title);
+            listOfAvailableMovies(NumOfLicensesOwned);
         }
-        cout << endl << "You entered: " << NewMovie << "." << endl << endl;
-
-    } while ( !(NewMovie > 0 && NewMovie < 22) );
+    } while ( !(NewMovie > 0 && NewMovie <= MOVIES_MAX) );
 
     // Takes into account the [0] index.
     return (NewMovie - 1);
@@ -3564,11 +3557,13 @@ void DecisionMaker::activateDecisionTree()
                     do
                     {
                         // Player's selection is collected and stored.
-                        MovieLicenseSelected = getSelectedLicense();
+                        MovieLicenseSelected = getSelectedLicense(CurrentNumOfLicensesOwned, Decision_TheaterNum + 1,
+                                                                  TheCinema->accessTheaters(Decision_TheaterNum)->getSelectedMovie()->getTitle());
                         if (MovieLicenseSelected > CurrentNumOfLicensesOwned)
                         {
-                            // The + 1 return what the Player selected, not the index position given w/o + 1.
-                            cout << (MovieLicenseSelected + 1) << " is not a valid selection. Try again: ";
+                            // The + 1 returns what the Player selected, not the index position given w/o + 1.
+                            cout << "ERROR: " << (MovieLicenseSelected + 1);
+                            cout << " is not a valid selection. Try again: ";
                         }
                     } while (MovieLicenseSelected > CurrentNumOfLicensesOwned);
 
@@ -3624,16 +3619,119 @@ void DecisionMaker::activateDecisionTree()
                 // Lets Player know what Movie is now playing in the selected theater number.
                 string Title = TheCinema->accessTheaters(Decision_TheaterNum)->getSelectedMovie()->getTitle();
 
+                ClearScreen();
+
+                BorderX();
+                XBorderedBlankSpace();
+                XBorderedBlankSpace();
+                cout << "X";
+                BlankSpaces(15);
                 cout << "You've selected to play ";
                 if (Title != "No Movie Playing")
                 {
-                    cout << Title;
+                    locale loc;
+                    char c;
+
+                    string Original;
+                    string String1;
+
+                    Original = Title;
+
+                    for (int i = 0, j = 0, k = 0; i < Original.length();)
+                    {
+                        // i keeps track of index in original string.
+                        // j creates enough whitespace after each string to each line align with border.
+                        // k ensures there are the same number of characters in each string.
+                        c = Original[i];
+                        // Resets j for the next string once j reaches maximum string length.
+                        if (j >= 57)
+                        {
+                            j = 0;
+                            i++;
+                        }
+                        // Fills String1 with approx 28 characters from original string.
+                        // At the end of nearest word, input begins on string2.
+                        if (k < 57)
+                        {
+                            if (j >= 34 && !isspace(c,loc))
+                            {
+                                String1 += Original[i];
+                                i++;
+                                if ( i >= Original.length() )
+                                {
+                                    for (; j < 37; j++)
+                                    {
+                                        String1 += " ";
+                                    }
+                                }
+                            }
+                            else if (j >= 34 && isspace(c,loc))
+                            {
+                                String1 += " ";
+                            }
+                            else
+                            {
+                                String1 += Original[i];
+                                i++;
+                                if ( i >= Original.length() )
+                                {
+                                    for (; j < 37; j++)
+                                    {
+                                        String1 += " ";
+                                    }
+                                }
+                            }
+                        }
+                        j++;
+                        k++;
+                    }
+                    cout << String1;
+                    cout << "X" << endl << "X";
+                    BlankSpaces(15);
+                    cout << "in Theater #" << (Decision_TheaterNum + 1);
+                    if ((Decision_TheaterNum + 1) < 10)
+                    {
+                        BlankSpaces(49);
+                    }
+                    else if ((Decision_TheaterNum + 1) >= 10 && (Decision_TheaterNum + 1) < 100)
+                    {
+                        BlankSpaces(48);
+                    }
+                    else if ((Decision_TheaterNum + 1) >= 100 && (Decision_TheaterNum + 1) < 1000)
+                    {
+                        BlankSpaces(47);
+                    }
+                    cout << "X" << endl;
+                    XBorderedBlankSpace();
+                    XBorderedBlankSpace();
+                    BorderX();
+                    BlankLines(8);
                 }
                 else
+                {
+                    cout << "nothing";
+                    BlankSpaces(31);
+                    cout << "X" << endl << "X";
+                    BlankSpaces(15);
+                    cout << "in Theater #" << (Decision_TheaterNum + 1);
+                    if ((Decision_TheaterNum + 1) < 10)
                     {
-                        cout << "nothing";
+                        BlankSpaces(49);
                     }
-                cout << " in Theater #" << (Decision_TheaterNum + 1) << endl << endl;
+                    else if ((Decision_TheaterNum + 1) >= 10 && (Decision_TheaterNum + 1) < 100)
+                    {
+                        BlankSpaces(48);
+                    }
+                    else if ((Decision_TheaterNum + 1) >= 100 && (Decision_TheaterNum + 1) < 1000)
+                    {
+                        BlankSpaces(47);
+                    }
+                    cout << "X" << endl;
+                    XBorderedBlankSpace();
+                    XBorderedBlankSpace();
+                    BorderX();
+                    BlankLines(8);
+                }
 
                 Pause();
                 // With Selection completed, control reverts back to main menu.

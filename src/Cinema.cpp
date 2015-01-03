@@ -338,7 +338,7 @@ void Cinema::hud()
         cout << "$" << CurrentBank;
         if (CurrentBank < 10)
         {
-            BlankSpaces(22);
+            BlankSpaces(23);
         }
         else if (CurrentBank >= 10 && CurrentBank < 100)
         {

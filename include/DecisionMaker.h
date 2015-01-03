@@ -73,7 +73,7 @@ public:
     int getNumOfEmployeesToHire(int, int);
     int getNumOfEmployeesToFire(int, int);
     float getNewTicketPrice();
-    int getSelectedLicense();
+    int getSelectedLicense(int, int, std::string);
     char getRandomEventChoice();
     float getStaffFactor(int, int);
     float getTPriceFactor(float);
