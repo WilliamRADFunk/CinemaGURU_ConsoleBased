@@ -3757,8 +3757,20 @@ void DecisionMaker::activateDecisionTree()
                     if (MovieLicenseSelected != CurrentNumOfLicensesOwned)
                     {
                         // Display Title, Synopsis, Popularity, etc of the Movie that Player selected.
+                        BorderX();
+                        XBorderedBlankSpace();
+                        XBorderedBlankSpace();
                         TheCinema->accessMovieLicense(MovieLicenseSelected)->displayMovieDetails();
-                        cout << endl << endl << "Would you like to play this movie in your theater? (Y or N)";
+                        XBorderedBlankSpace();
+                        cout << "X";
+                        BlankSpaces(5);
+                        cout << "Would you like to play this movie in your theater? (Y or N)";
+                        BlankSpaces(13);
+                        cout << "X" << endl;
+                        XBorderedBlankSpace();
+                        XBorderedBlankSpace();
+                        BorderX();
+
                         ch = getYesOrNo();
                     }
                     else if (MovieLicenseSelected == CurrentNumOfLicensesOwned)
