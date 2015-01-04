@@ -3312,7 +3312,7 @@ void DecisionMaker::activateDecisionTree()
                             {
                                 cout << "X";
                                 BlankSpaces(10);
-                                /////////
+
                                 locale loc;
                                 char c;
 
@@ -3368,7 +3368,6 @@ void DecisionMaker::activateDecisionTree()
                                     j++;
                                     k++;
                                 }
-                                /////////
                                 cout << (Counter + 1) << ". " << String1;
                                 BlankSpaces(12);
                                 cout << "X" << endl;
@@ -3399,11 +3398,31 @@ void DecisionMaker::activateDecisionTree()
                         // Player selected "None of these"
                         if (DesiredLicense == (OFFERED_LICENSES_MAX + 1))
                         {
-                            cout << "None of those tickle your fancy, eh?" << endl << endl;
-                            cout << "Not to worry!" << endl << endl;
-                            cout << "A new batch of movies come out every new season." << endl << endl;
-                            cout << "Also, every time you purchase a license it's replaced with a new option.";
-                            cout << endl << endl;
+                            BorderX();
+                            XBorderedBlankSpace();
+                            XBorderedBlankSpace();
+                            cout << "X";
+                            BlankSpaces(5);
+                            cout << "None of those tickle your fancy, eh?";
+                            BlankSpaces(36);
+                            cout << "X" << endl;
+                            XBorderedBlankSpace();
+                            cout << "X";
+                            BlankSpaces(5);
+                            cout << "Not to worry!";
+                            BlankSpaces(59);
+                            cout << "X" << endl;
+                            XBorderedBlankSpace();
+                            cout << "X";
+                            BlankSpaces(5);
+                            cout << "Every time you purchase a license it's replaced with a new option.";
+                            BlankSpaces(6);
+                            cout << "X" << endl;
+                            XBorderedBlankSpace();
+                            XBorderedBlankSpace();
+                            BorderX();
+                            BlankLines(6);
+
                             Pause();
                         }
                         // Player selected 1-3.
@@ -3438,14 +3457,99 @@ void DecisionMaker::activateDecisionTree()
                                 if (checkPurchaseOfMovieLicense(TheCinema->getBank(),
                                                                 TheCinema->accessMovieLicensesOffered(DesiredLicense - 1)->getCostOfLicensePerWeek()))
                                 {
+                                    locale loc;
+                                    char c;
+
+                                    int NumOfWeeksOnLicense = TheCinema->accessMovieLicensesOffered(DesiredLicense - 1)->getUseOfLicenseRemainingInWeeks();
+
+                                    string Original = TheCinema->accessMovieLicensesOffered(DesiredLicense - 1)->getTitle();
+
+                                    string String1 = "";
+
+                                    for (unsigned int i = 0, j = 0, k = 0; i < Original.length();)
+                                    {
+                                        // i keeps track of index in original string.
+                                        // j creates enough whitespace after each string to each line align with border.
+                                        // k ensures there are the same number of characters in each string.
+                                        c = Original[i];
+                                        // Resets j for the next string once j reaches maximum string length.
+                                        if (j >= 39)
+                                        {
+                                            j = 0;
+                                            i++;
+                                        }
+                                        // Fills String1 with approx 33 characters from original string.
+                                        // At the end of nearest word, input begins on string2.
+                                        if (k < 39)
+                                        {
+                                            if (j >= 33 && !isspace(c,loc))
+                                            {
+                                                String1 += Original[i];
+                                                i++;
+                                                if ( i >= Original.length() )
+                                                {
+                                                    for (; j < 38; j++)
+                                                    {
+                                                        String1 += " ";
+                                                    }
+                                                }
+                                            }
+                                            else if (j >= 33 && isspace(c,loc))
+                                            {
+                                                String1 += " ";
+                                            }
+                                            else
+                                            {
+                                                String1 += Original[i];
+                                                i++;
+                                                if ( i >= Original.length() )
+                                                {
+                                                    for (; j < 38; j++)
+                                                    {
+                                                        String1 += " ";
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        j++;
+                                        k++;
+                                    }
+
                                     TheCinema->adjustBank(-(TheCinema->accessMovieLicensesOffered(DesiredLicense - 1)->getCostOfLicensePerWeek()));
-                                    cout << "Congratulations!" << endl << endl;
-                                    cout << "You've purchased the license for ";
-                                    cout << TheCinema->accessMovieLicensesOffered(DesiredLicense - 1)->getTitle();
-                                    cout << endl << endl;
-                                    cout << "Your license to play the movie will expire in ";
-                                    cout << TheCinema->accessMovieLicensesOffered(DesiredLicense - 1)->getUseOfLicenseRemainingInWeeks();
-                                    cout << " Weeks." << endl << endl;
+                                    BorderX();
+                                    XBorderedBlankSpace();
+                                    XBorderedBlankSpace();
+                                    cout << "X";
+                                    BlankSpaces(5);
+                                    cout << "Congratulations!";
+                                    BlankSpaces(56);
+                                    cout << "X" << endl;
+                                    XBorderedBlankSpace();
+                                    cout << "X";
+                                    BlankSpaces(5);
+                                    cout << "You've purchased the license for " << String1 << "X" << endl;
+                                    XBorderedBlankSpace();
+                                    cout << "X";
+                                    BlankSpaces(5);
+                                    cout << "Your license to play the movie will expire in " << NumOfWeeksOnLicense << " Weeks.";
+                                    if (NumOfWeeksOnLicense < 10)
+                                    {
+                                        BlankSpaces(18);
+                                    }
+                                    else if (NumOfWeeksOnLicense >= 10 && NumOfWeeksOnLicense < 100)
+                                    {
+                                        BlankSpaces(17);
+                                    }
+                                    else if (NumOfWeeksOnLicense >= 100 && NumOfWeeksOnLicense < 1000)
+                                    {
+                                        BlankSpaces(16);
+                                    }
+                                    cout << "X" << endl;
+                                    XBorderedBlankSpace();
+                                    XBorderedBlankSpace();
+                                    BorderX();
+                                    BlankLines(6);
+
                                     Pause();
                                     TheCinema->addNumOfMovieLicenses();
                                     *TheCinema->accessMovieLicense((TheCinema->getNumOfMovieLicenses()) - 1) =
@@ -3457,18 +3561,87 @@ void DecisionMaker::activateDecisionTree()
                                         // Checks to see if all the movies have already shown up in Licenses Offered.
                                     } while ( !(TheCinema->checkPreviousLicenseMatch(NewLicenseOffered)) );
 
-                                    Pause();
-
                                     TheCinema->changeDisplayedMovieLicense((DesiredLicense - 1), NewLicenseOffered);
-
-                                    Pause();
                                 }
                                 else
                                 {
-                                    cout << "You don't have enough cash in the bank to buy a license for ";
-                                    cout << TheCinema->accessMovieLicensesOffered(DesiredLicense - 1)->getTitle();
-                                    cout << endl << endl;
-                                    cout << "Make some more money, and try again later." << endl << endl;
+                                    locale loc;
+                                    char c;
+
+                                    string Original = TheCinema->accessMovieLicensesOffered(DesiredLicense - 1)->getTitle();
+
+                                    string String1 = "";
+
+                                    for (unsigned int i = 0, j = 0, k = 0; i < Original.length();)
+                                    {
+                                        // i keeps track of index in original string.
+                                        // j creates enough whitespace after each string to each line align with border.
+                                        // k ensures there are the same number of characters in each string.
+                                        c = Original[i];
+                                        // Resets j for the next string once j reaches maximum string length.
+                                        if (j >= 41)
+                                        {
+                                            j = 0;
+                                            i++;
+                                        }
+                                        // Fills String1 with approx 33 characters from original string.
+                                        // At the end of nearest word, input begins on string2.
+                                        if (k < 41)
+                                        {
+                                            if (j >= 35 && !isspace(c,loc))
+                                            {
+                                                String1 += Original[i];
+                                                i++;
+                                                if ( i >= Original.length() )
+                                                {
+                                                    for (; j < 40; j++)
+                                                    {
+                                                        String1 += " ";
+                                                    }
+                                                }
+                                            }
+                                            else if (j >= 35 && isspace(c,loc))
+                                            {
+                                                String1 += " ";
+                                            }
+                                            else
+                                            {
+                                                String1 += Original[i];
+                                                i++;
+                                                if ( i >= Original.length() )
+                                                {
+                                                    for (; j < 40; j++)
+                                                    {
+                                                        String1 += " ";
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        j++;
+                                        k++;
+                                    }
+
+                                    BorderX();
+                                    XBorderedBlankSpace();
+                                    XBorderedBlankSpace();
+                                    cout << "X";
+                                    BlankSpaces(15);
+                                    cout << "You don't have enough cash in the bank";
+                                    BlankSpaces(24);
+                                    cout << "X" << endl << "X";
+                                    BlankSpaces(15);
+                                    cout << "to buy a license for " << String1 << "X" << endl;
+                                    XBorderedBlankSpace();
+                                    cout << "X";
+                                    BlankSpaces(15);
+                                    cout << "Make some more money, and try again later.";
+                                    BlankSpaces(20);
+                                    cout << "X" << endl;
+                                    XBorderedBlankSpace();
+                                    XBorderedBlankSpace();
+                                    BorderX();
+                                    BlankLines(6);
+
                                     Pause();
                                 }
                             }
