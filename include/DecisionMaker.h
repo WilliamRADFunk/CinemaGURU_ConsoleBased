@@ -42,6 +42,8 @@ public:
     void choiceTree_Main();
     void choiceTree_01();
     void choiceTree_01_01(int);
+    void choiceTree_01_02();
+    bool choiceResult_01_02 (int);
     void choiceTree_01_03(int);
     void choiceTree_01_04(int);
     void choiceTree_01_05(int);

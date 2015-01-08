@@ -37,7 +37,7 @@ void DecisionMaker::choiceTree_Main()
     cout << "5. End Turn" << endl << endl;
     cout << "H. Instructions & Game Info" << endl;
     cout << "Q. Quit the Game" << endl << endl;
-    cout << "Enter the number corresponding to your choice:";
+    cout << "Enter the number, or letter, corresponding to your choice:";
 }
 
 void DecisionMaker::choiceTree_01()
@@ -150,6 +150,374 @@ void DecisionMaker::choiceTree_01_01(int Theaters)
     {
         cout << "WARNING: An incorrent # of Theaters was entered into" << endl;
         cout << "DecisionMaker::choiceTree_01_01(int Theaters)" << endl;
+    }
+}
+
+void DecisionMaker::choiceTree_01_02()
+{
+    BorderX();
+    XBorderedBlankSpace();
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "You've chosen to purchase additional movie licenses.";
+    BlankSpaces(20);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "Below is a list of newly released movies available for purchase:";
+    BlankSpaces(8);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    int Counter = 0;
+    // Displays the items on the list.
+    for (int n = 0; n < OFFERED_LICENSES_MAX; n++)
+    {
+        if (TheCinema->accessMovieLicensesOffered(n)->getTitle() != "Not Available")
+        {
+            cout << "X";
+            BlankSpaces(10);
+
+            locale loc;
+            char c;
+
+            string Original = TheCinema->accessMovieLicensesOffered(n)->getTitle();
+
+            string String1 = "";
+
+            for (unsigned int i = 0, j = 0, k = 0; i < Original.length();)
+            {
+                // i keeps track of index in original string.
+                // j creates enough whitespace after each string to each line align with border.
+                // k ensures there are the same number of characters in each string.
+                c = Original[i];
+                // Resets j for the next string once j reaches maximum string length.
+                if (j >= 52)
+                {
+                    j = 0;
+                    i++;
+                }
+                // Fills String1 with approx 46 characters from original string.
+                // At the end of nearest word, input begins on string2.
+                if (k < 52)
+                {
+                    if (j >= 46 && !isspace(c,loc))
+                    {
+                        String1 += Original[i];
+                        i++;
+                        if ( i >= Original.length() )
+                        {
+                            for (; j < 51; j++)
+                            {
+                                String1 += " ";
+                            }
+                        }
+                    }
+                    else if (j >= 46 && isspace(c,loc))
+                    {
+                        String1 += " ";
+                    }
+                    else
+                    {
+                        String1 += Original[i];
+                        i++;
+                        if ( i >= Original.length() )
+                        {
+                            for (; j < 51; j++)
+                            {
+                                String1 += " ";
+                            }
+                        }
+                    }
+                }
+                j++;
+                k++;
+            }
+            cout << (Counter + 1) << ". " << String1;
+            BlankSpaces(12);
+            cout << "X" << endl;
+            Counter++;
+        }
+    }
+    // If there's at least one movie offered, offer the no choice option.
+    cout << "X";
+    BlankSpaces(10);
+    cout << Counter + 1<< ". None of these";
+    BlankSpaces(51);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "Which of these do you choose? (Type a number, then ENTER)";
+    BlankSpaces(15);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    XBorderedBlankSpace();
+    BorderX();
+    BlankLines(4);
+    cout << "==> ";
+}
+
+bool DecisionMaker::choiceResult_01_02(int PlayerChoice)
+{
+    char ch;
+
+    // Player selected "None of these"
+    if (PlayerChoice == (OFFERED_LICENSES_MAX + 1))
+    {
+        BorderX();
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(5);
+        cout << "None of those tickle your fancy, eh?";
+        BlankSpaces(36);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(5);
+        cout << "Not to worry!";
+        BlankSpaces(59);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(5);
+        cout << "Every time you purchase a license it's replaced with a new option.";
+        BlankSpaces(6);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        BorderX();
+        BlankLines(6);
+
+        Pause();
+        return true;
+    }
+    // Player selected 1-3.
+    else
+    {
+        BorderX();
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        TheCinema->accessMovieLicensesOffered(PlayerChoice - 1)->displayMovieDetails();
+        XBorderedBlankSpace();
+        cout << "X";
+        BlankSpaces(5);
+        cout << "Do you want to purchase the license for this movie? (Y or N)";
+        BlankSpaces(12);
+        cout << "X" << endl;
+        XBorderedBlankSpace();
+        XBorderedBlankSpace();
+        BorderX();
+
+        ch = getYesOrNo();
+        if (ch == 'N' || ch == 'n')
+        {
+            ClearScreen();
+            // Displays list of license options again.
+            DecisionBuyMovieLicense = 'Z';
+            return false;
+        }
+        else
+        {
+            ClearScreen();
+            // Check to make sure there's enough money in the back.
+            if (checkPurchaseOfMovieLicense(TheCinema->getBank(),
+                                            TheCinema->accessMovieLicensesOffered(PlayerChoice - 1)->getCostOfLicensePerWeek()))
+            {
+                locale loc;
+                char c;
+
+                int NumOfWeeksOnLicense = TheCinema->accessMovieLicensesOffered(PlayerChoice - 1)->getUseOfLicenseRemainingInWeeks();
+
+                string Original = TheCinema->accessMovieLicensesOffered(PlayerChoice - 1)->getTitle();
+
+                string String1 = "";
+
+                for (unsigned int i = 0, j = 0, k = 0; i < Original.length();)
+                {
+                    // i keeps track of index in original string.
+                    // j creates enough whitespace after each string to each line align with border.
+                    // k ensures there are the same number of characters in each string.
+                    c = Original[i];
+                    // Resets j for the next string once j reaches maximum string length.
+                    if (j >= 39)
+                    {
+                        j = 0;
+                        i++;
+                    }
+                    // Fills String1 with approx 33 characters from original string.
+                    // At the end of nearest word, input begins on string2.
+                    if (k < 39)
+                    {
+                        if (j >= 33 && !isspace(c,loc))
+                        {
+                            String1 += Original[i];
+                            i++;
+                            if ( i >= Original.length() )
+                            {
+                                for (; j < 38; j++)
+                                {
+                                    String1 += " ";
+                                }
+                            }
+                        }
+                        else if (j >= 33 && isspace(c,loc))
+                        {
+                            String1 += " ";
+                        }
+                        else
+                        {
+                            String1 += Original[i];
+                            i++;
+                            if ( i >= Original.length() )
+                            {
+                                for (; j < 38; j++)
+                                {
+                                    String1 += " ";
+                                }
+                            }
+                        }
+                    }
+                    j++;
+                    k++;
+                }
+
+                TheCinema->adjustBank(-(TheCinema->accessMovieLicensesOffered(PlayerChoice - 1)->getCostOfLicensePerWeek()));
+                BorderX();
+                XBorderedBlankSpace();
+                XBorderedBlankSpace();
+                cout << "X";
+                BlankSpaces(5);
+                cout << "Congratulations!";
+                BlankSpaces(56);
+                cout << "X" << endl;
+                XBorderedBlankSpace();
+                cout << "X";
+                BlankSpaces(5);
+                cout << "You've purchased the license for " << String1 << "X" << endl;
+                XBorderedBlankSpace();
+                cout << "X";
+                BlankSpaces(5);
+                cout << "Your license to play the movie will expire in " << NumOfWeeksOnLicense << " Weeks.";
+                if (NumOfWeeksOnLicense < 10)
+                {
+                    BlankSpaces(18);
+                }
+                else if (NumOfWeeksOnLicense >= 10 && NumOfWeeksOnLicense < 100)
+                {
+                    BlankSpaces(17);
+                }
+                else if (NumOfWeeksOnLicense >= 100 && NumOfWeeksOnLicense < 1000)
+                {
+                    BlankSpaces(16);
+                }
+                cout << "X" << endl;
+                XBorderedBlankSpace();
+                XBorderedBlankSpace();
+                BorderX();
+                BlankLines(6);
+
+                Pause();
+                TheCinema->addNumOfMovieLicenses();
+                *TheCinema->accessMovieLicense((TheCinema->getNumOfMovieLicenses()) - 1) =
+                            *TheCinema->accessMovieLicensesOffered(PlayerChoice - 1);
+
+                // Next random license offer is created.
+                do
+                {
+                    NewLicenseOffered = (rand()% (MOVIES_MAX - 1)) + 1;
+                    // Checks to see if all the movies have already shown up in Licenses Offered.
+                } while ( !(TheCinema->checkPreviousLicenseMatch(NewLicenseOffered)) );
+
+                TheCinema->changeDisplayedMovieLicense((PlayerChoice - 1), NewLicenseOffered);
+
+                return true;
+            }
+            else
+            {
+                locale loc;
+                char c;
+
+                string Original = TheCinema->accessMovieLicensesOffered(PlayerChoice - 1)->getTitle();
+
+                string String1 = "";
+
+                for (unsigned int i = 0, j = 0, k = 0; i < Original.length();)
+                {
+                    // i keeps track of index in original string.
+                    // j creates enough whitespace after each string to each line align with border.
+                    // k ensures there are the same number of characters in each string.
+                    c = Original[i];
+                    // Resets j for the next string once j reaches maximum string length.
+                    if (j >= 41)
+                    {
+                        j = 0;
+                        i++;
+                    }
+                    // Fills String1 with approx 33 characters from original string.
+                    // At the end of nearest word, input begins on string2.
+                    if (k < 41)
+                    {
+                        if (j >= 35 && !isspace(c,loc))
+                        {
+                            String1 += Original[i];
+                            i++;
+                            if ( i >= Original.length() )
+                            {
+                                for (; j < 40; j++)
+                                {
+                                    String1 += " ";
+                                }
+                            }
+                        }
+                        else if (j >= 35 && isspace(c,loc))
+                        {
+                            String1 += " ";
+                        }
+                        else
+                        {
+                            String1 += Original[i];
+                            i++;
+                            if ( i >= Original.length() )
+                            {
+                                for (; j < 40; j++)
+                                {
+                                    String1 += " ";
+                                }
+                            }
+                        }
+                    }
+                    j++;
+                    k++;
+                }
+
+                BorderX();
+                XBorderedBlankSpace();
+                XBorderedBlankSpace();
+                cout << "X";
+                BlankSpaces(15);
+                cout << "You don't have enough cash in the bank";
+                BlankSpaces(24);
+                cout << "X" << endl << "X";
+                BlankSpaces(15);
+                cout << "to buy a license for " << String1 << "X" << endl;
+                XBorderedBlankSpace();
+                cout << "X";
+                BlankSpaces(15);
+                cout << "Make some more money, and try again later.";
+                BlankSpaces(20);
+                cout << "X" << endl;
+                XBorderedBlankSpace();
+                XBorderedBlankSpace();
+                BorderX();
+                BlankLines(6);
+
+                Pause();
+                return false;
+            }
+        }
     }
 }
 
@@ -1785,25 +2153,33 @@ char DecisionMaker::getSelection_01()
 
 int DecisionMaker::getSelection_01_02()
 {
-    int Input = 1;
+    int Input;
 
     // Should never happen, but in case
     if (OFFERED_LICENSES_MAX == 0)
     {
         cout << "WARNING: OFFERED_LICENSES_MAX was set to 0" << endl << endl;
-        return Input;
+        // Returns the automatic "None of these" choice, which sends player back to main menu.
+        return (OFFERED_LICENSES_MAX + 1);
     }
 
     do
     {
+        // Makes sure the number is a number. If not, Input is set to trigger next if statement.
         if ( !(cin >> Input) )
         {
-            cout << "Incorrect choice made." << endl;
+            Input = -1.00;
+        }
+        // If Input isn't within the acceptable range, cin is reset, and the question is re-asked.
+        if ( !(Input > 0 && Input <= (OFFERED_LICENSES_MAX + 1)) )
+        {
             cin.clear();
             string garbage;
             getline(cin, garbage);
+            ClearScreen();
+            // Recursive use of this function until useful input is received.
+            choiceTree_01_02();
         }
-        cout << "==> ";
     } while ( !(Input > 0 && Input <= (OFFERED_LICENSES_MAX + 1)) );
 
     return Input;
@@ -3233,8 +3609,8 @@ void DecisionMaker::activateDecisionTree()
                 choiceTree_01();
                 // Player's selection is collected and stored.
                 DecisionBuy = getSelection_01();
-                // Player chose to Buy More Seats. Loop breaks when 'R' or Go Back is selected.
 //-------------------------------------------------------------------------------------------------------------------
+                // Player chose to Buy More Seats. Loop breaks when 'R' or Go Back is selected.
                 if (DecisionBuy == '1')
                 {
                     // Loop control variable.
@@ -3278,381 +3654,32 @@ void DecisionMaker::activateDecisionTree()
                     } while (IllegalPurchase == false);
                         DecisionBuy = 'R';
                 }
-                // Player chose to Buy More Movie Licenses. Loop breaks when 'R' or Go Back is selected.
 //-------------------------------------------------------------------------------------------------------------------
+                // Player chose to Buy More Movie Licenses. Loop breaks when 'R' is selected, or player fails
+                // to buy movie due to insufficient balance.
                 else if (DecisionBuy == '2')
                 {
-                    char ch;
+                    bool Purchase = false;
                     int DesiredLicense;
 
                     ClearScreen();
 
                     do
                     {
-                        BorderX();
-                        XBorderedBlankSpace();
-                        XBorderedBlankSpace();
-                        cout << "X";
-                        BlankSpaces(5);
-                        cout << "You've chosen to purchase additional movie licenses.";
-                        BlankSpaces(20);
-                        cout << "X" << endl;
-                        XBorderedBlankSpace();
-                        cout << "X";
-                        BlankSpaces(5);
-                        cout << "Below is a list of newly released movies available for purchase:";
-                        BlankSpaces(8);
-                        cout << "X" << endl;
-                        XBorderedBlankSpace();
-                        int Counter = 0;
-                        // Displays the items on the list.
-                        for (int n = 0; n < OFFERED_LICENSES_MAX; n++)
-                        {
-                            if (TheCinema->accessMovieLicensesOffered(n)->getTitle() != "Not Available")
-                            {
-                                cout << "X";
-                                BlankSpaces(10);
-
-                                locale loc;
-                                char c;
-
-                                string Original = TheCinema->accessMovieLicensesOffered(n)->getTitle();
-
-                                string String1 = "";
-
-                                for (unsigned int i = 0, j = 0, k = 0; i < Original.length();)
-                                {
-                                    // i keeps track of index in original string.
-                                    // j creates enough whitespace after each string to each line align with border.
-                                    // k ensures there are the same number of characters in each string.
-                                    c = Original[i];
-                                    // Resets j for the next string once j reaches maximum string length.
-                                    if (j >= 52)
-                                    {
-                                        j = 0;
-                                        i++;
-                                    }
-                                    // Fills String1 with approx 46 characters from original string.
-                                    // At the end of nearest word, input begins on string2.
-                                    if (k < 52)
-                                    {
-                                        if (j >= 46 && !isspace(c,loc))
-                                        {
-                                            String1 += Original[i];
-                                            i++;
-                                            if ( i >= Original.length() )
-                                            {
-                                                for (; j < 51; j++)
-                                                {
-                                                    String1 += " ";
-                                                }
-                                            }
-                                        }
-                                        else if (j >= 46 && isspace(c,loc))
-                                        {
-                                            String1 += " ";
-                                        }
-                                        else
-                                        {
-                                            String1 += Original[i];
-                                            i++;
-                                            if ( i >= Original.length() )
-                                            {
-                                                for (; j < 51; j++)
-                                                {
-                                                    String1 += " ";
-                                                }
-                                            }
-                                        }
-                                    }
-                                    j++;
-                                    k++;
-                                }
-                                cout << (Counter + 1) << ". " << String1;
-                                BlankSpaces(12);
-                                cout << "X" << endl;
-                                Counter++;
-                            }
-                        }
-                        // If there's at least one movie offered, offer the no choice option.
-                        cout << "X";
-                        BlankSpaces(10);
-                        cout << Counter + 1<< ". None of these";
-                        BlankSpaces(51);
-                        cout << "X" << endl;
-                        XBorderedBlankSpace();
-                        cout << "X";
-                        BlankSpaces(5);
-                        cout << "Which of these do you choose? (Type a number, then ENTER)";
-                        BlankSpaces(15);
-                        cout << "X" << endl;
-                        XBorderedBlankSpace();
-                        XBorderedBlankSpace();
-                        BorderX();
-                        BlankLines(4);
+                        choiceTree_01_02();
                         // Player's selection is collected and stored.
                         DesiredLicense = getSelection_01_02();
 
                         ClearScreen();
 
-                        // Player selected "None of these"
-                        if (DesiredLicense == (OFFERED_LICENSES_MAX + 1))
-                        {
-                            BorderX();
-                            XBorderedBlankSpace();
-                            XBorderedBlankSpace();
-                            cout << "X";
-                            BlankSpaces(5);
-                            cout << "None of those tickle your fancy, eh?";
-                            BlankSpaces(36);
-                            cout << "X" << endl;
-                            XBorderedBlankSpace();
-                            cout << "X";
-                            BlankSpaces(5);
-                            cout << "Not to worry!";
-                            BlankSpaces(59);
-                            cout << "X" << endl;
-                            XBorderedBlankSpace();
-                            cout << "X";
-                            BlankSpaces(5);
-                            cout << "Every time you purchase a license it's replaced with a new option.";
-                            BlankSpaces(6);
-                            cout << "X" << endl;
-                            XBorderedBlankSpace();
-                            XBorderedBlankSpace();
-                            BorderX();
-                            BlankLines(6);
+                        Purchase = choiceResult_01_02(DesiredLicense);
+                    } while (!Purchase);
 
-                            Pause();
-                        }
-                        // Player selected 1-3.
-                        else
-                        {
-                            BorderX();
-                            XBorderedBlankSpace();
-                            XBorderedBlankSpace();
-                            TheCinema->accessMovieLicensesOffered(DesiredLicense - 1)->displayMovieDetails();
-                            XBorderedBlankSpace();
-                            cout << "X";
-                            BlankSpaces(5);
-                            cout << "Do you want to purchase the license for this movie? (Y or N)";
-                            BlankSpaces(12);
-                            cout << "X" << endl;
-                            XBorderedBlankSpace();
-                            XBorderedBlankSpace();
-                            BorderX();
-
-                            ch = getYesOrNo();
-                            if (ch == 'N' || ch == 'n')
-                            {
-                                ClearScreen();
-                                // Displays list of license options again.
-                                DecisionBuyMovieLicense = 'Z';
-                                continue;
-                            }
-                            else
-                            {
-                                ClearScreen();
-                                // Check to make sure there's enough money in the back.
-                                if (checkPurchaseOfMovieLicense(TheCinema->getBank(),
-                                                                TheCinema->accessMovieLicensesOffered(DesiredLicense - 1)->getCostOfLicensePerWeek()))
-                                {
-                                    locale loc;
-                                    char c;
-
-                                    int NumOfWeeksOnLicense = TheCinema->accessMovieLicensesOffered(DesiredLicense - 1)->getUseOfLicenseRemainingInWeeks();
-
-                                    string Original = TheCinema->accessMovieLicensesOffered(DesiredLicense - 1)->getTitle();
-
-                                    string String1 = "";
-
-                                    for (unsigned int i = 0, j = 0, k = 0; i < Original.length();)
-                                    {
-                                        // i keeps track of index in original string.
-                                        // j creates enough whitespace after each string to each line align with border.
-                                        // k ensures there are the same number of characters in each string.
-                                        c = Original[i];
-                                        // Resets j for the next string once j reaches maximum string length.
-                                        if (j >= 39)
-                                        {
-                                            j = 0;
-                                            i++;
-                                        }
-                                        // Fills String1 with approx 33 characters from original string.
-                                        // At the end of nearest word, input begins on string2.
-                                        if (k < 39)
-                                        {
-                                            if (j >= 33 && !isspace(c,loc))
-                                            {
-                                                String1 += Original[i];
-                                                i++;
-                                                if ( i >= Original.length() )
-                                                {
-                                                    for (; j < 38; j++)
-                                                    {
-                                                        String1 += " ";
-                                                    }
-                                                }
-                                            }
-                                            else if (j >= 33 && isspace(c,loc))
-                                            {
-                                                String1 += " ";
-                                            }
-                                            else
-                                            {
-                                                String1 += Original[i];
-                                                i++;
-                                                if ( i >= Original.length() )
-                                                {
-                                                    for (; j < 38; j++)
-                                                    {
-                                                        String1 += " ";
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        j++;
-                                        k++;
-                                    }
-
-                                    TheCinema->adjustBank(-(TheCinema->accessMovieLicensesOffered(DesiredLicense - 1)->getCostOfLicensePerWeek()));
-                                    BorderX();
-                                    XBorderedBlankSpace();
-                                    XBorderedBlankSpace();
-                                    cout << "X";
-                                    BlankSpaces(5);
-                                    cout << "Congratulations!";
-                                    BlankSpaces(56);
-                                    cout << "X" << endl;
-                                    XBorderedBlankSpace();
-                                    cout << "X";
-                                    BlankSpaces(5);
-                                    cout << "You've purchased the license for " << String1 << "X" << endl;
-                                    XBorderedBlankSpace();
-                                    cout << "X";
-                                    BlankSpaces(5);
-                                    cout << "Your license to play the movie will expire in " << NumOfWeeksOnLicense << " Weeks.";
-                                    if (NumOfWeeksOnLicense < 10)
-                                    {
-                                        BlankSpaces(18);
-                                    }
-                                    else if (NumOfWeeksOnLicense >= 10 && NumOfWeeksOnLicense < 100)
-                                    {
-                                        BlankSpaces(17);
-                                    }
-                                    else if (NumOfWeeksOnLicense >= 100 && NumOfWeeksOnLicense < 1000)
-                                    {
-                                        BlankSpaces(16);
-                                    }
-                                    cout << "X" << endl;
-                                    XBorderedBlankSpace();
-                                    XBorderedBlankSpace();
-                                    BorderX();
-                                    BlankLines(6);
-
-                                    Pause();
-                                    TheCinema->addNumOfMovieLicenses();
-                                    *TheCinema->accessMovieLicense((TheCinema->getNumOfMovieLicenses()) - 1) =
-                                                *TheCinema->accessMovieLicensesOffered(DesiredLicense - 1);
-                                    // Next random license offer is created.
-                                    do
-                                    {
-                                        NewLicenseOffered = (rand()% (MOVIES_MAX - 1)) + 1;
-                                        // Checks to see if all the movies have already shown up in Licenses Offered.
-                                    } while ( !(TheCinema->checkPreviousLicenseMatch(NewLicenseOffered)) );
-
-                                    TheCinema->changeDisplayedMovieLicense((DesiredLicense - 1), NewLicenseOffered);
-                                }
-                                else
-                                {
-                                    locale loc;
-                                    char c;
-
-                                    string Original = TheCinema->accessMovieLicensesOffered(DesiredLicense - 1)->getTitle();
-
-                                    string String1 = "";
-
-                                    for (unsigned int i = 0, j = 0, k = 0; i < Original.length();)
-                                    {
-                                        // i keeps track of index in original string.
-                                        // j creates enough whitespace after each string to each line align with border.
-                                        // k ensures there are the same number of characters in each string.
-                                        c = Original[i];
-                                        // Resets j for the next string once j reaches maximum string length.
-                                        if (j >= 41)
-                                        {
-                                            j = 0;
-                                            i++;
-                                        }
-                                        // Fills String1 with approx 33 characters from original string.
-                                        // At the end of nearest word, input begins on string2.
-                                        if (k < 41)
-                                        {
-                                            if (j >= 35 && !isspace(c,loc))
-                                            {
-                                                String1 += Original[i];
-                                                i++;
-                                                if ( i >= Original.length() )
-                                                {
-                                                    for (; j < 40; j++)
-                                                    {
-                                                        String1 += " ";
-                                                    }
-                                                }
-                                            }
-                                            else if (j >= 35 && isspace(c,loc))
-                                            {
-                                                String1 += " ";
-                                            }
-                                            else
-                                            {
-                                                String1 += Original[i];
-                                                i++;
-                                                if ( i >= Original.length() )
-                                                {
-                                                    for (; j < 40; j++)
-                                                    {
-                                                        String1 += " ";
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        j++;
-                                        k++;
-                                    }
-
-                                    BorderX();
-                                    XBorderedBlankSpace();
-                                    XBorderedBlankSpace();
-                                    cout << "X";
-                                    BlankSpaces(15);
-                                    cout << "You don't have enough cash in the bank";
-                                    BlankSpaces(24);
-                                    cout << "X" << endl << "X";
-                                    BlankSpaces(15);
-                                    cout << "to buy a license for " << String1 << "X" << endl;
-                                    XBorderedBlankSpace();
-                                    cout << "X";
-                                    BlankSpaces(15);
-                                    cout << "Make some more money, and try again later.";
-                                    BlankSpaces(20);
-                                    cout << "X" << endl;
-                                    XBorderedBlankSpace();
-                                    XBorderedBlankSpace();
-                                    BorderX();
-                                    BlankLines(6);
-
-                                    Pause();
-                                }
-                            }
-                        }
-                        // Once selection is finalized, loop is broken, control reverts to main menu.
-                        DecisionBuyMovieLicense = 'R';
-                        DecisionBuy = 'R';
-                    } while(DecisionBuyMovieLicense != 'R');
+                    // Once selection is finalized, loop is broken, control reverts to main menu.
+                    DecisionBuy = 'R';
                 }
-                // Player chose to Buy More Snack Options. Loop breaks when 'R' or Go Back is selected.
 //-------------------------------------------------------------------------------------------------------------------
+                // Player chose to Buy More Snack Options. Loop breaks when 'R' or Go Back is selected.
                 else if (DecisionBuy == '3')
                 {
                     ClearScreen();
@@ -3887,8 +3914,8 @@ void DecisionMaker::activateDecisionTree()
 
                         DecisionBuy = 'R';
                 }
-                // Player chose to Buy a Promotional Offer. Loop breaks when 'R' or Go Back is selected.
 //-------------------------------------------------------------------------------------------------------------------
+                // Player chose to Buy a Promotional Offer. Loop breaks when 'R' or Go Back is selected.
                 else if (DecisionBuy == '5')
                 {
                     ClearScreen();
@@ -3902,8 +3929,8 @@ void DecisionMaker::activateDecisionTree()
                     // With change complete, control reverts to main menu.
                     DecisionBuy = 'R';
                 }
-                // Player chose to Buy an Additional Theater. Loop breaks when 'R' or Go Back is selected.
 //-------------------------------------------------------------------------------------------------------------------
+                // Player chose to Buy an Additional Theater. Loop breaks when 'R' or Go Back is selected.
                 else if (DecisionBuy == '6')
                 {
                     ClearScreen();

@@ -25,7 +25,6 @@
 					<Add option="-Wswitch-enum" />
 					<Add option="-Wswitch-default" />
 					<Add option="-Wmain" />
-					<Add option="-pedantic" />
 					<Add option="-std=c++11" />
 					<Add option="-Wextra" />
 					<Add option="-Wall" />
