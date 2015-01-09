@@ -44,6 +44,7 @@ int Calendar::getYear()
 
 Season Calendar::getCurrentSeasonInt()
 {
+    // Each season has 13 weeks out of the year's 52.
     if (Week >= 1 && Week <= 13)
     {
         return Winter;
@@ -61,14 +62,15 @@ Season Calendar::getCurrentSeasonInt()
         return Autumn;
     }
     else
-        {
-            cout << "Error in getCurrentSeason/Week out of bounds." << endl;
-            return Error;
-        }
+    {
+        cout << "Error in getCurrentSeason/Week out of bounds." << endl;
+        return Error;
+    }
 }
 
 string Calendar::getCurrentSeasonString()
 {
+    // Each season has 13 weeks out of the year's 52.
     if (Week >= 1 && Week <= 13)
     {
         return "Winter";
@@ -86,16 +88,17 @@ string Calendar::getCurrentSeasonString()
         return "Autumn";
     }
     else
-        {
-            cout << "Error in getCurrentSeason/Week out of bounds." << endl;
-            return "Error";
-        }
+    {
+        cout << "Error in getCurrentSeason/Week out of bounds." << endl;
+        return "Error";
+    }
 }
 
 void Calendar::nextWeek()
 {
     Week += 1;
 
+    // Check if it's a new year and sets variable accordingly.
     if (Week % 53 == 0)
     {
         Year += 1;

@@ -29,6 +29,7 @@ using namespace std;
 
 Cinema::Cinema()
 {
+    // Initial amounts player starts with at game's beginning.
     Bank = 10000.00;
     TPrice = 10.00;
     NumOfTheaters = 1;
@@ -240,6 +241,8 @@ int Cinema::getNumOfTheaters()
 int Cinema::getTotalNumOfSeats()
 {
     int TotalSeats = 0;
+    // Cycles through all theaters owned by player,
+    // and adds their seats to the total.
     for (int i = 0; i < NumOfTheaters; i++)
     {
         TotalSeats += p_Theaters[i]->getNumOfSeats();
@@ -284,6 +287,8 @@ string Cinema::getPromotionInUse()
 
 void Cinema::hud()
 {
+    // Calls variables from other objects, or completes math, or function calls
+    // in order to reduce time-memory-speed consuming repetition.
     string CurrentSeason = p_Calendar->getCurrentSeasonString();
     int CurrentWeek = p_Calendar->getWeek();
     int CurrentYear = p_Calendar->getYear();
@@ -714,6 +719,9 @@ void Cinema::changeNumOfEmployees(int NewStaffNumber)
 
 void Cinema::changeDisplayedMovieLicense(int DisplayedLicense, int NewLicense)
 {
+    // Cycles through array of pointers to movie objects
+    // available for purchase by player, and finds the
+    // index matching the movie to be replaced.
     for (int i = 0; i < OFFERED_LICENSES_MAX; i++)
     {
         if (i == DisplayedLicense)
@@ -737,6 +745,9 @@ void Cinema::setPromotionInUse(string Promotion)
 
 bool Cinema::checkPreviousLicenseMatch(int NewLicenseOffered)
 {
+    // Cycles through array of pointers to movie objects
+    // available for purchase by player, and makes sure
+    // randomly picked license does not match.
     for (int i = 0; i < OFFERED_LICENSES_MAX; i++)
     {
         if (NewLicenseOffered == getDisplayedMovieLicenses(i))
@@ -745,6 +756,9 @@ bool Cinema::checkPreviousLicenseMatch(int NewLicenseOffered)
         }
     }
 
+    // Cycles through array of pointers to movie objects
+    // owned by player, and makes sure
+    // randomly picked license does not match.
     for (int i = 0; i < NumOfMovieLicenses; i++)
     {
         if (getMovie(NewLicenseOffered)->getTitle() == accessMovieLicense(i)->getTitle())

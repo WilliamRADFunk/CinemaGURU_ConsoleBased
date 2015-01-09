@@ -52,6 +52,7 @@ int main()
     TheCinema->~Cinema();
     TheCinema = 0;
 
+    // Small formatted message signaling the game's end.
     goodByeMessage();
 
     return 0;

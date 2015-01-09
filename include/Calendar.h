@@ -34,10 +34,19 @@ public:
     Calendar();
     ~Calendar();
 
+    // Returns value assigned to the "Week" variable.
     int getWeek();
+    // Returns value assigned to the "Year" variable.
     int getYear();
+    // Finds the Current Season based on the value found
+    // in "Week" and returns as the int associated with the Season enum.
     Season getCurrentSeasonInt();
+    // Finds the Current Season based on the value found
+    // in "Week" and returns as the string form associated with the Season enum.
     std::string getCurrentSeasonString();
+    // Increases "week" variable by one, determines if the year ends (increases
+    // "Year" variable by one, resetting "Week" to zero), and calls the
+    // getCurrentSeason() function to assign to the "CurrentSeason" variable.
     void nextWeek();
 };
 
