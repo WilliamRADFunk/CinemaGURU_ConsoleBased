@@ -2027,7 +2027,7 @@ void DecisionMaker::listOfAvailableMovies(int NumOfLicensesOwned)
     cout << "X" << endl;
     XBorderedBlankSpace();
     BorderX();
-    BlankLines(2);
+    BlankLines(5);
     cout << "==> ";
 }
 

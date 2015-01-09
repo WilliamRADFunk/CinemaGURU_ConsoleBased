@@ -316,5 +316,5 @@ OptionC: Paint it white.
 OptionD: Paint it red.
 DescriptionResultA: Though green is the color of money, it doesn't make people want to watch more movies. A new paint job does make the place look better, though. You got a small boost to ticket sales, netting $
 DescriptionResultB: Blue is regal and it really pops in the daytime. With sales increasing as a result you made an extra $
-DescriptionResultC: White can't go wrong...until it gets dirty. But, that's a problem for another day. For now, you sales increased moderately for an additional $
+DescriptionResultC: White can't go wrong...until it gets dirty. But, that's a problem for another day. For now, your sales increased moderately for an additional $
 DescriptionResultD: That red really sets your building apart from any of the others. People see it at once, and want to come it. You earned an whopping $

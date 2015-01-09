@@ -89,8 +89,14 @@ void introduction()
     XBorderedBlankSpace();
     cout << "X";
     BlankSpaces(5);
-    cout << "Welcome to CinemaGURU. You are the proud new owner of a cinema!";
-    BlankSpaces(9);
+    cout << "Welcome to CinemaGURU by William R.A.D. Funk. (Copyright 2014)";
+    BlankSpaces(10);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "You are the proud new owner of a cinema!";
+    BlankSpaces(32);
     cout << "X" << endl;
     XBorderedBlankSpace();
     cout << "X";
@@ -125,7 +131,7 @@ void introduction()
     XBorderedBlankSpace();
     XBorderedBlankSpace();
     BorderX();
-    BlankLines(7);
+    BlankLines(6);
     Pause();
 }
 
@@ -154,7 +160,7 @@ void runInstructions()
     XBorderedBlankSpace();
     XBorderedBlankSpace();
     BorderX();
-    BlankLines(5);
+    BlankLines(6);
 
     Pause();
     ClearScreen();
@@ -419,7 +425,7 @@ void runInstructions()
     XBorderedBlankSpace();
     cout << "X";
     BlankSpaces(3);
-    cout << "The game is turned-based. Each turn completed passes a week of time.";
+    cout << "The game is turn-based. Each turn completed passes a week of time.";
     BlankSpaces(6);
     cout << "X" << endl << "X";
     BlankSpaces(3);
