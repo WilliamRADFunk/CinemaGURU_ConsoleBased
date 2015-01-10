@@ -254,11 +254,21 @@ void DecisionMaker::choiceTree_01_02()
             Counter++;
         }
     }
-    // If there's at least one movie offered, offer the no choice option.
+    // If there's at least one movie offered, offer the none-of-these option.
     cout << "X";
     BlankSpaces(10);
     cout << Counter + 1<< ". None of these";
     BlankSpaces(51);
+    cout << "X" << endl;
+    XBorderedBlankSpace();
+    cout << "X";
+    BlankSpaces(5);
+    cout << "WARNING: You can buy a license you already own";
+    BlankSpaces(26);
+    cout << "X" << endl << "X";
+    BlankSpaces(14);
+    cout << "(only benefit is additional use before expiration).";
+    BlankSpaces(12);
     cout << "X" << endl;
     XBorderedBlankSpace();
     cout << "X";
@@ -269,7 +279,7 @@ void DecisionMaker::choiceTree_01_02()
     XBorderedBlankSpace();
     XBorderedBlankSpace();
     BorderX();
-    BlankLines(4);
+    BlankLines(3);
     cout << "==> ";
 }
 
@@ -1680,6 +1690,7 @@ void DecisionMaker::choiceHireStaff(int Employees, int Theaters)
 
 void DecisionMaker::choiceFireStaff(int Employees, int Theaters)
 {
+    // Minimum of one employee must be on staff at all times.
     int NumAllowedToChange = Employees - 1;
     int TotalEmployeeCost = Employees * EMPLOYEE_WAGE;
 
@@ -2130,7 +2141,7 @@ char DecisionMaker::getConfirmation(char input)
 
     //else statement above should have accounted for all other possibilities.
     //If program has reached this point, there is a serious flaw.
-    cout << "ERROR:The DecisionMaker::getConfirmation(char input) has";
+    cout << "ERROR: The DecisionMaker::getConfirmation(char input) has";
     cout << "reached a point it shouldn't." << endl;
     Pause();
     return '0';
@@ -2173,6 +2184,7 @@ int DecisionMaker::getSelection_01_02()
     if (OFFERED_LICENSES_MAX == 0)
     {
         cout << "WARNING: OFFERED_LICENSES_MAX was set to 0" << endl << endl;
+        Pause();
         // Returns the automatic "None of these" choice, which sends player back to main menu.
         return (OFFERED_LICENSES_MAX + 1);
     }
@@ -2184,7 +2196,7 @@ int DecisionMaker::getSelection_01_02()
         {
             Input = -1.00;
         }
-        // If Input isn't within the acceptable range, cin is reset, and the question is re-asked.
+        // If Input is not within the acceptable range, cin is reset, and the question is re-asked.
         if ( !(Input > 0 && Input <= (OFFERED_LICENSES_MAX + 1)) )
         {
             cin.clear();
@@ -2465,7 +2477,7 @@ int DecisionMaker::getSelection_TheaterNum(int Theaters)
         {
             TheaterSelection = -1.00;
         }
-        // If TheaterSelection isn't within the acceptable range, cin is reset, and the question is re-asked.
+        // If TheaterSelection is not within the acceptable range, cin is reset, and the question is re-asked.
         if ( !(TheaterSelection > 0 && TheaterSelection <= Theaters) )
         {
             cin.clear();
@@ -2491,7 +2503,7 @@ int DecisionMaker::getSelectionSeatPurchase(int TheaterNumber, int AmountOfSeats
         {
             SeatQuantity = -1.00;
         }
-        // If SeatQuantity isn't within the acceptable range, cin is reset, and the question is re-asked.
+        // If SeatQuantity is not within the acceptable range, cin is reset, and the question is re-asked.
         if ( !(SeatQuantity >= 0) )
         {
             cin.clear();
@@ -2535,7 +2547,7 @@ int DecisionMaker::getNumOfEmployeesToHire(int Employees, int Theaters)
         {
             HireQuantity = -1.00;
         }
-        // If HireQuantity isn't within the acceptable range, cin is reset, and the question is re-asked.
+        // If HireQuantity is not within the acceptable range, cin is reset, and the question is re-asked.
         if ( !(HireQuantity >= 0 && HireQuantity <= MaxEmployeesToHire) )
         {
             cin.clear();
@@ -2631,7 +2643,7 @@ int DecisionMaker::getNumOfEmployeesToFire(int Employees, int Theaters)
         {
             FireQuantity = -1.00;
         }
-        // If FireQuantity isn't within the acceptable range, cin is reset, and the question is re-asked.
+        // If FireQuantity is not within the acceptable range, cin is reset, and the question is re-asked.
         if ( !(FireQuantity >= 0 && FireQuantity <= MaxEmployeesToFire) )
         {
             cin.clear();
@@ -2746,7 +2758,7 @@ float DecisionMaker::getNewTicketPrice()
         {
             NewPrice = -1.00;
         }
-        // If NewPrice isn't within the acceptable range, cin is reset, and questions is re-asked.
+        // If NewPrice is not within the acceptable range, cin is reset, and questions is re-asked.
         if ( !(NewPrice >= 0 && NewPrice <= 20) )
         {
             cin.clear();
@@ -2775,7 +2787,7 @@ int DecisionMaker::getSelectedLicense(int NumOfLicensesOwned, int TheaterNum, st
         {
             NewMovie = -1.00;
         }
-        // If NewMovie isn't within the acceptable range, cin is reset, and the question is re-asked.
+        // If NewMovie is not within the acceptable range, cin is reset, and the question is re-asked.
         if ( !(NewMovie > 0 && NewMovie <= MOVIES_MAX) )
         {
             cin.clear();
@@ -3678,16 +3690,41 @@ void DecisionMaker::activateDecisionTree()
 
                     ClearScreen();
 
-                    do
+                    if (TheCinema->getNumOfMovieLicenses() == MOVIES_MAX)
                     {
-                        choiceTree_01_02();
-                        // Player's selection is collected and stored.
-                        DesiredLicense = getSelection_01_02();
+                        BorderX();
+                        XBorderedBlankSpace();
+                        XBorderedBlankSpace();
+                        cout << "X";
+                        BlankSpaces(5);
+                        cout << "You own the maximum number of licenses you can have at one time.";
+                        BlankSpaces(8);
+                        cout << "X" << endl << "X";
+                        BlankSpaces(5);
+                        cout << "Wait until one of your licenses expires, and check back then.";
+                        BlankSpaces(11);
+                        cout << "X" << endl;
+                        XBorderedBlankSpace();
+                        XBorderedBlankSpace();
+                        BorderX();
+                        BlankLines(8);
 
+                        Pause();
                         ClearScreen();
+                    }
+                    else
+                    {
+                        do
+                        {
+                            choiceTree_01_02();
+                            // Player's selection is collected and stored.
+                            DesiredLicense = getSelection_01_02();
 
-                        Purchase = choiceResult_01_02(DesiredLicense);
-                    } while (!Purchase);
+                            ClearScreen();
+
+                            Purchase = choiceResult_01_02(DesiredLicense);
+                        } while (!Purchase);
+                    }
 
                     // Once selection is finalized, loop is broken, control reverts to main menu.
                     DecisionBuy = 'R';
@@ -3760,9 +3797,8 @@ void DecisionMaker::activateDecisionTree()
                     do
                     {
                         ClearScreen();
-                        // Displays theater chosen and the levels for the
-                        // sound system, screen size, and projector quality.
-                        // Asks which area to upgrade.
+                        // Displays theater chosen and the levels for the sound system, screen size,
+                        // and projector quality. Asks which area to upgrade.
                         choiceUpgradeLevels(Decision_TheaterNum + 1,
                                          TheCinema->accessTheaters(Decision_TheaterNum)->getScreenLevel(),
                                          TheCinema->accessTheaters(Decision_TheaterNum)->getProjectorLevel(),
@@ -3775,7 +3811,7 @@ void DecisionMaker::activateDecisionTree()
                         if (DecisionBuyUpgrade == '1')
                         {
                             // Displays next level of Screen Size and cost. Asks player yes or no to purchase.
-                            // Also, if maximum level has been achieved, if returns false and exits.
+                            // Also, if maximum level has been achieved, it returns false and exits.
                             if (choiceUpgradeChosenEquipment(TheCinema->accessTheaters(Decision_TheaterNum)->getScreenLevel(),
                                                          Screen_Size))
                             {
