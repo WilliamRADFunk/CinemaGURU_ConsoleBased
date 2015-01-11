@@ -84,6 +84,8 @@ void Movie::setSynopsis(string Descrip)
 
 void Movie::setExpectedPopularityRating(int Pop)
 {
+    // Ensures the incoming value does not go above or below acceptable values.
+    // This is a "soft" error handling method in case player edits the movieData txt file incorrectly.
     if (Pop >= 5)
         ExpectedPopularityRating = 5;
     else if (Pop <= 1)
@@ -93,6 +95,8 @@ void Movie::setExpectedPopularityRating(int Pop)
 
 void Movie::setRealPopularityRating(int Pop)
 {
+    // Ensures the incoming value does not go above or below acceptable values.
+    // This is a "soft" error handling method in case player edits the movieData txt file incorrectly.
     if (Pop >= 5)
         RealPopularityRating = 5;
     else if (Pop <= 1)
@@ -103,11 +107,6 @@ void Movie::setRealPopularityRating(int Pop)
 void Movie::setUseOfLicenseRemainingInWeeks(int LicPeriod)
 {
     UseOfLicenseRemainingInWeeks = LicPeriod;
-}
-
-void Movie::adjustUseOfLicenseRemainingInWeeks()
-{
-    UseOfLicenseRemainingInWeeks--;
 }
 
 void Movie::setCostOfLicensePerWeek(float Cost)

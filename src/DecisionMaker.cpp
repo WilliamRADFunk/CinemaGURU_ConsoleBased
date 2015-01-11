@@ -4437,7 +4437,7 @@ void DecisionMaker::activateDecisionTree()
             // Reduces each owned movie license by one week.
             for (int i = 0; i < CurrentNumOfLicensesOwned; i++)
             {
-                TheCinema->accessMovieLicense(i)->adjustUseOfLicenseRemainingInWeeks();
+                TheCinema->accessMovieLicense(i)->reduceUseOfLicenseRemainingInWeeks();
             }
             // If license runs out, it's removed from owned licenses.
             for (int i = 0; i < MOVIES_MAX; i++)

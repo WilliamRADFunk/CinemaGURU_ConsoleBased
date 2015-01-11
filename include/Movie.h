@@ -41,6 +41,7 @@ public:
     Movie();
     ~Movie();
 
+    // The following cluster of functions do exactly what their names imply.
     std::string getTitle();
     std::string getSynopsis();
     int getExpectedPopularityRating();
@@ -50,19 +51,23 @@ public:
     Season getBestSeason();
     Season getWorstSeason();
 
+    // The following cluster of functions do exactly what their names imply.
     void setTitle(std::string);
     void setSynopsis(std::string);
     void setExpectedPopularityRating(int);
     void setRealPopularityRating(int);
     void setUseOfLicenseRemainingInWeeks(int);
-    void adjustUseOfLicenseRemainingInWeeks();
     void setCostOfLicensePerWeek(float);
     void setBestSeason(Season);
     void setWorstSeason(Season);
 
+    // At the end of a turn, a movie's weeks until expiration is reduced by one.
     void reduceUseOfLicenseRemainingInWeeks();
 
+    // Takes the enum value and converts it from type name to string name.
     std::string convertSeasonToString(Season);
+
+    // Shows all the movies details in a formatted screen with the exception of "RealPopularityRating."
     void displayMovieDetails();
 };
 
