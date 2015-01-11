@@ -2788,7 +2788,8 @@ int DecisionMaker::getSelectedLicense(int NumOfLicensesOwned, int TheaterNum, st
             NewMovie = -1.00;
         }
         // If NewMovie is not within the acceptable range, cin is reset, and the question is re-asked.
-        if ( !(NewMovie > 0 && NewMovie <= MOVIES_MAX) )
+        // The +1 in (NumOfLicensesOwned + 1) accounts for the additional "Play Nothing" option.
+        if ( !(NewMovie > 0 && NewMovie <= (NumOfLicensesOwned + 1)) )
         {
             cin.clear();
             string garbage;
@@ -3404,9 +3405,9 @@ void DecisionMaker::activateDecisionTree()
         float CurrentTicketPrice = TheCinema->getTicketPrice();
         Season CurrentSeasonInt = TheCinema->p_Calendar->getCurrentSeasonInt();
 
-        // The only way for a player to lose, is to incur -5000 in debt.
+        // The only way for a player to lose, is to incur -DEBT_MAX in debt.
         // The player is warned when they are in debt, but above the losing threshold.
-        // When -5000 is reached, a goodbye message is delivered, and main loop is broken.
+        // When -DEBT_MAX is reached, a goodbye message is delivered, and main loop is broken.
         if (TheCinema->getBank() <= 0 && TheCinema->getBank() > -(DEBT_MAX))
         {
             int CurrentBank = fabs(TheCinema->getBank());
@@ -3550,41 +3551,42 @@ void DecisionMaker::activateDecisionTree()
             ClearScreen();
             break;
         }
+        // The only way for a player to win, is to exceed PROFIT_MAX.
+        // The player is congratulated, and given a goodbye message.
+        // The main loop is broken and the game ends.
         if (TheCinema->getBank() >= PROFIT_MAX)
         {
-            int CurrentBank = TheCinema->getBank();
-
             BorderX();
             XBorderedBlankSpace();
             XBorderedBlankSpace();
             cout << "X";
             BlankSpaces(15);
-            cout << "You've earned more than $" << TheCinema->getBank() << "!";
-            if (CurrentBank < 10)
+            cout << "You've earned more than $" << PROFIT_MAX << "!";
+            if (PROFIT_MAX < 10)
             {
                 BlankSpaces(35);
             }
-            else if (CurrentBank >= 10 && CurrentBank < 100)
+            else if (PROFIT_MAX >= 10 && PROFIT_MAX < 100)
             {
                 BlankSpaces(34);
             }
-            else if (CurrentBank >= 100 && CurrentBank < 1000)
+            else if (PROFIT_MAX >= 100 && PROFIT_MAX < 1000)
             {
                 BlankSpaces(33);
             }
-            else if (CurrentBank >= 1000 && CurrentBank < 10000)
+            else if (PROFIT_MAX >= 1000 && PROFIT_MAX < 10000)
             {
                 BlankSpaces(32);
             }
-            else if (CurrentBank >= 10000 && CurrentBank < 100000)
+            else if (PROFIT_MAX >= 10000 && PROFIT_MAX < 100000)
             {
                 BlankSpaces(31);
             }
-            else if (CurrentBank >= 100000 && CurrentBank < 1000000)
+            else if (PROFIT_MAX >= 100000 && PROFIT_MAX < 1000000)
             {
                 BlankSpaces(30);
             }
-            else if (CurrentBank >= 1000000 && CurrentBank < 10000000)
+            else if (PROFIT_MAX >= 1000000 && PROFIT_MAX < 10000000)
             {
                 BlankSpaces(29);
             }
@@ -3689,7 +3691,8 @@ void DecisionMaker::activateDecisionTree()
                     int DesiredLicense;
 
                     ClearScreen();
-
+                    // Ensures the number of licenses the player owns does not exceed the
+                    // upper boundary of the array containing those licenses (MOVIES_MAX).
                     if (TheCinema->getNumOfMovieLicenses() == MOVIES_MAX)
                     {
                         BorderX();
@@ -3716,12 +3719,13 @@ void DecisionMaker::activateDecisionTree()
                     {
                         do
                         {
+                            // Displays the movie licenses available for player to purchase.
                             choiceTree_01_02();
                             // Player's selection is collected and stored.
                             DesiredLicense = getSelection_01_02();
 
                             ClearScreen();
-
+                            // Displays message is player chooses to purchase no movie licenses.
                             Purchase = choiceResult_01_02(DesiredLicense);
                         } while (!Purchase);
                     }
@@ -3743,17 +3747,20 @@ void DecisionMaker::activateDecisionTree()
                         // Player's selection is collected and stored.
                         char ch = getYesOrNo();
 
+                        // Player elected to purchase.
                         if (ch == 'y' || ch == 'Y')
                         {
                             // If check comes back true, there's not enough money in the bank.
                             if (checkPurchaseOfSnacks(CurrentBankAmount, CurrentNumberOfSnacks))
                                 break;
+                            // There's enough money, snack options increased, and bank balance adjusted.
                             else
                             {
                                 TheCinema->adjustBank(-(SNACK_PRICE));
                                 TheCinema->addSnacks();
                             }
                         }
+                        // Player declined to purchase.
                         else if (ch == 'n' || ch == 'N')
                         {
                             ClearScreen();
@@ -3773,7 +3780,7 @@ void DecisionMaker::activateDecisionTree()
                             Pause();
                         }
                     }
-
+                    // Reverts back to main loop.
                     DecisionBuy = 'R';
                 }
 //-------------------------------------------------------------------------------------------------------------------
@@ -3817,6 +3824,7 @@ void DecisionMaker::activateDecisionTree()
                             {
                                 // Player's selection is collected and stored.
                                 char ch = getYesOrNo();
+                                // Player elected to purchase.
                                 if (ch == 'y' || ch == 'Y')
                                 {
                                     // If check comes back true, there's not enough money in the bank.
@@ -3827,6 +3835,8 @@ void DecisionMaker::activateDecisionTree()
                                         // Purchase failed, control reverts back to specific theater's upgrade options.
                                         DecisionBuyUpgrade = 'R';
                                     }
+                                    // There's enough money, upgrade is made, bank balance is adjusted,
+                                    // and control reverts back to main loop.
                                     else
                                     {
                                         TheCinema->adjustBank(-(UPGRADE_PRICE));
@@ -3836,6 +3846,7 @@ void DecisionMaker::activateDecisionTree()
                                         DecisionBuy = 'R';
                                     }
                                 }
+                                // Player declined to purchase.
                                 else if (ch == 'n' || ch == 'N')
                                 {
                                     ClearScreen();
@@ -3867,6 +3878,7 @@ void DecisionMaker::activateDecisionTree()
                             {
                                 // Player's selection is collected and stored.
                                 char ch = getYesOrNo();
+                                // Player elected to purchase.
                                 if (ch == 'y' || ch == 'Y')
                                 {
                                     // If check comes back true, there's not enough money in the bank.
@@ -3877,6 +3889,8 @@ void DecisionMaker::activateDecisionTree()
                                         // Purchase failed, control reverts back to specific theater's upgrade options.
                                         DecisionBuyUpgrade = 'R';
                                     }
+                                    // There's enough money, upgrade is made, bank balance is adjusted,
+                                    // and control reverts back to main loop.
                                     else
                                     {
                                         TheCinema->adjustBank(-(UPGRADE_PRICE));
@@ -3886,6 +3900,7 @@ void DecisionMaker::activateDecisionTree()
                                         DecisionBuy = 'R';
                                     }
                                 }
+                                // Player declined to purchase.
                                 else if (ch == 'n' || ch == 'N')
                                 {
                                     ClearScreen();
@@ -3917,6 +3932,7 @@ void DecisionMaker::activateDecisionTree()
                             {
                                 // Player's selection is collected and stored.
                                 char ch = getYesOrNo();
+                                // Player elected to purchase.
                                 if (ch == 'y' || ch == 'Y')
                                 {
                                     // If check comes back true, there's not enough money in the bank.
@@ -3927,6 +3943,8 @@ void DecisionMaker::activateDecisionTree()
                                         // Purchase failed, control reverts back to specific theater's upgrade options.
                                         DecisionBuyUpgrade = 'R';
                                     }
+                                    // There's enough money, upgrade is made, bank balance is adjusted,
+                                    // and control reverts back to main loop.
                                     else
                                     {
                                         TheCinema->adjustBank(-(UPGRADE_PRICE));
@@ -3936,6 +3954,7 @@ void DecisionMaker::activateDecisionTree()
                                         DecisionBuy = 'R';
                                     }
                                 }
+                                // Player declined to purchase.
                                 else if (ch == 'n' || ch == 'N')
                                 {
                                     ClearScreen();
@@ -4015,9 +4034,14 @@ void DecisionMaker::activateDecisionTree()
                 {
                     // Player chose to Hire Staff
                     ClearScreen();
+                    // Informs player of current employment number, possible employment number,
+                    // cost of each employee, current total, and then asks how many more employees to hire.
                     choiceHireStaff(CurrentEmployeeAmount, CurrentTheaterAmount);
+                    // Collects player's input for options given in choiceHireStaff.
                     ChangeStaff = getNumOfEmployeesToHire(CurrentEmployeeAmount, CurrentTheaterAmount);
+                    // Sets the new value for "NumOfEmployees."
                     TheCinema->changeNumOfEmployees(ChangeStaff);
+                    // Breaks manage staff loop and reverts back to main loop.
                     DecisionStaff = 'R';
                     Pause();
                 }
@@ -4027,9 +4051,14 @@ void DecisionMaker::activateDecisionTree()
                 {
                     // Player chose to Fire Staff
                     ClearScreen();
+                    // Informs player of current employment number, minimum employment number,
+                    // cost of each employee, current total, and then asks how many employees to fire.
                     choiceFireStaff(CurrentEmployeeAmount, CurrentTheaterAmount);
+                    // Collects player's input for options given in choiceFireStaff.
                     ChangeStaff = getNumOfEmployeesToFire(CurrentEmployeeAmount, CurrentTheaterAmount);
+                    // Sets the new value for "NumOfEmployees."
                     TheCinema->changeNumOfEmployees(-ChangeStaff);
+                    // Breaks manage staff loop and reverts back to main loop.
                     DecisionStaff = 'R';
                     Pause();
                 }
@@ -4042,6 +4071,7 @@ void DecisionMaker::activateDecisionTree()
             choiceTree_03(CurrentTicketPrice);
             // Player's selection is collected and stored.
             cout << "==> ";
+            // Sets the new value for "TPrice."
             TheCinema->changeTicketPrice(getNewTicketPrice());
             break;
 //MAIN SWITCH - CHANGE MOVIE#########################################################################################
@@ -4081,12 +4111,6 @@ void DecisionMaker::activateDecisionTree()
                         // Player's selection is collected and stored.
                         MovieLicenseSelected = getSelectedLicense(CurrentNumOfLicensesOwned, Decision_TheaterNum + 1,
                                                                   TheCinema->accessTheaters(Decision_TheaterNum)->getSelectedMovie()->getTitle());
-                        if (MovieLicenseSelected > CurrentNumOfLicensesOwned)
-                        {
-                            // The + 1 returns what the Player selected, not the index position given w/o + 1.
-                            cout << "ERROR: " << (MovieLicenseSelected + 1);
-                            cout << " is not a valid selection. Try again: ";
-                        }
                     } while (MovieLicenseSelected > CurrentNumOfLicensesOwned);
 
                     ClearScreen();
@@ -4110,6 +4134,7 @@ void DecisionMaker::activateDecisionTree()
 
                         ch = getYesOrNo();
                     }
+                    // Response to the "Play Nothing" choice.
                     else if (MovieLicenseSelected == CurrentNumOfLicensesOwned)
                     {
                         BorderX();
@@ -4370,13 +4395,17 @@ void DecisionMaker::activateDecisionTree()
             TheCinema->adjustTicketSales(NumTicketsPurchased);
             // The amount in $ of snacks purchased is calculated and Bank is adjusted--assuming $5 per snack.
             RandomAttendanceQuotient = ((float)rand() / (RAND_MAX)) + 0.1;
+            // Profits from snack purchases are calculated.
             TheCinema->adjustSnackSales(RandomAttendanceQuotient * (1 + (TheCinema->getNumOfSnacks() / 10)) * NumTicketsPurchased * 5);
             // Random event encounter has a one in three chance of happening.
             if ( (rand() % 3) == 2)
             {
                 ClearScreen();
+                // Randomly picks which event takes place.
                 RandomEventIndex = rand() % RANDOM_EVENTS_MAX;
+                // Displays the event for player along with their four options.
                 TheREHandler->getRandomEvent(RandomEventIndex)->presentEvent();
+                // Collects the choice from player.
                 DecisionRandomEvent = getRandomEventChoice();
                 ClearScreen();
                 // Presents outcome of player's decision, calculates money gained or lost, and adds/subtracts that from Bank.
@@ -4478,4 +4507,5 @@ void DecisionMaker::activateDecisionTree()
 
         ClearScreen();
     } while(Decision != 'Q');
+    // Once this main loop is broken, control is returned to main (game over).
 }
