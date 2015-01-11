@@ -38,19 +38,33 @@ Enjoy!
 #define DEBT_MAX 5000 // Formatting can handle $999,999. It will need adjustment beyond that.
 #define LEVEL_MAX 1.5 // Do not exceed. This directly affects the algorithm used to determine tickets purchased each turn.
 
+// Variable to keep track of season types.
 enum Season {Winter, Spring, Summer, Autumn, Error};
+// Variable to keep track of upgradeable equipment types.
 enum Equipment {Screen_Size, Projector_Quality, Sound_Intensity};
 // Creates a long series of hyphens, making a divider to better read the console screen.
 void Divider();
+// Creates a long series of blank spaces with an X at the beginning and one at the end,
+// making a one-line border to better read the console screen.
 void XBorderedBlankSpace();
+// Creates a long series of hyphens with an X at the beginning and one at the end,
+// making a divider to better read the console screen.
 void XBorderedDivider();
+// Creates a long series of X characters, making a divider/border to better read the console screen.
 void BorderX();
+// Creates a large number of new-lines, effectively clearing the screen for better readability.
 void ClearScreen();
+// Waits for player to press any key before moving to the next piece of code.
 void Pause();
+// Takes in a number and creates an equal number of new-lines--for formatting/display purposes.
 void BlankLines(int);
+// Takes in a number and creates an equal number of blank spaces--for formatting/display purposes.
 void BlankSpaces(int);
+// The initial introduction screen, including game title and creator's name.
 void introduction();
+// Displays the Game Information and Help details.
 void runInstructions();
+// The final message, displayed after player has won, lost, or quit.
 void goodByeMessage();
 
 #endif // GLOBALVARIABLES_H_INCLUDED
