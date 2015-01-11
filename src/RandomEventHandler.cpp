@@ -156,6 +156,12 @@ RandomEventHandler::RandomEventHandler()
 
 RandomEventHandler::~RandomEventHandler()
 {
+    // Destroying random events and setting their pointer locations to zero.
+    for (int i = 0; i < RANDOM_EVENTS_MAX; i++)
+    {
+        p_RandomEvents[i]->~RandomEvent();
+        p_RandomEvents[i] = 0;
+    }
     delete [] p_RandomEvents;
 }
 
