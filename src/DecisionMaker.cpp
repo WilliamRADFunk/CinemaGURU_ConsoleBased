@@ -539,6 +539,7 @@ bool DecisionMaker::choiceResult_01_02(int PlayerChoice)
                 BlankLines(6);
 
                 Pause();
+                ClearScreen();
                 return false;
             }
         }
