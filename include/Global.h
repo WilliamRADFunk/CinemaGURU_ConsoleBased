@@ -24,8 +24,8 @@ Enjoy!
 #define SOUND_MAX 1.5
 #define SCREEN_MAX 1.5
 #define PORJECTOR_MAX 1.5
-#define MOVIES_MAX 20
-#define OFFERED_LICENSES_MAX 3
+#define MOVIES_MAX 20 // Only 20 movies have been written. More will need to be added before this can be changed.
+#define OFFERED_LICENSES_MAX 3 // Any more than this will burn through the available list of movies far too quickly.
 #define SEAT_PRICE 100 // Formatting can handle a seat price of $99,999. Any more and adjustment is required.
 #define SNACK_PRICE 600
 #define UPGRADE_PRICE 500
@@ -40,7 +40,7 @@ Enjoy!
 
 enum Season {Winter, Spring, Summer, Autumn, Error};
 enum Equipment {Screen_Size, Projector_Quality, Sound_Intensity};
-
+// Creates a long series of hyphens, making a divider to better read the console screen.
 void Divider();
 void XBorderedBlankSpace();
 void XBorderedDivider();
