@@ -23,14 +23,18 @@ Enjoy!
 class RandomEvent
 {
 private:
+    // Initializing variable to an inert value.
     char Rating = 'A';
 
     float MonetaryBase = 0.0;
-
+    // These are the multipliers for each of the four choices the player can choose from.
     int FactorChoiceA = 0,FactorChoiceB = 0, FactorChoiceC = 0, FactorChoiceD = 0;
-
+    // The explanation of the event for the player.
     std::string Scenario = "Not Available";
-    std::string OptionA = "Not Available", OptionB = "Not Available", OptionC = "Not Available", OptionD = "Not Available";
+    // These are the four possible actions the player can take for each event.
+    std::string OptionA = "Not Available", OptionB = "Not Available";
+    std::string OptionC = "Not Available", OptionD = "Not Available";
+    // These are the four possible outcome descriptions respective to the player's chosen action.
     std::string DescriptionResultA = "Not Available", DescriptionResultB = "Not Available";
     std::string DescriptionResultC = "Not Available", DescriptionResultD = "Not Available";
 
@@ -38,12 +42,14 @@ public:
     RandomEvent();
     ~RandomEvent();
 
+    // This cluster of functions do exactly what their names imply.
     char getRating();
     float getMonetaryBase();
     int getFactorChoiceA();
     int getFactorChoiceB();
     int getFactorChoiceC();
     int getFactorChoiceD();
+    // This cluster of functions do what their names imply with additional formatting for display.
     void printScenario();
     void printOptionA();
     void printOptionB();
@@ -53,10 +59,12 @@ public:
     void printDescriptionResultB();
     void printDescriptionResultC();
     void printDescriptionResultD();
-
+    // Runs the previous functions in specific order (printScenario(), printOptionA(), printOptionB(),
+    // printOptionC(), printOptionD(), presentEvent()).
     void presentEvent();
+    // Determines which outcome relates to player's choice and displays it in formatted form.
     float presentOutcome(char);
-
+    // This cluster of functions do exactly what their names imply.
     void setRating(char);
     void setMonetaryBase(float);
     void setFactorChoiceA(int);

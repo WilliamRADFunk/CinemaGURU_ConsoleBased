@@ -28,7 +28,8 @@ private:
 public:
     RandomEventHandler();
     ~RandomEventHandler();
-
+    // Pulls RandomEvents and their details from the RandomEventsData txt file,
+    // and stores the objects in an array of pointers to those objects.
     RandomEvent* getRandomEvent(int);
 };
 
