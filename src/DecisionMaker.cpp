@@ -445,8 +445,8 @@ bool DecisionMaker::choiceResult_01_02(int PlayerChoice)
 
                 Pause();
                 TheCinema->addNumOfMovieLicenses();
-                *TheCinema->accessMovieLicense((TheCinema->getNumOfMovieLicenses()) - 1) =
-                            *TheCinema->accessMovieLicensesOffered(PlayerChoice - 1);
+                (*TheCinema->accessMovieLicense((TheCinema->getNumOfMovieLicenses()) - 1)) =
+                            (*TheCinema->accessMovieLicensesOffered(PlayerChoice - 1));
 
                 // Next random license offer is created.
                 do
@@ -2820,7 +2820,8 @@ char DecisionMaker::getRandomEventChoice()
 
 float DecisionMaker::getTPriceFactor(float TicketPrice)
 {
-    float TPriceFactor;
+    float TPriceFactor = 1.0;
+
     if (TicketPrice > -0.01 && TicketPrice < 0.01)
     {
         TPriceFactor = 2.0;
@@ -2898,7 +2899,8 @@ float DecisionMaker::getPromoFactor(int Promotion)
 
 float DecisionMaker::getStaffFactor(int Employees, int Theaters)
 {
-    float StaffFactor;
+    float StaffFactor = 1.0;
+
     // Should be decimal from 0 to 1.
     int StaffLevel = (int)((float)Employees / ((float)(Employees * Theaters * 5)));
     // Lower than half lowers factor below 1. Higher is higher than 1. 0.5 is equal to 1.
