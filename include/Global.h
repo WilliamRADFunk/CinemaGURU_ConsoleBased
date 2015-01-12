@@ -27,7 +27,7 @@ Enjoy!
 #define MOVIES_MAX 20 // Only 20 movies have been written. More will need to be added before this can be changed.
 #define OFFERED_LICENSES_MAX 3 // Any more than this will burn through the available list of movies far too quickly.
 #define SEAT_PRICE 100 // Formatting can handle a seat price of $99,999. Any more and adjustment is required.
-#define SNACK_PRICE 600
+#define SNACK_PRICE 1500
 #define UPGRADE_PRICE 500
 #define THEATER_PRICE 2000
 #define THEATER_RENT 1000

@@ -424,7 +424,7 @@ bool DecisionMaker::choiceResult_01_02(int PlayerChoice)
                 XBorderedBlankSpace();
                 cout << "X";
                 BlankSpaces(5);
-                cout << "Your license to play the movie will expire in " << NumOfWeeksOnLicense << " Weeks.";
+                cout << "Your license to play this movie will expire in " << NumOfWeeksOnLicense << " Weeks.";
                 if (NumOfWeeksOnLicense < 10)
                 {
                     BlankSpaces(18);
